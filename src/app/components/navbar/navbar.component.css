@@ -1,0 +1,15 @@
+.navbar{
+  background-color:rgba(91, 91, 91, 1);
+}
+
+.brand-logo{
+  margin-left: 20px;
+}
+
+.login{
+  margin-right: 30px;
+}
+
+.btn-second{
+  background-color: red;
+}

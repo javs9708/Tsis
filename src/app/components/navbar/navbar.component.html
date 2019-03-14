@@ -1,0 +1,12 @@
+<nav>
+    <div class="nav-wrapper navbar">
+      <a href="#" class="brand-logo">AuthApp</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a [routerLink]="['home']">Home</a></li>
+        <li><a [routerLink]="['profile']">Profile</a></li>
+        <li><a [routerLink]="['candidates']">Candidates</a></li>
+        <li><span class="login"><button class="btn btn-primary btn-margin" *ngIf="!auth.isAuthenticated()" (click)="auth.login()"> Log In </button></span></li>
+        <li><span class="login"><button class="btn btn-second btn-margin" *ngIf="auth.isAuthenticated()" (click)="auth.logout()"> Log Out </button></span></li>
+      </ul>
+    </div>
+  </nav>
