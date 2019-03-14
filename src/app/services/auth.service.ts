@@ -8,13 +8,14 @@ export class AuthService {
   private _idToken: string;
   private _accessToken: string;
   private _expiresAt: number;
+  public userProfile: any;
 
   auth0 = new auth0.WebAuth({
     clientID: '5KgsJVWOc2SzQy3sZw7XQ1qNoXzeoPR7',
     domain: 'dev-0ef1a5pv.auth0.com',
     responseType: 'token id_token',
-    redirectUri: 'http://localhost:4200/home',
-    scope: 'openid'
+    redirectUri: 'http://localhost:4200/callback',
+    scope: 'openid profile'
   });
 
   constructor(public router: Router) {
@@ -40,7 +41,7 @@ export class AuthService {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         this.localLogin(authResult);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/profile']);
       } else if (err) {
         this.router.navigate(['/home']);
         console.log(err);
@@ -77,12 +78,27 @@ export class AuthService {
     localStorage.removeItem('isLoggedIn');
     // Go back to the home route
     this.router.navigate(['/']);
+    this.auth0.logout({returnTo: 'http://localhost:4200'})
   }
 
   public isAuthenticated(): boolean {
     // Check whether the current time is past the
     // access token's expiry time
     return new Date().getTime() < this._expiresAt;
+  }
+
+  public getProfile(cb): void {
+  if (!this._accessToken) {
+    throw new Error('Access Token must exist to fetch profile');
+  }
+
+  const self = this;
+  this.auth0.client.userInfo(this._accessToken, (err, profile) => {
+    if (profile) {
+      self.userProfile = profile;
+    }
+    cb(err, profile);
+    });
   }
 
 }
