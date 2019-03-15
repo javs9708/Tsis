@@ -9,23 +9,18 @@ import {AuthService} from '../../services/auth.service';
 export class NavbarComponent implements OnInit {
 
   profile: any;
-  
+
   constructor(public auth:AuthService) {
     auth.handleAuthentication();
   }
 
   ngOnInit() {
 
-    if (localStorage.getItem('isLoggedIn') === 'true') {
-      this.auth.renewTokens();
-    }
     if (this.auth.userProfile) {
-      console.log("Pedo");
       this.profile = this.auth.userProfile;
+      console.log(this.profile);
     } else {
-      this.auth.getProfile((err, profile) => {
-        this.profile = profile;
-      });
+      console.log("No encuentro el perfil");
     }
   }
 }

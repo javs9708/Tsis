@@ -6,16 +6,7 @@ import {AuthService} from '../../services/auth.service';
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.css']
 })
-export class LandingComponent implements OnInit {
+export class LandingComponent  {
 
-  constructor(private auth:AuthService) {
-    auth.handleAuthentication();
-  }
 
-  ngOnInit() {
-
-    if (localStorage.getItem('isLoggedIn') === 'true') {
-      this.auth.renewTokens();
-    }
-  }
 }

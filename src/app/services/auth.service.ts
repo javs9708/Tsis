@@ -76,8 +76,6 @@ export class AuthService {
     this._expiresAt = 0;
     // Remove isLoggedIn flag from localStorage
     localStorage.removeItem('isLoggedIn');
-    // Go back to the home route
-    this.router.navigate(['/']);
     this.auth0.logout({returnTo: 'http://localhost:4200'})
   }
 
