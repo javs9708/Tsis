@@ -29,8 +29,8 @@
     <li><a class="sidenav-close" *ngIf="auth.isAuthenticated()" [routerLink]="['home']">Inicio</a></li>
     <li><a class="sidenav-close"  [routerLink]="['candidates']">Candidatos</a></li>
     <li><a class="sidenav-close"  *ngIf="auth.isAuthenticated()" [routerLink]="['profile']">Perfil</a></li>
-    <li><a class="sidenav-close logout" *ngIf="auth.isAuthenticated()" (click)="auth.logout()"><i class="material-icons">exit_to_app</i><b>Cerrar sesión</b> </a></li>
-    <li><a class="sidenav-close login" *ngIf="!auth.isAuthenticated()" (click)="auth.login()"><i class="material-icons">account_circle</i><b>Inicio de sesión </b></a></li>
+    <li><a href="#" class="sidenav-close logout" *ngIf="auth.isAuthenticated()" (click)="auth.logout()"><i class="material-icons">exit_to_app</i><b>Cerrar sesión</b> </a></li>
+    <li><a href="#" class="sidenav-close login" *ngIf="!auth.isAuthenticated()" (click)="auth.login()"><i class="material-icons">account_circle</i><b>Inicio de sesión </b></a></li>
   </ul>
 </body>
 </html>
