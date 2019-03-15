@@ -1,7 +1,7 @@
 <body>
   <nav>
       <div class="nav-wrapper navbar">
-        <a href="#" class="brand-logo center">Candidatec</a>
+        <a [routerLink]="['home']" class="brand-logo center">Candidatec</a>
         <a href="#" data-target="menu-side" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right">
           <li><span class="logout"><button class="btn btn-second btn-margin" *ngIf="auth.isAuthenticated()" (click)="auth.logout()"><b>Cerrar sesión</b> </button></span></li>
