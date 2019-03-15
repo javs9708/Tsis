@@ -8,7 +8,9 @@ import {AuthService} from '../../services/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private auth:AuthService) {
+  profile: any;
+  
+  constructor(public auth:AuthService) {
     auth.handleAuthentication();
   }
 
@@ -17,6 +19,13 @@ export class NavbarComponent implements OnInit {
     if (localStorage.getItem('isLoggedIn') === 'true') {
       this.auth.renewTokens();
     }
+    if (this.auth.userProfile) {
+      console.log("Pedo");
+      this.profile = this.auth.userProfile;
+    } else {
+      this.auth.getProfile((err, profile) => {
+        this.profile = profile;
+      });
+    }
   }
-
 }

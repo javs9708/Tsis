@@ -1,6 +1,13 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
 .navbar{
   background-color:black;
+  width: auto;
 }
+
 .brand-logo{
   margin-left: 20px;
 }
@@ -10,10 +17,32 @@
 }
 
 .btn-second{
-  background-color: red;
+  
   border-radius: 20px;
 }
 
 .logout{
   margin-right: 30px;
+  color: red;
 }
+
+.login{
+  margin-right: 30px;
+  color: royalblue;
+}
+
+
+.text{
+  margin-top: 5px;
+  font-size: 20px;
+  color: whitesmoke;
+}
+
+.sidenav-header {
+  background-size: cover;
+  margin-bottom: 0px;
+  padding: 15px 0 0 15px;
+    .row {
+      margin-bottom: 0;
+    }
+  }
