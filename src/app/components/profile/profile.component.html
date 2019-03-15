@@ -1,7 +1,16 @@
-<div class="panel-body">
-    <img src="{{profile?.picture}}" class="avatar" alt="avatar">
-    <div>
-      <h3 class="nickname">{{ profile?.name }}</h3>
-    </div>
-    <pre class="full-profile">{{ profile | json }}</pre>
+
+  <div class="row" >
+     <div class="col s3">
+
+       </div>
+
+     <div class="col s9">
+       <div class="panel-body">
+           <img src="{{profile?.picture}}" class="avatar" alt="avatar">
+           <div>
+             <h3 class="nickname">{{ profile?.name }}</h3>
+           </div>
+           <pre class="full-profile">{{ profile | json }}</pre>
+         </div>
+     </div>
   </div>

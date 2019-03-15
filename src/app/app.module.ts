@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {MatTabsModule} from '@angular/material/tabs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { APP_ROUTING } from './app-routing.module';
@@ -23,6 +25,8 @@ import { ProfileComponent } from './components/profile/profile.component';
   ],
   imports: [
     BrowserModule,
+    MatTabsModule,
+    BrowserAnimationsModule,
     APP_ROUTING
   ],
   providers: [

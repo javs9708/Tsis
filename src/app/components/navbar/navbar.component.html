@@ -1,12 +1,22 @@
-<nav>
-    <div class="nav-wrapper navbar">
-      <a href="#" class="brand-logo">Nazi</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li routerLinkActive="active"><a [routerLink]="['home']">Inicio</a></li>
-        <li routerLinkActive="active"><a [routerLink]="['candidates']">Candidatos</a></li>
-        <li routerLinkActive="active"><a *ngIf="auth.isAuthenticated()" [routerLink]="['profile']">Perfil</a></li>
-        <li><span class="login"><button class="btn btn-primary btn-margin" *ngIf="!auth.isAuthenticated()" (click)="auth.login()"><b> Inicio de sesión </b></button></span></li>
-        <li><span class="login"><button class="btn btn-second btn-margin" *ngIf="auth.isAuthenticated()" (click)="auth.logout()"><b>Cerrar sesión</b> </button></span></li>
-      </ul>
-    </div>
+<body>
+  <nav>
+      <div class="nav-wrapper navbar">
+        <a href="#" class="brand-logo center">Candidatec</a>
+        <a href="#" data-target="menu-side" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="right">
+          <li><span class="logout"><button class="btn btn-second btn-margin" *ngIf="auth.isAuthenticated()" (click)="auth.logout()"><b>Cerrar sesión</b> </button></span></li>
+        </ul>
+      </div>
+
   </nav>
+
+
+
+<ul class="sidenav" id="menu-side">
+  <li><a class="sidenav-close" routerLinkActive="active" [routerLink]="['home']">Inicio</a></li>
+  <li><a class="sidenav-close" routerLinkActive="active" [routerLink]="['candidates']">Candidatos</a></li>
+  <li><a class="sidenav-close" routerLinkActive="active" *ngIf="auth.isAuthenticated()" [routerLink]="['profile']">Perfil</a></li>
+</ul>
+
+
+</body>

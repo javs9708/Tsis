@@ -1,18 +1,19 @@
 .navbar{
-  background-color:rgba(91, 91, 91, 1);
+  background-color:black;
 }
 .brand-logo{
   margin-left: 20px;
 }
-.login{
-  margin-right: 30px;
-  margin-left: 30px;
+
+.material-icons{
+  color: white;
 }
+
 .btn-second{
   background-color: red;
   border-radius: 20px;
 }
-.btn-primary{
-  background-color: #62cc69;
-  border-radius: 20px;
+
+.logout{
+  margin-right: 30px;
 }
