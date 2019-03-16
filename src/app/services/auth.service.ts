@@ -76,7 +76,6 @@ export class AuthService {
     this._expiresAt = 0;
     // Remove isLoggedIn flag from localStorage
     localStorage.removeItem('isLoggedIn');
-    this.auth0.logout({returnTo: 'http://localhost:4200'})
   }
 
   public isAuthenticated(): boolean {

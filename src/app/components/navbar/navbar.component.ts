@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , DoCheck} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 
 @Component({
@@ -6,7 +6,7 @@ import {AuthService} from '../../services/auth.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements DoCheck{
 
   profile: any;
 
@@ -14,13 +14,10 @@ export class NavbarComponent implements OnInit {
     auth.handleAuthentication();
   }
 
-  ngOnInit() {
-
-    if (this.auth.userProfile) {
-      this.profile = this.auth.userProfile;
-      console.log(this.profile);
-    } else {
-      console.log("No encuentro el perfil");
+  ngDoCheck() {
+        this.profile = this.auth.userProfile;
+        console.log(this.profile);
     }
-  }
+
+
 }
