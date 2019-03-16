@@ -6,7 +6,13 @@ import {AuthService} from '../../services/auth.service';
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.css']
 })
-export class LandingComponent  {
+export class LandingComponent   {
+
+  constructor(public auth:AuthService) {
+    auth.handleAuthentication();
+  }
+
+  
 
 
 }

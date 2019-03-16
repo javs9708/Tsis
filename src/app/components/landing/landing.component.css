@@ -1,10 +1,14 @@
+
 .icon-block {
     padding: 0 15px;
   }
-  .icon-block .material-icons {
-      font-size: inherit;
-  }
+.icon-block .material-icons {
+    font-size: inherit;
+}
 
-.foot{
-    width: 100%;
+
+
+.button{
+    border-radius: 30px;
+    
 }

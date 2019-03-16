@@ -1,0 +1,11 @@
+html,
+body{
+    
+    width: 100%;
+}
+footer { 
+    position: absolute;
+    width: 100%;  
+    left: 0;
+    right: 0;
+  }
