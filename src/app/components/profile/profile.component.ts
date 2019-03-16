@@ -10,7 +10,12 @@ export class ProfileComponent implements OnInit {
 
   profile: any;
 
-  constructor(public auth: AuthService) { }
+  constructor(public auth: AuthService) {
+    auth.handleAuthentication();
+  }
+
+
+
 
   ngOnInit() {
     if (this.auth.userProfile) {

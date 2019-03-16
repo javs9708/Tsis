@@ -12,7 +12,7 @@ const APP_ROUTES: Routes = [
   {path: '',component:LandingComponent},
   {path: 'home', component: HomeComponent, canActivate:[AuthGuardService]},
   {path: 'profile', component: ProfileComponent, canActivate:[AuthGuardService]},
-  {path: 'candidates', component: CandidatesComponent},
+  {path: 'candidates', component: CandidatesComponent, canActivate:[AuthGuardService]},
   {path: '**', pathMatch: 'full', redirectTo: 'home'}
 
 

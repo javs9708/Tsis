@@ -10,7 +10,9 @@
   <div class="navbar-fixed">
     <nav>
       <div class="nav-wrapper navbar">
-        <a [routerLink]="['home']" class="brand-logo center">Candidatec</a>
+        <div *ngIf="auth.isAuthenticated()">
+          <a [routerLink]="['home']" class="brand-logo center">Candidatec</a>
+        </div>
         <a href="#" data-target="menu-side" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
       </div>
     </nav>
@@ -26,11 +28,12 @@
           </div>
         </div>
     </li>
+    <li><a class="sidenav-close" *ngIf="!auth.isAuthenticated()" [routerLink]="['']">Inicio</a></li>
     <li><a class="sidenav-close" *ngIf="auth.isAuthenticated()" [routerLink]="['home']">Inicio</a></li>
-    <li><a class="sidenav-close"  [routerLink]="['candidates']">Candidatos</a></li>
+    <li><a class="sidenav-close"  [routerLink]="['candidates']" *ngIf="auth.isAuthenticated()">Candidatos</a></li>
     <li><a class="sidenav-close"  *ngIf="auth.isAuthenticated()" [routerLink]="['profile']">Perfil</a></li>
     <li><a href="#" class="sidenav-close logout" *ngIf="auth.isAuthenticated()" (click)="auth.logout()"><i class="material-icons">exit_to_app</i><b>Cerrar sesión</b> </a></li>
-    <li><a href="#" class="sidenav-close login" *ngIf="!auth.isAuthenticated()" (click)="auth.login()"><i class="material-icons">account_circle</i><b>Inicio de sesión </b></a></li>
+    <li><a class="sidenav-close login" *ngIf="!auth.isAuthenticated()" (click)="auth.login()"><i class="material-icons">account_circle</i><b>Inicio de sesión </b></a></li>
   </ul>
 </body>
 </html>
