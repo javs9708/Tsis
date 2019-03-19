@@ -7,7 +7,7 @@
   <title>Document</title>
 </head>
 <body>
-
+  <div class="navbar-fixed">
     <nav class="navbar">
       <div class="nav-wrapper  light-blue darken-4">
         <div *ngIf="auth.isAuthenticated()">
@@ -17,11 +17,10 @@
         <a href="#" data-target="menu-side" class="sidenav-trigger show-on-large" *ngIf="auth.isAuthenticated()"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile " class="hide-on-med-and-down" *ngIf="!auth.isAuthenticated()">
           <li><a href="#"> <b class="item">Inicio</b> </a></li>
-
         </ul>
       </div>
     </nav>
-
+  </div>
 
   <ul class="sidenav" id="menu-side">
     <li class="sidenav-header blue" *ngIf="auth.isAuthenticated()">

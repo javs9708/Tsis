@@ -16,7 +16,8 @@ export class NavbarComponent implements DoCheck{
 
   ngDoCheck() {
         this.profile = this.auth.userProfile;
-        console.log(this.profile);
+        console.log(localStorage.getItem('isLoggedIn'));
+        console.log(this.auth.isAuthenticated());
     }
 
 
