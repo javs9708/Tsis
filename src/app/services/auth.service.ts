@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Observer, of, timer } from 'rxjs';
-import 'rxjs/add/operator/filter';
 import * as auth0 from 'auth0-js';
 
 @Injectable()
@@ -11,12 +10,6 @@ export class AuthService {
   private _accessToken: string;
   private _expiresAt: number;
   public userProfile: any;
-
-  refreshSubscription: any;
-  observer: Observer<boolean>;
-  ssoAuthComplete$: Observable<boolean> = new Observable(
-    obs => (this.observer = obs)
-  );
 
   auth0 = new auth0.WebAuth({
     clientID: '5KgsJVWOc2SzQy3sZw7XQ1qNoXzeoPR7',
@@ -105,34 +98,5 @@ export class AuthService {
     cb(err, profile);
     });
   }
-
-  public scheduleRenewal() {
-    if (!this.isAuthenticated()) return;
-    this.unscheduleRenewal();
-
-    const expiresAt = this._expiresAt;
-
-    const source = Observable.Of(expiresAt).flatMap(expiresAt => {
-      const now = Date.now();
-
-      // Use the delay in a timer to
-      // run the refresh at the proper time
-      return Observable.timer(Math.max(1, expiresAt - now));
-    });
-
-    // Once the delay time from above is
-    // reached, get a new JWT and schedule
-    // additional refreshes
-    this.refreshSubscription = source.subscribe(() => {
-      this.renewTokens();
-      this.scheduleRenewal();
-    });
-  }
-
-  public unscheduleRenewal() {
-    if (!this.refreshSubscription) return;
-    this.refreshSubscription.unsubscribe();
-  }
-}
 
 }

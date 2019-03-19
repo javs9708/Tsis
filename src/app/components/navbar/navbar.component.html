@@ -16,7 +16,8 @@
         <a href="#" data-target="menu-side" class="sidenav-trigger show-on-midium" *ngIf="!auth.isAuthenticated()"><i class="material-icons">menu</i></a>
         <a href="#" data-target="menu-side" class="sidenav-trigger show-on-large" *ngIf="auth.isAuthenticated()"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile " class="hide-on-med-and-down" *ngIf="!auth.isAuthenticated()">
-          <li><a href="#"> <b class="item">Inicio</b> </a></li>
+          <li><a href="#"> <b class="item1">Inicio</b> </a></li>
+          <li><a href="#about"> <b class="item">Qué somos</b> </a></li>
         </ul>
       </div>
     </nav>
@@ -40,6 +41,6 @@
     <li><a href="#" class="sidenav-close logout" *ngIf="auth.isAuthenticated()" (click)="auth.logout()"><i class="material-icons">exit_to_app</i><b>Cerrar sesión</b> </a></li>
     <li><a class="sidenav-close login" *ngIf="!auth.isAuthenticated()" (click)="auth.login()"><i class="material-icons">account_circle</i><b>Inicio de sesión </b></a></li>
   </ul>
-
+  
 </body>
 </html>
