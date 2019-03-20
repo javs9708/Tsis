@@ -16,13 +16,15 @@
 }
 
 .sblue{
-    position: absolute;
+    height: 400px;
     left: 0;
     right: 0;
     display: flex;
     align-items: center;
 }
-
+.swhite{
+    height: 490px;
+}
 .textdark{
     color: black;
 }
@@ -30,19 +32,15 @@
 .mtop1{
     margin-top: 30px;
 }
-.mtop2
-{
-    
-}
-
 
 
 .titulo1{
     font-size: 100px;
     font-family: Arial;
+    text-align: center;
     margin: 0;
     animation-name: title1;
-    animation-duration: 3s;
+    animation-duration: 3.5s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
@@ -50,4 +48,18 @@
 @keyframes title1{
     0%{opacity: 0;}
     100%{opacity: 1;}
+}
+
+[data-anime]{
+    opacity: 0;
+    transition: .3s;
+}
+
+[data-anime="left"]{
+    transform: translate3d(-50px, 0, 0);
+}
+
+[data-anime].animate{
+    opacity: 1;
+    transform: translate3d(0px, 0px, 0px);
 }
