@@ -8,11 +8,10 @@ import {AuthService} from '../../services/auth.service';
 })
 export class LandingComponent   {
 
-  constructor(public auth:AuthService) {
-    auth.handleAuthentication();
+  constructor(private  authService:  AuthService) {
   }
 
-  
+
 
 
 }

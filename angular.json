@@ -28,7 +28,7 @@
               },
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": ["./src/app/components/landing/js/scroll.js"],
             "es5BrowserSupport": true
           },
           "configurations": {

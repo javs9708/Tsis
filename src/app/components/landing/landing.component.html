@@ -14,11 +14,12 @@
       <h5 class="header col s12 light">Te gustaría saber <a href="#about">¿qué somos?</a> </h5>
     </div>
     <div class="row center">
-      <a class="btn-large waves-effect waves-light  light-blue darken-2 button" (click)="auth.login()" >Registrate</a>
+      <a class="btn-large waves-effect waves-light  light-blue darken-2 button" *ngIf="!authService.isLoggedIn" [routerLink]="['login']" >Registrate</a>
+      <a class="btn-large waves-effect waves-light  light-blue darken-2 button" *ngIf="authService.isLoggedIn" [routerLink]="['profile']" >Registrate</a>
     </div>
     <br><br>
   </div>
-  
+
   <!--About-->
 
   <div class="section light-blue darken-3 sblue" id="about">
@@ -38,7 +39,7 @@
       </div>
     </div>
   </div>
-    
+
   <div class="container">
       <div class="section">
 
@@ -76,7 +77,7 @@
       <br><br>
   </div>
 
-    <script src="/js/scroll.js"></script>
+    <script src="./js/scroll.js"></script>
 </body>
 </html>
 

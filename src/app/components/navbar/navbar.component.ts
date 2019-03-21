@@ -10,14 +10,11 @@ export class NavbarComponent implements DoCheck{
 
   profile: any;
 
-  constructor(public auth:AuthService) {
-    auth.handleAuthentication();
+  constructor(private  authService:  AuthService) {
+
   }
 
   ngDoCheck() {
-        this.profile = this.auth.userProfile;
-        console.log(localStorage.getItem('isLoggedIn'));
-        console.log(this.auth.isAuthenticated());
     }
 
 
