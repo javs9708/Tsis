@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../../services/auth.service';
+import { AuthService } from '../../services/auth.service';
+import { Stats } from '../../interfaces/stats';
+import { Uid, Usuarios } from '../../interfaces/uid';
+import { FirestoreService } from '../../services/firestore/firestore.service';
+import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map';
+
 
 @Component({
   selector: 'app-profile',
@@ -8,14 +15,15 @@ import {AuthService} from '../../services/auth.service';
 })
 export class ProfileComponent implements OnInit {
 
-  profile: any;
 
-  constructor(private  authService:  AuthService) {
+  constructor(private firestoreService: FirestoreService, private authService: AuthService, private afs: AngularFirestore) {
 
   }
 
   ngOnInit() {
 
+
   }
+
 
 }

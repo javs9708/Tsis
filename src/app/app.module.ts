@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { APP_ROUTING } from './app-routing.module';
 import {AuthService} from './services/auth.service';
 import {AuthGuardService} from './services/auth-guard.service';
+import {FirestoreService} from './services/firestore/firestore.service';
+import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 
 
 import { AppComponent } from './app.component';
@@ -31,6 +33,7 @@ export const firebaseConfig ={
   storageBucket: "tsis-72641.appspot.com",
   messagingSenderId: "873867793143"
 }
+
 
 @NgModule({
   declarations: [
@@ -57,7 +60,9 @@ export const firebaseConfig ={
   ],
   providers: [
     AuthService,
-    AuthGuardService
+    AuthGuardService,
+    FirestoreService,
+    AngularFirestore
   ],
   bootstrap: [AppComponent]
 })
