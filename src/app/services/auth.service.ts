@@ -2,19 +2,25 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
+import { FirestoreService } from './firestore/firestore.service';
 import { User } from 'firebase';
+import { Uid, Usuarios } from '../interfaces/uid';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   user: User;
-  constructor(public afAuth: AngularFireAuth, public router: Router) {
+  public users=[];
+  uid: Uid = {
+    uid: '',
+    puntuationState:false,
+  };
+  constructor(public afAuth: AngularFireAuth, public router: Router, public firestoreService: FirestoreService) {
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.user = user;
         localStorage.setItem('user', JSON.stringify(this.user));
-        console.log(this.user);
       } else {
         localStorage.setItem('user', null);
       }
@@ -34,6 +40,8 @@ export class AuthService {
   async register(email: string, password: string) {
     try {
       var result = await this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+      this.uid.uid = this.user.uid;
+      this.firestoreService.createUser(this.uid);
       this.sendEmailVerification();
     } catch (e) {
       alert("Error" + e.message)
@@ -57,6 +65,31 @@ export class AuthService {
 
   async  loginWithGoogle() {
     await this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
+    this.uid.uid = this.user.uid;
+
+    this.firestoreService.getUsers().subscribe(data => {
+      if (data) {
+        data.map(test => {
+        this.users.push({
+          data: test.payload.doc.data()
+        });
+
+
+        });
+        let exist=false;
+        for(let e of this.users){
+          if(this.uid.uid==e.data.uid){
+            exist=true;
+            break;
+          }
+        }
+        if (exist==false){
+          this.firestoreService.createUser(this.uid);
+        }
+      }
+    });
+
+
     this.router.navigate(['profile']);
   }
 
@@ -75,4 +108,5 @@ export class AuthService {
     const user = JSON.parse(localStorage.getItem('user'));
     return user !== null;
   }
+
 }

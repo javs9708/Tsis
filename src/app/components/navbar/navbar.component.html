@@ -27,10 +27,10 @@
     <li class="sidenav-header blue" *ngIf="authService.isLoggedIn">
       <div class="row">
           <div class="col s4">
-            <img src="{{authService.user.photoURL}}" width="60px" height="60px" alt="" class="circle responsive-img valign profile-image">
+            <img src="{{authService.user.providerData[0].photoURL}}" width="60px" height="60px" alt="" class="circle responsive-img valign profile-image">
           </div>
           <div class="col s8 text">
-            <b>{{authService.user.displayName}}</b>
+            <b>{{authService.user.providerData[0].displayName}}</b>
           </div>
         </div>
     </li>

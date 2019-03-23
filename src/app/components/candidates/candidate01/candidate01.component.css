@@ -8,3 +8,7 @@
 .noMeGusta{
   color: red;
 }
+
+a[disabled="disabled"] {
+  pointer-events: none;
+}
