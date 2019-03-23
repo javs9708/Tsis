@@ -1,0 +1,21 @@
+#login-page {
+    width: 800px;
+    height: 1700px;
+ }
+
+ .button{
+    border-radius: 30px;    
+}
+
+.mtop{
+    margin-top: 150px;
+}
+
+.btn-center{
+    text-align: center;
+}
+
+.mbottom{
+    margin-bottom: 15px;
+    
+}

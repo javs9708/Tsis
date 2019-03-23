@@ -13,13 +13,17 @@ body {
 } */
 
 #login-page {
-   width: 500px;
+   width: 800px;
+   height: 1700px;
 }
 
 .mtop{
     margin-top: 150px;
 }
 
+.mtop2{
+    margin-top: 100px;
+}
 .btn-center{
     text-align: center;
 }
@@ -27,6 +31,22 @@ body {
 .button{
     border-radius: 30px;    
 }
+
+.mbottom{
+    margin-bottom: 30px;
+    
+}
+
+.botonimagen{
+    background-image:url("../../../assets/files/google.png");
+    background-repeat:no-repeat;
+    height:70px;
+    width:70px;
+    background-position:center;
+    color: black;
+    border-radius: 40px;
+    
+  }
 
 /* .card {
      position: absolute;

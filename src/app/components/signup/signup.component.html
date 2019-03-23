@@ -8,26 +8,32 @@
 </head>
 <body ng-app="mainModule" ng-controller="mainController">
     <div id="login-page" class="row">
-      <div class="col s12 z-depth-6 card-panel mtop">
+      <div class="col s12 z-depth-5 card-panel mtop">
         <form class="login-form">
           <h4 class="btn-center  blue-text">Registro</h4>
           <div class="row"></div>
           <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s8 push-s2">
               <i class="material-icons prefix">mail_outline</i>
               <input type="text" class="form-control mb-2" placeholder="Email" #userEmail required autofocus>
             </div>
           </div>
           <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s8 push-s2">
               <i class="material-icons prefix">lock_outline</i>
-              <input type="password" class="form-control mb-2" placeholder="Password" #userPassword required>
-            </div>
-            <div class="row btn-center">
-              <button  class="btn button light-blue darken-2"  (click)="authService.register(userEmail.value, userPassword.value)">Registrarse</button>
+              <input type="password" class="form-control mb-2" placeholder="Contraseña" #userPassword required>
             </div>
           </div>
-          </form>
+          <div class="row btn-center">
+            <button  class="btn button light-blue darken-2"  (click)="authService.register(userEmail.value, userPassword.value)">Registrarse</button>
+          </div>
+          <div class="row">
+              <div class="col push-s1 center">
+                <a [routerLink]="['/login']">Regresar</a>
+              </div>
+              
+          </div>
+        </form>
         </div>
         </div>
 </body>

@@ -6,22 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
   </head>
-  <body ng-app="mainModule" ng-controller="mainController">
+  <body>
     <div id="login-page" class="row">
-      <div class="col s12 z-depth-6 card-panel mtop">
+      <div class="col s12 z-depth-5 card-content mtop">
         <form class="login-form">
-            <h4 class="btn-center  blue-text">Inicio de sesion</h4>
+            <h4 class="btn-center  blue-text mtop2">Inicio de Sesión</h4>
           <div class="row"></div>
-          <div class="row">
-            <div class="input-field col s11">
+          <div class="row ">
+            <div class="input-field col s8 push-s2">
               <i class="material-icons prefix">mail_outline</i>
-              <input type="text" class="form-control mb-2" placeholder="Email" #userEmail required autofocus>
+              <input class="validate" id="email" type="email" #userEmail required autofocus>
+              <label for="email" data-error="wrong" data-success="right">Email</label>
+              <!-- <input type="text" id="email" class="form-control mb-2" placeholder="Email" #userEmail required autofocus> -->
             </div>
           </div>
           <div class="row">
-            <div class="input-field col s11">
+            <div class="input-field col s8 push-s2">
               <i class="material-icons prefix">lock_outline</i>
-              <input type="password" class="form-control mb-2" placeholder="Password" #userPassword required>
+              <input id="password" type="password" #userPassword required>
+              <label for="password">Password</label>
+              <!-- <input type="password" class="form-control mb-2" placeholder="Contraseña" #userPassword required> -->
             </div>
           </div>
           
@@ -35,23 +39,23 @@
           </div> -->
           <div class="row btn-center">
             <div class="input-field col s12">
-              <a class="btn waves-effect waves-light col-auto button light-blue darken-2" (click)="authService.login(userEmail.value, userPassword.value)">Login</a>
+              <a class="btn waves-effect waves-light col-auto button light-blue darken-2" (click)="authService.login(userEmail.value, userPassword.value)">Iniciar</a>
             </div>
             <div class="input-field col s12">
-              <a class="btn waves-effect waves-light col-auto button light-blue darken-2" (click)="authService.loginWithGoogle()">Login with google</a>
+              <a class="btn waves-effect waves-light col-auto button1 white botonimagen" (click)="authService.loginWithGoogle()"></a>
             </div>
           </div>
           <div class="row">
-            <div class="input-field col s6 m6 l6">
-              <p class="margin medium-small"><a [routerLink]="['/signup']">Regístrate</a></p>
-            </div>
-            <div class="input-field col s6 m6 l6">
-              <p class="margin right-align medium-small">
-                <a [routerLink]="['/email']">Olvido su contraseña</a>
-              </p>
+            <div class="col push-s1">
+              <a [routerLink]="['/signup']">Regístrate!</a>
             </div>
           </div>
-        </form>
+          <div class="row">
+            <div class="col push-s1 center">
+              <a [routerLink]="['/email']">¿Olvidaste tu contraseña?</a>
+            </div>
+          </div>
+          </form>
       </div>
     </div>
   </body>

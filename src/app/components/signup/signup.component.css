@@ -1,5 +1,6 @@
 #login-page {
-    width: 500px;
+    width: 800px;
+    height: 1700px;
  }
 
  .button{
@@ -12,4 +13,9 @@
 
 .btn-center{
     text-align: center;
+}
+
+.mbottom{
+    margin-bottom: 15px;
+    
 }
