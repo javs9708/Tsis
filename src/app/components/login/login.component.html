@@ -1,29 +1,62 @@
-<div class="container pt-3">
-  <div class="row justify-content-sm-center">
-    <div class="col-sm-10 col-md-6">
-      <div class="card border-info">
-        <div class="card-header">Login</div>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-4 text-center">
-              <img src="https://placeimg.com/128/128/nature">
-            </div>
-            <div class="col-md-8">
-
-                <input type="text" class="form-control mb-2" placeholder="Email" #userEmail required autofocus>
-                <input type="password" class="form-control mb-2" placeholder="Password" #userPassword required>
-                <button  class="btn btn-lg btn-primary btn-block mb-1"  (click)="authService.login(userEmail.value, userPassword.value)">Login</button>
-                  <button  class="btn btn-lg btn-primary btn-block mb-1"  (click)="authService.loginWithGoogle()">Login with google</button>
-                  <!-- <button  class="btn btn-lg btn-primary btn-block mb-1"  (click)="authService.loginWithFacebook()">Login with Facebook</button> -->
-
-
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="login-page" class="row">
+      <div class="col s12 z-depth-5 card-content mtop">
+        <form class="login-form">
+            <h4 class="btn-center  blue-text mtop2">Inicio de Sesión</h4>
+          <div class="row"></div>
+          <div class="row ">
+            <div class="input-field col s8 push-s2">
+              <i class="material-icons prefix">mail_outline</i>
+              <input class="validate" id="email" type="email" #userEmail required autofocus>
+              <label for="email" data-error="wrong" data-success="right">Email</label>
+              <!-- <input type="text" id="email" class="form-control mb-2" placeholder="Email" #userEmail required autofocus> -->
             </div>
           </div>
-        </div>
+          <div class="row">
+            <div class="input-field col s8 push-s2">
+              <i class="material-icons prefix">lock_outline</i>
+              <input id="password" type="password" #userPassword required>
+              <label for="password">Password</label>
+              <!-- <input type="password" class="form-control mb-2" placeholder="Contraseña" #userPassword required> -->
+            </div>
+          </div>
+          
+          
+          <!-- REMEMBER ME -->
+          <!-- <div class="row">
+            <div class="input-field col s12 m12 l12  login-text">
+              <input type="checkbox" id="remember-me" />
+              <label for="remember-me">Remember me</label>
+            </div>
+          </div> -->
+          <div class="row btn-center">
+            <div class="input-field col s12">
+              <a class="btn waves-effect waves-light col-auto button light-blue darken-2" (click)="authService.login(userEmail.value, userPassword.value)">Iniciar</a>
+            </div>
+            <div class="input-field col s12">
+              <a class="btn waves-effect waves-light col-auto button1 white botonimagen" (click)="authService.loginWithGoogle()"></a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col push-s1">
+              <a [routerLink]="['/signup']">Regístrate!</a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col push-s1 center">
+              <a [routerLink]="['/email']">¿Olvidaste tu contraseña?</a>
+            </div>
+          </div>
+          </form>
       </div>
     </div>
-  </div>
-</div>
-
-<a [routerLink]="['/signup']" >Registrate</a>
-<a [routerLink]="['/email']" >Olvido su contraseña</a>
+  </body>
+</html>

@@ -1,3 +1,60 @@
-.card {
-    box-shadow: 0  10px  20px  rgba(0,0,0,0.19), 0  6px  6px  rgba(0,0,0,0.23);
+/* html,
+body {
+    height: 100%;
 }
+html {
+    display: table;
+    margin: auto;
+}
+body {
+    display: table-cell;
+    vertical-align: middle;
+    background: #4ECDC4;
+} */
+
+#login-page {
+   width: 800px;
+   height: 1700px;
+}
+
+.mtop{
+    margin-top: 150px;
+}
+
+.mtop2{
+    margin-top: 100px;
+}
+.btn-center{
+    text-align: center;
+}
+
+.button{
+    border-radius: 30px;    
+}
+
+.mbottom{
+    margin-bottom: 30px;
+    
+}
+
+.botonimagen{
+    background-image:url("../../../assets/files/google.png");
+    background-repeat:no-repeat;
+    height:70px;
+    width:70px;
+    background-position:center;
+    color: black;
+    border-radius: 40px;
+    
+  }
+
+/* .card {
+     position: absolute;
+     left: 50%;
+     top: 50%;
+     -moz-transform: translate(-50%, -50%);
+     -webkit-transform: translate(-50%, -50%);
+     -ms-transform: translate(-50%, -50%);
+     -o-transform: translate(-50%, -50%);
+     transform: translate(-50%, -50%);
+} */

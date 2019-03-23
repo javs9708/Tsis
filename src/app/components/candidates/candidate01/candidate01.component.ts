@@ -4,7 +4,9 @@ import { AuthService } from '../../../services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { Stats } from '../../../interfaces/stats';
-import { Uid, Candidatos } from '../../../interfaces/uid'
+import { Uid, Candidatos } from '../../../interfaces/uid';
+
+
 
 @Component({
   selector: 'app-candidate01',
@@ -22,14 +24,18 @@ export class Candidate01Component implements OnInit {
   //   data:{},
   //
   // }
+
   public users = [];
   public candidatos =[];
+  public candidato=[];
+
   uid: Uid = {
     puntuationState: false,
     uid: ''
   };
 
-  state = false;
+  state=false;
+  founded=false;
   document='';
 
   stats: Stats = {
@@ -57,7 +63,15 @@ export class Candidate01Component implements OnInit {
 
       }
 
-      console.log(this.candidatos);
+      for(let e of this.candidatos){
+        if(this.founded==false){
+          if(e.id=='lOpUAQ0s2pHclE2poBcT'){
+            this.candidato.push(e);
+            this.founded=true;
+          }
+        }
+      }
+      console.log(this.candidato);
     });
 
     this.firestoreService.getUsers().subscribe(data => {
@@ -87,10 +101,8 @@ export class Candidate01Component implements OnInit {
     });
 
 
-
-
-
   }
+
 
   likesCount() {
     this.candidatos[0].data.likes=this.candidatos[0].data.likes+1

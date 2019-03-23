@@ -5,7 +5,7 @@ import { Uid, Usuarios} from '../../interfaces/uid';
 import { FirestoreService } from '../../services/firestore/firestore.service';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
-import 'rxjs/add/operator/map';
+import {map} from 'rxjs/operators';
 
 
 

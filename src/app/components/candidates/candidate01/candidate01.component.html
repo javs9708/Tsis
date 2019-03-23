@@ -10,14 +10,15 @@
       <a class="btn-floating btn-large waves-effect waves-light green" *ngIf="state==true" disabled="disabled"><i  class="material-icons">thumb_up</i></a>
       <a class="btn-floating btn-large waves-effect waves-light red"  *ngIf="state==true" disabled="disabled"><i  class="material-icons">thumb_down</i></a>
 
+      <h5 *ngIf="state==true">Ya has puntuado a este candidato</h5>
+
     </div>
   </div>
   <div >
-{{candidatos}}
-<div *ngFor="let c of candidatos">
-  <div *ngIf="c.id=='lOpUAQ0s2pHclE2poBcT'">
+
+<div *ngFor="let c of candidato">
     A <b>{{c.data.likes}}</b> personas les <span class="meGusta"><b>gusta</b></span> este candidato
     <br><br>
     A <b>{{c.data.dislikes}}</b> personas no les <span class="noMeGusta"><b>gusta</b></span> este candidato
-  </div>
+
 </div>
