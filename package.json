@@ -27,7 +27,7 @@
     "angularfire2": "^5.1.2",
     "auth0-js": "^9.10.0",
     "core-js": "^2.5.4",
-    "firebase": "^5.9.0",
+    "firebase": "^5.9.1",
     "primeng": "^7.1.0",
     "promise-polyfill": "^8.1.0",
     "rxjs": "~6.3.3",

@@ -7,8 +7,7 @@
 }
 
 .button{
-    border-radius: 30px;
-    
+    border-radius: 30px;    
 }
 
 .item-center{
@@ -40,14 +39,21 @@
     text-align: center;
     margin: 0;
     animation-name: title1;
-    animation-duration: 3.5s;
+    animation-duration: 2.5s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
 
 @keyframes title1{
-    0%{opacity: 0;}
-    100%{opacity: 1;}
+    0%{
+        opacity: 0;
+        transform: scale(0.5);
+    
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 [data-anime]{

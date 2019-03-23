@@ -1,0 +1,15 @@
+#login-page {
+    width: 500px;
+ }
+
+ .button{
+    border-radius: 30px;    
+}
+
+.mtop{
+    margin-top: 150px;
+}
+
+.btn-center{
+    text-align: center;
+}

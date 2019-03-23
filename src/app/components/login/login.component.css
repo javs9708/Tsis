@@ -1,3 +1,40 @@
-.card {
-    box-shadow: 0  10px  20px  rgba(0,0,0,0.19), 0  6px  6px  rgba(0,0,0,0.23);
+/* html,
+body {
+    height: 100%;
 }
+html {
+    display: table;
+    margin: auto;
+}
+body {
+    display: table-cell;
+    vertical-align: middle;
+    background: #4ECDC4;
+} */
+
+#login-page {
+   width: 500px;
+}
+
+.mtop{
+    margin-top: 150px;
+}
+
+.btn-center{
+    text-align: center;
+}
+
+.button{
+    border-radius: 30px;    
+}
+
+/* .card {
+     position: absolute;
+     left: 50%;
+     top: 50%;
+     -moz-transform: translate(-50%, -50%);
+     -webkit-transform: translate(-50%, -50%);
+     -ms-transform: translate(-50%, -50%);
+     -o-transform: translate(-50%, -50%);
+     transform: translate(-50%, -50%);
+} */
