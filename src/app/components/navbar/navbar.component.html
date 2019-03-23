@@ -1,46 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+
 <body>
 
-    <nav class="navbar">
-      <div class="nav-wrapper  light-blue darken-4">
-        <div *ngIf="authService.isLoggedIn">
-          <a [routerLink]="['home']" class="brand-logo center">Candidatec</a>
-        </div>
-        <a href="#" data-target="menu-side" class="sidenav-trigger show-on-midium" *ngIf="!authService.isLoggedIn"><i class="material-icons">menu</i></a>
-        <a href="#" data-target="menu-side" class="sidenav-trigger show-on-large" *ngIf="authService.isLoggedIn"><i class="material-icons">menu</i></a>
-        <ul id="nav-mobile " class="hide-on-med-and-down" *ngIf="!authService.isLoggedIn">
-          <li><a href="#"> <b class="item1">Inicio</b> </a></li>
-          <li><a href="#about"> <b class="item">Qué somos</b> </a></li>
-        </ul>
+  <nav class="navbar">
+    <div class="nav-wrapper  light-blue darken-4">
+      <div *ngIf="authService.isLoggedIn">
+        <a [routerLink]="['home']" class="brand-logo center">Candidatec</a>
       </div>
-    </nav>
+      <a href="#" data-target="menu-side" class="sidenav-trigger show-on-midium" *ngIf="!authService.isLoggedIn"><i class="material-icons">menu</i></a>
+      <a href="#" data-target="menu-side" class="sidenav-trigger show-on-large" *ngIf="authService.isLoggedIn"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile " class="hide-on-med-and-down" *ngIf="!authService.isLoggedIn">
+        <li><a href="#"> <b class="item1">Inicio</b> </a></li>
+        <li><a href="#about"> <b class="item">Qué somos</b> </a></li>
+      </ul>
+    </div>
+  </nav>
 
 
   <ul class="sidenav" id="menu-side">
     <li class="sidenav-header blue" *ngIf="authService.isLoggedIn">
       <div class="row">
-          <div class="col s4">
-            <img src="{{authService.user.providerData[0].photoURL}}" width="60px" height="60px" alt="" class="circle responsive-img valign profile-image">
-          </div>
-          <div class="col s8 text">
-            <b>{{authService.user.providerData[0].displayName}}</b>
-          </div>
+        <div class="col s4" >
+          <ngx-avatar name="Usuario" *ngIf="data.photoURL==null"></ngx-avatar>
+          <img src="{{data.photoURL}}" width="60px" height="60px" alt="" class="circle responsive-img valign profile-image">
         </div>
+        <div class="col s8 text" *ngIf="data.displayName==null">
+          <b>{{data.email}}</b>
+        </div>
+        <div class="col s8 text">
+          <b>{{data.displayName}}</b>
+        </div>
+      </div>
     </li>
     <li><a class="sidenav-close" *ngIf="!authService.isLoggedIn" [routerLink]="['']">Inicio</a></li>
     <li><a class="sidenav-close" *ngIf="authService.isLoggedIn" [routerLink]="['home']">Inicio</a></li>
-    <li><a class="sidenav-close"  [routerLink]="['candidates']" *ngIf="authService.isLoggedIn">Candidatos</a></li>
-    <li><a class="sidenav-close"  *ngIf="authService.isLoggedIn" [routerLink]="['profile']">Perfil</a></li>
+    <li><a class="sidenav-close" [routerLink]="['candidates']" *ngIf="authService.isLoggedIn">Candidatos</a></li>
+    <li><a class="sidenav-close" *ngIf="authService.isLoggedIn" [routerLink]="['profile']">Perfil</a></li>
     <li><a href="#" class="sidenav-close logout" *ngIf="authService.isLoggedIn" (click)="authService.logout()"><i class="material-icons">exit_to_app</i><b>Cerrar sesión</b> </a></li>
     <li><a class="sidenav-close login" *ngIf="!authService.isLoggedIn" [routerLink]="['login']"><i class="material-icons">account_circle</i><b>Inicio de sesión </b></a></li>
   </ul>
 
 </body>
+
 </html>

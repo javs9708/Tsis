@@ -5,3 +5,7 @@ export interface Uid {
 export interface Usuarios {
   data:any;
 }
+export interface Candidatos {
+  id:string;
+  data:any;
+}

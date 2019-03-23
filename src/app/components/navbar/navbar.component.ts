@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, DoCheck} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 
 
@@ -8,16 +8,16 @@ import {AuthService} from '../../services/auth.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit{
+export class NavbarComponent implements DoCheck{
 
-
+  data={}
 
   constructor(private  authService:  AuthService) {
 
   }
 
-  ngOnInit() {
-  
+  ngDoCheck() {
+      this.data=JSON.parse((localStorage.getItem('user')));
     }
 
 

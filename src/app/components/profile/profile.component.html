@@ -1,7 +1,16 @@
 
-<h1>{{authService.user.providerData[0].displayName}}</h1>
-<br><br>
-<h1>{{authService.user.providerData[0].email}}</h1>
+<div class="row">
+  <div class="col l2">
+    <h1>{{data.displayName}}</h1>
+  </div>
+
+  <div class="col l2">
+    <h1>{{data.email}}</h1>
+  </div>
+
+</div>
 
 
-<img src="{{authService.user.providerData[0].photoURL}}" alt="Avatar" style="width:20%">
+<div *ngIf="data.photoURL!=null">
+  <img src="{{data.photoURL}}"  alt="Avatar" style="width:20%">
+</div>

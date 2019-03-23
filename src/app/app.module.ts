@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import { FormsModule } from '@angular/forms';
+import { AvatarModule } from 'ngx-avatar';
 
 import { APP_ROUTING } from './app-routing.module';
 import {AuthService} from './services/auth.service';
@@ -56,6 +57,7 @@ export const firebaseConfig ={
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     FormsModule,
+    AvatarModule,
     APP_ROUTING
   ],
   providers: [
