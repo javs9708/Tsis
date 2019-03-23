@@ -4,7 +4,7 @@ import { AuthService } from '../../../services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { Stats } from '../../../interfaces/stats';
-import { Uid } from '../../../interfaces/uid'
+import { Uid } from '../../../interfaces/uid';
 
 @Component({
   selector: 'app-candidate01',
