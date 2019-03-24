@@ -28,6 +28,8 @@ export class Candidate01Component implements OnInit {
   public users = [];
   public candidatos =[];
   public candidato=[];
+  public dataCandidato:any;
+  public data:any;
 
   uid: Uid = {
     puntuationState: false,
@@ -50,7 +52,8 @@ export class Candidate01Component implements OnInit {
 
   ngOnInit() {
 
-    this.uid.uid = this.authService.user.uid;
+    this.data=JSON.parse((localStorage.getItem('user')));
+    console.log(this.data);
     this.firestoreService.getCandidates().subscribe(data => {
       if (data) {
         data.map(test => {
@@ -71,7 +74,12 @@ export class Candidate01Component implements OnInit {
           }
         }
       }
+
+      localStorage.setItem('candidato',JSON.stringify(this.candidato));
       console.log(this.candidato);
+      this.dataCandidato=JSON.parse(localStorage.getItem('candidato'));
+      console.log(this.dataCandidato);
+
     });
 
     this.firestoreService.getUsers().subscribe(data => {
@@ -84,14 +92,14 @@ export class Candidate01Component implements OnInit {
         });
 
         for (let e of this.users) {
-          if (this.uid.uid == e.data.uid) {
+          if (this.data.uid == e.data.uid) {
             if (e.data.puntuationState == true) {
               this.state = true
               break;
             }
             if (e.data.puntuationState == false) {
               this.document = e.id
-              this.uid.uid=e.data.uid
+              this.data.uid=e.data.uid
               break;
             }
           }
@@ -109,6 +117,7 @@ export class Candidate01Component implements OnInit {
     this.stats.likes=this.candidatos[0].data.likes
     this.stats.dislikes=this.candidatos[0].data.dislikes
     this.uid.puntuationState=true
+    this.uid.uid=this.data.uid
     this.firestoreService.updateUser(this.document,this.uid);
     this.firestoreService.updateCandidate('lOpUAQ0s2pHclE2poBcT',this.stats);
   }
@@ -117,6 +126,7 @@ export class Candidate01Component implements OnInit {
     this.stats.dislikes=this.candidatos[0].data.dislikes
     this.stats.likes=this.candidatos[0].data.likes
     this.uid.puntuationState=true
+    this.uid.uid=this.data.uid
     this.firestoreService.updateUser(this.document,this.uid);
     this.firestoreService.updateCandidate('lOpUAQ0s2pHclE2poBcT',this.stats);
   }
