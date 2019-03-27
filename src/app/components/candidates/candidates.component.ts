@@ -9,8 +9,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CandidatesComponent implements OnInit {
 
-
-
   constructor() { }
 
   ngOnInit() {

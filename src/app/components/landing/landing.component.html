@@ -9,7 +9,7 @@
 <body>
   <div class="container swhite">
     <br><br><br><br><br>
-    <h1  class="header center blue-text titulo1">Candidatec</h1>
+    <h1  [ngClass]="{'titulo1': scrollingC}" class="header center blue-text titulo1">Candidatec</h1>
     <div class="row center">
       <h5 class="header col s12 light">Te gustaría saber <a href="#about">¿qué somos?</a> </h5>
     </div>
@@ -40,21 +40,22 @@
     </div>
   </div>
 
-  <div class="container">
-      <div class="section">
 
+
+  <div class="container">
+      <div [ngClass]="{'titulo1': !scrolling, 'titulo2': scrolling}" class="section">
         <!--   Icon Section   -->
         <div class="row">
-          <div class="col s12 m12 l4" data-anime="left">
+          <div class="col s12 m12 l4 titulo2">
             <div class="icon-block">
-              <h2 class="center light-blue-text" data-anime="left"><i class="material-icons">flash_on</i></h2>
+              <h2 class="center light-blue-text" ><i class="material-icons">flash_on</i></h2>
               <h5 class="center">Speeds up development</h5>
 
               <p class="light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, in?</p>
             </div>
           </div>
 
-          <div class="col s12 m12 l4" data-anime="left">
+          <div class="col s12 m12 l4 titulo2">
             <div class="icon-block">
                 <h2 class="center light-blue-text" ><i class="material-icons">group</i></h2>
               <h5 class="center">User Experience Focused</h5>
@@ -63,7 +64,7 @@
             </div>
           </div>
 
-          <div class="col s12 m12 l4" data-anime="right">
+          <div class="col s12 m12 l4 titulo2">
             <div class="icon-block">
               <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
               <h5 class="center">Easy to work with</h5>

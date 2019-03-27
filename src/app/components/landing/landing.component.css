@@ -1,3 +1,12 @@
+.hdr {
+  padding:20px;
+  background-color: aqua;
+}
+
+.hdrScroll {
+  padding:20px;
+  background-color: greenyellow;
+}
 
 .icon-block {
     padding: 0 15px;
@@ -7,7 +16,7 @@
 }
 
 .button{
-    border-radius: 30px;    
+    border-radius: 30px;
 }
 
 .item-center{
@@ -48,7 +57,7 @@
     0%{
         opacity: 0;
         transform: scale(0.5);
-    
+
     }
     100%{
         opacity: 1;
@@ -56,16 +65,21 @@
     }
 }
 
-[data-anime]{
+.titulo2{
+    animation-name: title2;
+    animation-duration: 2.5s;
     opacity: 0;
-    transition: .3s;
+    animation-fill-mode: forwards;
 }
 
-[data-anime="left"]{
-    transform: translate3d(-50px, 0, 0);
-}
+@keyframes title2{
+    0%{
+        opacity: 0;
+        transform: translate3d(-50px,50px,0);
 
-[data-anime].animate{
-    opacity: 1;
-    transform: translate3d(0px, 0px, 0px);
+    }
+    100%{
+        opacity: 1;
+        transform: translate3d(0,0,0);
+    }
 }
