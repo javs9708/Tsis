@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreDocument} from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class FirestoreService {
   constructor(
     private firestore: AngularFirestore
@@ -18,8 +20,19 @@ export class FirestoreService {
   }
 
   public getCandidates() {
+
     return this.firestore.collection('candidatos').snapshotChanges();
+
+
+    // var doc = this.firestore.collection('candidatos').doc('lOpUAQ0s2pHclE2poBcT');
+    // var observer = doc.onSnapshot(docSnapshot => {
+    //   console.log(`Received doc snapshot: ${docSnapshot}`);
+    //   // ...
+    // }, err => {
+    //   console.log(`Encountered error: ${err}`);
+    // });
   }
+
 
   public getUsers() {
     return this.firestore.collection('usuarios').snapshotChanges();

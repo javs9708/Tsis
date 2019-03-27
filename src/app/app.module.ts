@@ -26,6 +26,8 @@ import { LoginComponent } from './components/login/login.component';
 import { EmailComponent } from './components/email/email.component';
 import { SignupComponent } from './components/signup/signup.component';
 
+
+
 export const firebaseConfig ={
   apiKey: "AIzaSyDw2KYtuMQDyvlCJ6jrF7fG3P5-jK5crRI",
   authDomain: "tsis-72641.firebaseapp.com",
