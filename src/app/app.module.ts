@@ -26,6 +26,9 @@ import { Candidate01Component } from './components/candidates/candidate01/candid
 import { LoginComponent } from './components/login/login.component';
 import { EmailComponent } from './components/email/email.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { Candidate02Component } from './components/candidates/candidate02/candidate02.component';
+import { Candidate03Component } from './components/candidates/candidate03/candidate03.component';
+
 
 
 
@@ -51,7 +54,9 @@ export const firebaseConfig ={
     Candidate01Component,
     LoginComponent,
     EmailComponent,
-    SignupComponent
+    SignupComponent,
+    Candidate02Component,
+    Candidate03Component
   ],
   imports: [
     BrowserModule,

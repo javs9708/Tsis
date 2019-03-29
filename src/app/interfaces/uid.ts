@@ -1,5 +1,7 @@
 export interface Uid {
-  puntuationState:boolean,
+  puntuationStateC1:boolean;
+  puntuationStateC2:boolean;
+  puntuationStateC3:boolean;
   uid:string;
 }
 export interface Usuarios {

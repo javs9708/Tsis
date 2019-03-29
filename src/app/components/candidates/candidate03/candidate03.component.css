@@ -1,0 +1,14 @@
+.red{
+    margin-left: 50px;
+  }
+  
+  .meGusta{
+    color: green;
+  }
+  .noMeGusta{
+    color: red;
+  }
+  
+  a[disabled="disabled"] {
+    pointer-events: none;
+  }

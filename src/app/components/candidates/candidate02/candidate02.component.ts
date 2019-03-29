@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from '../../../services/firestore/firestore.service';
 import { AuthService } from '../../../services/auth.service';
-import { HttpClientModule } from '@angular/common/http';
-import { HttpModule } from '@angular/http';
 import { Stats } from '../../../interfaces/stats';
 import { Uid, Candidatos } from '../../../interfaces/uid';
 import { Observable } from 'rxjs';
@@ -11,15 +9,15 @@ import { AngularFirestore } from 'angularfire2/firestore';
 
 
 @Component({
-  selector: 'app-candidate01',
-  templateUrl: './candidate01.component.html',
-  styleUrls: ['./candidate01.component.css']
+  selector: 'app-candidate02',
+  templateUrl: './candidate02.component.html',
+  styleUrls: ['./candidate02.component.css']
 })
 
 
 
 
-export class Candidate01Component implements OnInit {
+export class Candidate02Component implements OnInit {
 
   // public candidatos:Candidatos = {
   //   id:'',
@@ -42,7 +40,7 @@ state = false;
 document = '';
 
 stats: Stats = {
-  nombre: 'Alvaro Uribe',
+  nombre: 'Gustavo Petro',
   likes: 0,
   dislikes: 0
 };
@@ -76,11 +74,11 @@ ngOnInit() {
 
       for (let e of this.users) {
         if (this.data.uid == e.data.uid) {
-          if (e.data.puntuationStateC1 == true) {
+          if (e.data.puntuationStateC2 == true) {
             this.state = true
             break;
           }
-          if (e.data.puntuationStateC1 == false) {
+          if (e.data.puntuationStateC2 == false) {
             this.document = e.id
             this.data.uid = e.data.uid
             break;
@@ -99,19 +97,19 @@ likesCount() {
   this.candidatos[0].likes = this.candidatos[0].likes + 1
   this.stats.likes = this.candidatos[0].likes
   this.stats.dislikes = this.candidatos[0].dislikes
-  this.uid.puntuationStateC1 = true
+  this.uid.puntuationStateC2 = true
   this.uid.uid = this.data.uid
   this.firestoreService.updateUser(this.document, this.uid);
-  this.firestoreService.updateCandidate('lOpUAQ0s2pHclE2poBcT', this.stats);
+  this.firestoreService.updateCandidate('wGpPnGo5R9Es7edAQYSB', this.stats);
 }
 dislikesCount() {
   this.candidatos[0].dislikes = this.candidatos[0].dislikes + 1
   this.stats.dislikes = this.candidatos[0].dislikes
   this.stats.likes = this.candidatos[0].likes
-  this.uid.puntuationStateC1 = true
+  this.uid.puntuationStateC2 = true
   this.uid.uid = this.data.uid
   this.firestoreService.updateUser(this.document, this.uid);
-  this.firestoreService.updateCandidate('lOpUAQ0s2pHclE2poBcT', this.stats);
+  this.firestoreService.updateCandidate('wGpPnGo5R9Es7edAQYSB', this.stats);
 }
 
 disableButtons() {

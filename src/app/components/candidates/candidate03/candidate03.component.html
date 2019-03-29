@@ -1,0 +1,25 @@
+<div class="container section">
+    <div class="row">
+      <div class="col s2">
+      </div>
+      <div class="col s3">
+        <img src="../../../assets/files/fajardo.jpg"><br><br>
+        <a class="btn-floating btn-large waves-effect waves-light green" *ngIf="state==false"><i (click)="likesCount()" (click)="disableButtons()" class="material-icons">thumb_up</i></a>
+        <a class="btn-floating btn-large waves-effect waves-light red" *ngIf="state==false"><i (click)="dislikesCount()" (click)="disableButtons()" class="material-icons">thumb_down</i></a>
+  
+        <a class="btn-floating btn-large waves-effect waves-light green" *ngIf="state==true" disabled="disabled"><i class="material-icons">thumb_up</i></a>
+        <a class="btn-floating btn-large waves-effect waves-light red" *ngIf="state==true" disabled="disabled"><i class="material-icons">thumb_down</i></a>
+  
+        <h5 *ngIf="state==true">Ya has puntuado a este candidato</h5>
+  
+      </div>
+    </div>
+    <div>
+  
+      <div *ngFor="let item of items|async">
+        <div *ngIf="item.nombre=='Sergio Fajardo'">
+          A <b>{{item.likes}}</b> personas les <span class="meGusta"><b>gusta</b></span> este candidato
+          <br><br>
+          A <b>{{item.dislikes}}</b> personas no les <span class="noMeGusta"><b>gusta</b></span> este candidato
+        </div>
+      </div>

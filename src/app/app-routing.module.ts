@@ -9,6 +9,8 @@ import {SignupComponent} from './components/signup/signup.component';
 import {EmailComponent} from './components/email/email.component';
 
 import {Candidate01Component} from './components/candidates/candidate01/candidate01.component';
+import {Candidate02Component} from './components/candidates/candidate02/candidate02.component';
+import {Candidate03Component} from './components/candidates/candidate03/candidate03.component';
 
 import {AuthGuardService} from './services/auth-guard.service';
 
@@ -19,10 +21,13 @@ const APP_ROUTES: Routes = [
   {path: 'profile', component: ProfileComponent,canActivate: [AuthGuardService] },
   {path: 'candidates', component: CandidatesComponent, canActivate: [AuthGuardService] },
   {path: 'candidates/candidate01', component: Candidate01Component, canActivate: [AuthGuardService] },
+  {path: 'candidates/candidate02', component: Candidate02Component, canActivate: [AuthGuardService] },
+  {path: 'candidates/candidate03', component: Candidate03Component, canActivate: [AuthGuardService] },
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'email', component: EmailComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'home'}
+  
 
 
 ];
