@@ -81,6 +81,8 @@ ngOnInit() {
           if (e.data.puntuationStateC3 == false) {
             this.document = e.id
             this.data.uid = e.data.uid
+            this.uid.puntuationStateC1 = e.data.puntuationStateC1
+            this.uid.puntuationStateC2 = e.data.puntuationStateC2
             break;
           }
         }

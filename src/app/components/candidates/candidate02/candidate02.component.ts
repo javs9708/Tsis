@@ -81,6 +81,8 @@ ngOnInit() {
           if (e.data.puntuationStateC2 == false) {
             this.document = e.id
             this.data.uid = e.data.uid
+            this.uid.puntuationStateC1 = e.data.puntuationStateC1
+            this.uid.puntuationStateC3 = e.data.puntuationStateC3
             break;
           }
         }
@@ -94,18 +96,18 @@ ngOnInit() {
 
 
 likesCount() {
-  this.candidatos[0].likes = this.candidatos[0].likes + 1
-  this.stats.likes = this.candidatos[0].likes
-  this.stats.dislikes = this.candidatos[0].dislikes
+  this.candidatos[2].likes = this.candidatos[2].likes + 1
+  this.stats.likes = this.candidatos[2].likes
+  this.stats.dislikes = this.candidatos[2].dislikes
   this.uid.puntuationStateC2 = true
   this.uid.uid = this.data.uid
   this.firestoreService.updateUser(this.document, this.uid);
   this.firestoreService.updateCandidate('wGpPnGo5R9Es7edAQYSB', this.stats);
 }
 dislikesCount() {
-  this.candidatos[0].dislikes = this.candidatos[0].dislikes + 1
-  this.stats.dislikes = this.candidatos[0].dislikes
-  this.stats.likes = this.candidatos[0].likes
+  this.candidatos[2].dislikes = this.candidatos[2].dislikes + 1
+  this.stats.dislikes = this.candidatos[2].dislikes
+  this.stats.likes = this.candidatos[2].likes
   this.uid.puntuationStateC2 = true
   this.uid.uid = this.data.uid
   this.firestoreService.updateUser(this.document, this.uid);
