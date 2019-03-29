@@ -4,7 +4,7 @@ import { AuthService } from '../../../services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { Stats } from '../../../interfaces/stats';
-import { Uid, Candidatos } from '../../../interfaces/uid';
+import { Uid, Candidatos, Comentarios } from '../../../interfaces/uid';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from 'angularfire2/firestore';
 
@@ -29,7 +29,9 @@ export class Candidate01Component implements OnInit {
 
   public users = [];
   public candidatos = [];
+  public commentsA = [];
   public data: any;
+  public comment:string;
 
 uid: Uid = {
   puntuationStateC1: false,
@@ -37,6 +39,13 @@ uid: Uid = {
   puntuationStateC3:false,
   uid: ''
 };
+
+commentObject: Comentarios ={
+  candidate:'Alvaro Uribe',
+  comment:'',
+  uid:'',
+  nombre:''
+}
 
 state = false;
 document = '';
@@ -48,18 +57,28 @@ stats: Stats = {
 };
 
 public items: Observable<any[]>;
+public commentsO : Observable<any[]>;
 
 
 constructor(private firestoreService: FirestoreService, private authService: AuthService,private db: AngularFirestore ) { }
 
 ngOnInit() {
-
   this.data = JSON.parse((localStorage.getItem('user')));
+  this.commentObject.uid=this.data.uid;
+  this.commentObject.nombre=this.data.displayName;
   this.items = this.db.collection('/candidatos').valueChanges();
+  this.commentsO = this.db.collection('/comentarios').valueChanges();
 
   this.items.subscribe(data => {
     if (data) {
       this.candidatos=data;
+      }
+
+  });
+
+  this.commentsO.subscribe(data => {
+    if (data) {
+      this.commentsA=data;
       }
 
   });
@@ -123,6 +142,15 @@ disableButtons() {
   //this.firestoreService.updateUser();
 }
 
+saveComment(){
+  this.commentObject.comment=this.comment;
+  this.firestoreService.createComment(this.commentObject);
+  console.log(this.commentObject);
+}
+
+cleanInput(){
+  this.comment="";
+}
 
 
 

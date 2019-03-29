@@ -14,7 +14,20 @@
 
     </div>
   </div>
-  <div>
+  </div>
+
+  <div *ngFor="let item of commentsO|async">
+    <div *ngIf="item.candidate=='Alvaro Uribe'">
+        <b>{{item.nombre}}</b>
+      <br>
+        {{item.comment}}
+    </div>
+  </div>
+
+
+  <input  type="text" [(ngModel)]="comment">
+  <button class="btn" (click)="saveComment()" (click)="cleanInput()">Comentar</button>
+
 
     <div *ngFor="let item of items|async">
       <div *ngIf="item.nombre=='Alvaro Uribe'">

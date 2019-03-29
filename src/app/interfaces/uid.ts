@@ -11,3 +11,10 @@ export interface Candidatos {
   id:string;
   data:any;
 }
+
+export interface Comentarios{
+  candidate:string;
+  comment:string;
+  uid:string;
+  nombre:string;
+}
