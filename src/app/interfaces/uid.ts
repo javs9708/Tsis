@@ -1,7 +1,10 @@
 export interface Uid {
-  puntuationStateC1:boolean;
-  puntuationStateC2:boolean;
-  puntuationStateC3:boolean;
+  puntuationStateC1L:boolean;
+  puntuationStateC1D:boolean;
+  puntuationStateC2L:boolean;
+  puntuationStateC2D:boolean;
+  puntuationStateC3L:boolean;
+  puntuationStateC3D:boolean;
   uid:string;
 }
 export interface Usuarios {
@@ -17,4 +20,5 @@ export interface Comentarios{
   comment:string;
   uid:string;
   nombre:string;
+  date:number;
 }

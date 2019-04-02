@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from '../../../services/firestore/firestore.service';
 import { AuthService } from '../../../services/auth.service';
 import { Stats } from '../../../interfaces/stats';
-import { Uid, Candidatos } from '../../../interfaces/uid';
+import { Uid, Candidatos, Comentarios } from '../../../interfaces/uid';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from 'angularfire2/firestore';
 
@@ -27,16 +27,30 @@ export class Candidate02Component implements OnInit {
 
   public users = [];
   public candidatos = [];
+  public commentsA = [];
   public data: any;
+    public comment:string;
 
 uid: Uid = {
-  puntuationStateC1: false,
-  puntuationStateC2:false,
-  puntuationStateC3:false,
+  puntuationStateC1L: false,
+  puntuationStateC1D: false,
+  puntuationStateC2L:false,
+  puntuationStateC2D: false,
+  puntuationStateC3L: false,
+  puntuationStateC3D:false,
   uid: ''
 };
 
-state = false;
+commentObject: Comentarios ={
+  candidate:'Alvaro Uribe',
+  comment:'',
+  uid:'',
+  nombre:'',
+  date:null
+}
+
+stateL = false;
+stateD = false;
 document = '';
 
 stats: Stats = {
@@ -46,6 +60,7 @@ stats: Stats = {
 };
 
 public items: Observable<any[]>;
+public commentsO : Observable<any[]>;
 
 
 constructor(private firestoreService: FirestoreService, private authService: AuthService,private db: AngularFirestore ) { }
@@ -62,6 +77,13 @@ ngOnInit() {
 
   });
 
+  this.commentsO.subscribe(data => {
+    if (data) {
+      this.commentsA=data;
+      }
+
+  });
+
 
   this.firestoreService.getUsers().subscribe(data => {
     if (data) {
@@ -74,15 +96,39 @@ ngOnInit() {
 
       for (let e of this.users) {
         if (this.data.uid == e.data.uid) {
-          if (e.data.puntuationStateC2 == true) {
-            this.state = true
-            break;
-          }
-          if (e.data.puntuationStateC2 == false) {
+          if (e.data.puntuationStateC2L == true && e.data.puntuationStateC2D == false) {
+            this.stateL = true
+            this.stateD = false
             this.document = e.id
             this.data.uid = e.data.uid
-            this.uid.puntuationStateC1 = e.data.puntuationStateC1
-            this.uid.puntuationStateC3 = e.data.puntuationStateC3
+            this.uid.puntuationStateC1L = e.data.puntuationStateC1L
+            this.uid.puntuationStateC1D = e.data.puntuationStateC1D
+            this.uid.puntuationStateC3L = e.data.puntuationStateC3L
+            this.uid.puntuationStateC3D = e.data.puntuationStateC3D
+            break;
+          }
+            if (e.data.puntuationStateC2L == false && e.data.puntuationStateC2D == true) {
+              this.stateL = false
+              this.stateD = true
+              this.document = e.id
+              this.data.uid = e.data.uid
+              this.uid.puntuationStateC1L = e.data.puntuationStateC1L
+              this.uid.puntuationStateC1D = e.data.puntuationStateC1D
+              this.uid.puntuationStateC3L = e.data.puntuationStateC3L
+              this.uid.puntuationStateC3D = e.data.puntuationStateC3D
+              break;
+            }
+          if (e.data.puntuationStateC2L == false && e.data.puntuationStateC2D == false) {
+            this.stateL = false
+            this.stateD = false
+            this.document = e.id
+            this.data.uid = e.data.uid
+            this.uid.puntuationStateC1L = e.data.puntuationStateC1L
+            this.uid.puntuationStateC1D = e.data.puntuationStateC1D
+            this.uid.puntuationStateC3L = e.data.puntuationStateC3L
+            this.uid.puntuationStateC3D = e.data.puntuationStateC3D
+
+
             break;
           }
         }
@@ -96,31 +142,41 @@ ngOnInit() {
 
 
 likesCount() {
+  this.stateL = true
+  this.stateD = false
   this.candidatos[2].likes = this.candidatos[2].likes + 1
   this.stats.likes = this.candidatos[2].likes
   this.stats.dislikes = this.candidatos[2].dislikes
-  this.uid.puntuationStateC2 = true
+  this.uid.puntuationStateC2L = true
+  this.uid.puntuationStateC2D = false
   this.uid.uid = this.data.uid
   this.firestoreService.updateUser(this.document, this.uid);
   this.firestoreService.updateCandidate('wGpPnGo5R9Es7edAQYSB', this.stats);
 }
 dislikesCount() {
+  this.stateL = true
+  this.stateD = false
   this.candidatos[2].dislikes = this.candidatos[2].dislikes + 1
   this.stats.dislikes = this.candidatos[2].dislikes
   this.stats.likes = this.candidatos[2].likes
-  this.uid.puntuationStateC2 = true
+  this.uid.puntuationStateC2L = false
+  this.uid.puntuationStateC2D = true
   this.uid.uid = this.data.uid
   this.firestoreService.updateUser(this.document, this.uid);
   this.firestoreService.updateCandidate('wGpPnGo5R9Es7edAQYSB', this.stats);
 }
 
-disableButtons() {
-  this.state = true
-  //this.firestoreService.updateUser();
+saveComment(){
+  this.commentObject.comment=this.comment;
+  let date: number = Date.now();
+  this.commentObject.date=date;
+  this.firestoreService.createComment(this.commentObject);
+  console.log(this.commentObject);
 }
 
-
-
+cleanInput(){
+  this.comment="";
+}
 
 
 }

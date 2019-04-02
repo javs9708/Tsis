@@ -22,7 +22,7 @@
             <div class="mtop">
               <div *ngFor="let item of commentsO|async" class="mtopc">
                 <div *ngIf="item.candidate=='Alvaro Uribe'">
-                  <b class="textc mtopc">{{item.nombre}}</b> {{item.comment}}
+                  <b class="textc mtopc">{{item.nombre}} - {{item.date | date:'medium'}}</b> {{item.comment}}
                 </div>
               </div>
             </div>
@@ -30,15 +30,12 @@
         </div>
         <div class="row">
             <div class="col s4">
-              <a class="btn-floating btn-large waves-effect waves-light green" *ngIf="state==false"><i (click)="likesCount()" (click)="disableButtons()" class="material-icons">thumb_up</i></a>
-              <a class="btn-floating btn-large waves-effect waves-light red" *ngIf="state==false"><i (click)="dislikesCount()" (click)="disableButtons()" class="material-icons">thumb_down</i></a>
-        
-              <a class="btn-floating btn-large waves-effect waves-light green" *ngIf="state==true" disabled="disabled"><i class="material-icons">thumb_up</i></a>
-              <a class="btn-floating btn-large waves-effect waves-light red" *ngIf="state==true" disabled="disabled"><i class="material-icons">thumb_down</i></a>
-        
-              <h5 *ngIf="state==true">Ya has puntuado a este candidato</h5>
+              <a class="btn-floating btn-large waves-effect waves-light green" *ngIf="stateL==true" disabled="disabled"><i class="material-icons">thumb_up</i></a>
+              <a class="btn-floating btn-large waves-effect waves-light green" *ngIf="stateL==false" ><i  (click)="likesCount()" class="material-icons">thumb_up</i></a>
+              <a class="btn-floating btn-large waves-effect waves-light red" *ngIf="stateD==false"><i (click)="dislikesCount()" class="material-icons">thumb_down</i></a>
+              <a class="btn-floating btn-large waves-effect waves-light red" *ngIf="stateD==true" disabled="disabled"><i class="material-icons">thumb_down</i></a>
 
-              <div *ngFor="let item of items|async">
+              <div *ngFor="let item of items|async" class="mtopc">
                   <div *ngIf="item.nombre=='Alvaro Uribe'">
                     A <b>{{item.likes}}</b> personas les <span class="meGusta"><b>gusta</b></span> este candidato
                     <br><br>
