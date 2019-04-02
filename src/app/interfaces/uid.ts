@@ -17,4 +17,5 @@ export interface Comentarios{
   comment:string;
   uid:string;
   nombre:string;
+  date:number;
 }

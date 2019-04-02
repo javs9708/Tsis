@@ -15,7 +15,7 @@ export class FirestoreService {
     return this.firestore.collection('usuarios').add(data);
   }
 
-  public createComment(data: {nombre:string, uid: string, comment: string, candidate:string}) {
+  public createComment(data: {nombre:string, uid: string, comment: string, candidate:string, date:number}) {
     return this.firestore.collection('comentarios').add(data);
   }
 

@@ -44,7 +44,8 @@ commentObject: Comentarios ={
   candidate:'Alvaro Uribe',
   comment:'',
   uid:'',
-  nombre:''
+  nombre:'',
+  date:null
 }
 
 state = false;
@@ -144,6 +145,8 @@ disableButtons() {
 
 saveComment(){
   this.commentObject.comment=this.comment;
+  let date: number = Date.now();
+  this.commentObject.date=date;
   this.firestoreService.createComment(this.commentObject);
   console.log(this.commentObject);
 }
