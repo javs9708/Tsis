@@ -30,9 +30,12 @@ export class Candidate02Component implements OnInit {
   public data: any;
 
 uid: Uid = {
-  puntuationStateC1: false,
-  puntuationStateC2:false,
-  puntuationStateC3:false,
+  puntuationStateC1L: false,
+  puntuationStateC1D: false,
+  puntuationStateC2L:false,
+  puntuationStateC2D: false,
+  puntuationStateC3L: false,
+  puntuationStateC3D:false,
   uid: ''
 };
 
