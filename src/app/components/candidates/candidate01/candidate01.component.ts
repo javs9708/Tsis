@@ -68,8 +68,6 @@ public commentsO : Observable<any[]>;
 constructor(private firestoreService: FirestoreService, private authService: AuthService,private db: AngularFirestore ) { }
 
 ngOnInit() {
-  console.log("State likes: "+this.stateL);
-  console.log("State dislikes: "+this.stateD);
   this.data = JSON.parse((localStorage.getItem('user')));
   this.commentObject.uid=this.data.uid;
   this.commentObject.nombre=this.data.displayName;
@@ -158,6 +156,8 @@ likesCount() {
   this.uid.uid = this.data.uid
   this.firestoreService.updateUser(this.document, this.uid);
   this.firestoreService.updateCandidate('lOpUAQ0s2pHclE2poBcT', this.stats);
+  console.log("State likes: "+this.stateL);
+  console.log("State dislikes: "+this.stateD);
 }
 dislikesCount() {
   this.stateL = false
@@ -170,6 +170,8 @@ dislikesCount() {
   this.uid.uid = this.data.uid
   this.firestoreService.updateUser(this.document, this.uid);
   this.firestoreService.updateCandidate('lOpUAQ0s2pHclE2poBcT', this.stats);
+  console.log("State likes: "+this.stateL);
+  console.log("State dislikes: "+this.stateD);
 }
 
 

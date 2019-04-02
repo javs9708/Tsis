@@ -6,8 +6,9 @@
       <img src="../../../assets/files/uribe.jpg"><br><br>
       <a class="btn-floating btn-large waves-effect waves-light green" *ngIf="stateL==true" disabled="disabled"><i class="material-icons">thumb_up</i></a>
       <a class="btn-floating btn-large waves-effect waves-light green" *ngIf="stateL==false" ><i  (click)="likesCount()" class="material-icons">thumb_up</i></a>
-      <a class="btn-floating btn-large waves-effect waves-light red" *ngIf="stateD==true" disabled="disabled"><i class="material-icons">thumb_down</i></a>
       <a class="btn-floating btn-large waves-effect waves-light red" *ngIf="stateD==false"><i (click)="dislikesCount()" class="material-icons">thumb_down</i></a>
+      <a class="btn-floating btn-large waves-effect waves-light red" *ngIf="stateD==true" disabled="disabled"><i class="material-icons">thumb_down</i></a>
+
     </div>
   </div>
   </div>
