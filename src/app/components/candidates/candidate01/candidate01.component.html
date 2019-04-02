@@ -1,38 +1,53 @@
-<div class="container section">
-  <div class="row">
-    <div class="col s2">
-    </div>
-    <div class="col s3">
-      <img src="../../../assets/files/uribe.jpg"><br><br>
-      <a class="btn-floating btn-large waves-effect waves-light green" *ngIf="state==false"><i (click)="likesCount()" (click)="disableButtons()" class="material-icons">thumb_up</i></a>
-      <a class="btn-floating btn-large waves-effect waves-light red" *ngIf="state==false"><i (click)="dislikesCount()" (click)="disableButtons()" class="material-icons">thumb_down</i></a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container section">
+    <br><br><br><br>
+      <div class="row">
+          <div class="col s8 center ">
+            <img class="z-depth-5 img-m" src="../../../assets/files/uribe.jpg">
+          </div>
+          <div class="col s4">
+            <div class="col pright">
+              <!-- <input  type="text" [(ngModel)]="comment"> -->
+              <input type="text" [(ngModel)]="comment">
+              <button class="btn button light-blue darken-2 button" (click)="saveComment()" (click)="cleanInput()">Comentar</button>
+            </div>
+            <div class="mtop">
+              <div *ngFor="let item of commentsO|async" class="mtopc">
+                <div *ngIf="item.candidate=='Alvaro Uribe'">
+                  <b class="textc mtopc">{{item.nombre}}</b> {{item.comment}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col s4">
+              <a class="btn-floating btn-large waves-effect waves-light green" *ngIf="state==false"><i (click)="likesCount()" (click)="disableButtons()" class="material-icons">thumb_up</i></a>
+              <a class="btn-floating btn-large waves-effect waves-light red" *ngIf="state==false"><i (click)="dislikesCount()" (click)="disableButtons()" class="material-icons">thumb_down</i></a>
+        
+              <a class="btn-floating btn-large waves-effect waves-light green" *ngIf="state==true" disabled="disabled"><i class="material-icons">thumb_up</i></a>
+              <a class="btn-floating btn-large waves-effect waves-light red" *ngIf="state==true" disabled="disabled"><i class="material-icons">thumb_down</i></a>
+        
+              <h5 *ngIf="state==true">Ya has puntuado a este candidato</h5>
 
-      <a class="btn-floating btn-large waves-effect waves-light green" *ngIf="state==true" disabled="disabled"><i class="material-icons">thumb_up</i></a>
-      <a class="btn-floating btn-large waves-effect waves-light red" *ngIf="state==true" disabled="disabled"><i class="material-icons">thumb_down</i></a>
-
-      <h5 *ngIf="state==true">Ya has puntuado a este candidato</h5>
-
-    </div>
-  </div>
-  </div>
-
-  <div *ngFor="let item of commentsO|async">
-    <div *ngIf="item.candidate=='Alvaro Uribe'">
-        <b>{{item.nombre}}</b>
-      <br>
-        {{item.comment}}
-    </div>
-  </div>
-
-
-  <input  type="text" [(ngModel)]="comment">
-  <button class="btn" (click)="saveComment()" (click)="cleanInput()">Comentar</button>
-
-
-    <div *ngFor="let item of items|async">
-      <div *ngIf="item.nombre=='Alvaro Uribe'">
-        A <b>{{item.likes}}</b> personas les <span class="meGusta"><b>gusta</b></span> este candidato
-        <br><br>
-        A <b>{{item.dislikes}}</b> personas no les <span class="noMeGusta"><b>gusta</b></span> este candidato
-      </div>
-    </div>
+              <div *ngFor="let item of items|async">
+                  <div *ngIf="item.nombre=='Alvaro Uribe'">
+                    A <b>{{item.likes}}</b> personas les <span class="meGusta"><b>gusta</b></span> este candidato
+                    <br><br>
+                    A <b>{{item.dislikes}}</b> personas no les <span class="noMeGusta"><b>gusta</b></span> este candidato
+                  </div>
+                </div>
+        
+            </div>
+          </div>
+        </div>
+</body>
+</html>

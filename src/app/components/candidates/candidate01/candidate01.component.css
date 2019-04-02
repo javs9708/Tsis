@@ -12,3 +12,26 @@
 a[disabled="disabled"] {
   pointer-events: none;
 }
+
+.img-m{
+  display: flex;
+  margin-left: 0;
+  align-content: left;
+}
+.mtop{
+  margin-top: 120px;
+}
+.mtopc{
+  margin-top: 15px;
+}
+.button{
+  border-radius: 30px;  
+}
+
+.pright{
+  text-align: right;
+}
+
+.textc{
+  color: #0d47a1;
+}
