@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from '../../../services/firestore/firestore.service';
 import { AuthService } from '../../../services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { Stats } from '../../../interfaces/stats';
 import { Uid, Candidatos, Comentarios } from '../../../interfaces/uid';
 import { Observable } from 'rxjs';
@@ -29,7 +31,7 @@ export class Candidate02Component implements OnInit {
   public candidatos = [];
   public commentsA = [];
   public data: any;
-    public comment:string;
+  public comment:string;
 
 uid: Uid = {
   puntuationStateC1L: false,
@@ -42,15 +44,15 @@ uid: Uid = {
 };
 
 commentObject: Comentarios ={
-  candidate:'Alvaro Uribe',
+  candidate:'Gustavo Petro',
   comment:'',
   uid:'',
   nombre:'',
   date:null
 }
 
-stateL = false;
-stateD = false;
+stateL = null;
+stateD = null;
 document = '';
 
 stats: Stats = {
@@ -68,7 +70,10 @@ constructor(private firestoreService: FirestoreService, private authService: Aut
 ngOnInit() {
 
   this.data = JSON.parse((localStorage.getItem('user')));
+  this.commentObject.uid=this.data.uid;
+  this.commentObject.nombre=this.data.displayName;
   this.items = this.db.collection('/candidatos').valueChanges();
+  this.commentsO = this.db.collection('/comentarios').valueChanges();
 
   this.items.subscribe(data => {
     if (data) {
@@ -154,8 +159,8 @@ likesCount() {
   this.firestoreService.updateCandidate('wGpPnGo5R9Es7edAQYSB', this.stats);
 }
 dislikesCount() {
-  this.stateL = true
-  this.stateD = false
+  this.stateL = false
+  this.stateD = true
   this.candidatos[2].dislikes = this.candidatos[2].dislikes + 1
   this.stats.dislikes = this.candidatos[2].dislikes
   this.stats.likes = this.candidatos[2].likes

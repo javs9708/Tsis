@@ -9,10 +9,6 @@
   color: red;
 }
 
-a[disabled="disabled"] {
-  pointer-events: none;
-}
-
 .img-m{
   display: flex;
   margin-left: 0;
@@ -25,7 +21,7 @@ a[disabled="disabled"] {
   margin-top: 15px;
 }
 .button{
-  border-radius: 30px;  
+  border-radius: 30px;
 }
 
 .pright{

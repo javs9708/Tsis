@@ -30,19 +30,21 @@
         </div>
         <div class="row">
             <div class="col s4">
-              <a class="btn-floating btn-large waves-effect waves-light green" *ngIf="stateL==true" disabled="disabled"><i class="material-icons">thumb_up</i></a>
+
+              <a class="btn-floating btn-large waves-effect waves-light green  disabled" *ngIf="stateL==true" ><i class="material-icons">thumb_up</i></a>
               <a class="btn-floating btn-large waves-effect waves-light green" *ngIf="stateL==false" ><i  (click)="likesCount()" class="material-icons">thumb_up</i></a>
               <a class="btn-floating btn-large waves-effect waves-light red" *ngIf="stateD==false"><i (click)="dislikesCount()" class="material-icons">thumb_down</i></a>
-              <a class="btn-floating btn-large waves-effect waves-light red" *ngIf="stateD==true" disabled="disabled"><i class="material-icons">thumb_down</i></a>
+              <a class="btn-floating btn-large waves-effect waves-light red disabled" *ngIf="stateD==true" ><i class="material-icons">thumb_down</i></a>
+
 
               <div *ngFor="let item of items|async" class="mtopc">
                   <div *ngIf="item.nombre=='Alvaro Uribe'">
-                    A <b>{{item.likes}}</b> personas les <span class="meGusta"><b>gusta</b></span> este candidato
+                    A <b>{{item.likes}}</b> personas <span class="meGusta"><b>les gusta</b></span> este candidato
                     <br><br>
-                    A <b>{{item.dislikes}}</b> personas no les <span class="noMeGusta"><b>gusta</b></span> este candidato
+                    A <b>{{item.dislikes}}</b> personas <span class="noMeGusta"><b>no les gusta</b></span> este candidato
                   </div>
                 </div>
-        
+
             </div>
           </div>
         </div>

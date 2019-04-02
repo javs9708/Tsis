@@ -51,8 +51,8 @@ commentObject: Comentarios ={
   date:null
 }
 
-stateL = false;
-stateD = false;
+stateL = null;
+stateD = null;
 document = '';
 
 stats: Stats = {

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from '../../../services/firestore/firestore.service';
 import { AuthService } from '../../../services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { Stats } from '../../../interfaces/stats';
-import { Uid, Candidatos } from '../../../interfaces/uid';
+import { Uid, Candidatos, Comentarios } from '../../../interfaces/uid';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from 'angularfire2/firestore';
 
@@ -28,6 +30,8 @@ export class Candidate03Component implements OnInit {
   public users = [];
   public candidatos = [];
   public data: any;
+  public commentsA = [];
+  public comment:string;
 
 uid: Uid = {
   puntuationStateC1L: false,
@@ -39,7 +43,17 @@ uid: Uid = {
   uid: ''
 };
 
-state = false;
+commentObject: Comentarios ={
+  candidate:'Sergio Fajardo',
+  comment:'',
+  uid:'',
+  nombre:'',
+  date:null
+}
+
+stateL = null;
+stateD = null;
+
 document = '';
 
 stats: Stats = {
@@ -49,6 +63,7 @@ stats: Stats = {
 };
 
 public items: Observable<any[]>;
+public commentsO : Observable<any[]>;
 
 
 constructor(private firestoreService: FirestoreService, private authService: AuthService,private db: AngularFirestore ) { }
@@ -56,7 +71,10 @@ constructor(private firestoreService: FirestoreService, private authService: Aut
 ngOnInit() {
 
   this.data = JSON.parse((localStorage.getItem('user')));
+  this.commentObject.uid=this.data.uid;
+  this.commentObject.nombre=this.data.displayName;
   this.items = this.db.collection('/candidatos').valueChanges();
+  this.commentsO = this.db.collection('/comentarios').valueChanges();
 
   this.items.subscribe(data => {
     if (data) {
@@ -77,15 +95,39 @@ ngOnInit() {
 
       for (let e of this.users) {
         if (this.data.uid == e.data.uid) {
-          if (e.data.puntuationStateC3 == true) {
-            this.state = true
-            break;
-          }
-          if (e.data.puntuationStateC3 == false) {
+          if (e.data.puntuationStateC3L == true && e.data.puntuationStateC3D == false) {
+            this.stateL = true
+            this.stateD = false
             this.document = e.id
             this.data.uid = e.data.uid
-            this.uid.puntuationStateC1 = e.data.puntuationStateC1
-            this.uid.puntuationStateC2 = e.data.puntuationStateC2
+            this.uid.puntuationStateC1L = e.data.puntuationStateC1L
+            this.uid.puntuationStateC1D = e.data.puntuationStateC1D
+            this.uid.puntuationStateC2L = e.data.puntuationStateC2L
+            this.uid.puntuationStateC2D = e.data.puntuationStateC2D
+            break;
+          }
+            if (e.data.puntuationStateC3L == false && e.data.puntuationStateC3D == true) {
+              this.stateL = false
+              this.stateD = true
+              this.document = e.id
+              this.data.uid = e.data.uid
+              this.uid.puntuationStateC1L = e.data.puntuationStateC1L
+              this.uid.puntuationStateC1D = e.data.puntuationStateC1D
+              this.uid.puntuationStateC2L = e.data.puntuationStateC2L
+              this.uid.puntuationStateC2D = e.data.puntuationStateC2D
+              break;
+            }
+          if (e.data.puntuationStateC3L == false && e.data.puntuationStateC3D == false) {
+            this.stateL = false
+            this.stateD = false
+            this.document = e.id
+            this.data.uid = e.data.uid
+            this.uid.puntuationStateC1L = e.data.puntuationStateC1L
+            this.uid.puntuationStateC1D = e.data.puntuationStateC1D
+            this.uid.puntuationStateC2L = e.data.puntuationStateC2L
+            this.uid.puntuationStateC2D = e.data.puntuationStateC2D
+
+
             break;
           }
         }
@@ -99,29 +141,42 @@ ngOnInit() {
 
 
 likesCount() {
+  this.stateL = true
+  this.stateD = false
   this.candidatos[0].likes = this.candidatos[0].likes + 1
   this.stats.likes = this.candidatos[0].likes
   this.stats.dislikes = this.candidatos[0].dislikes
-  this.uid.puntuationStateC3 = true
+  this.uid.puntuationStateC3L = true
+  this.uid.puntuationStateC3D = false
   this.uid.uid = this.data.uid
   this.firestoreService.updateUser(this.document, this.uid);
   this.firestoreService.updateCandidate('2XAO5ejyPngOmzKpeCxN', this.stats);
 }
 dislikesCount() {
+  this.stateL = false
+  this.stateD = true
   this.candidatos[0].dislikes = this.candidatos[0].dislikes + 1
   this.stats.dislikes = this.candidatos[0].dislikes
   this.stats.likes = this.candidatos[0].likes
-  this.uid.puntuationStateC3 = true
+  this.uid.puntuationStateC3L = false
+  this.uid.puntuationStateC3D = true
   this.uid.uid = this.data.uid
   this.firestoreService.updateUser(this.document, this.uid);
   this.firestoreService.updateCandidate('2XAO5ejyPngOmzKpeCxN', this.stats);
 }
 
-disableButtons() {
-  this.state = true
-  //this.firestoreService.updateUser();
+
+saveComment(){
+  this.commentObject.comment=this.comment;
+  let date: number = Date.now();
+  this.commentObject.date=date;
+  this.firestoreService.createComment(this.commentObject);
+  console.log(this.commentObject);
 }
 
+cleanInput(){
+  this.comment="";
+}
 
 
 
