@@ -1,3 +1,8 @@
+input.color { 
+  border-bottom: 1.5px #0c56ac !important;
+  box-shadow: 0 1.2px 0 0 #0c56ac !important;
+}
+
 .red{
   margin-left: 50px;
 }
