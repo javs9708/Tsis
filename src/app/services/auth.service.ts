@@ -15,8 +15,11 @@ export class AuthService {
   uid: Uid = {
     uid: '',
     puntuationStateC1:false,
+    puntuationStateC1LD:false,
     puntuationStateC2:false,
-    puntuationStateC3:false
+    puntuationStateC2LD:false,
+    puntuationStateC3:false,
+    puntuationStateC3LD:false
   };
   constructor(public afAuth: AngularFireAuth, public router: Router, public firestoreService: FirestoreService) {
     this.afAuth.authState.subscribe(user => {

@@ -34,12 +34,12 @@ export class Candidate02Component implements OnInit {
   public comment:string;
 
 uid: Uid = {
-  puntuationStateC1L: false,
-  puntuationStateC1D: false,
-  puntuationStateC2L:false,
-  puntuationStateC2D: false,
-  puntuationStateC3L: false,
-  puntuationStateC3D:false,
+  puntuationStateC1: false,
+  puntuationStateC1LD: false,
+  puntuationStateC2: false,
+  puntuationStateC2LD: false,
+  puntuationStateC3: false,
+  puntuationStateC3LD: false,
   uid: ''
 };
 
@@ -51,8 +51,8 @@ commentObject: Comentarios ={
   date:null
 }
 
-stateL = null;
-stateD = null;
+state = false;
+stateLD = false;
 document = '';
 
 stats: Stats = {
@@ -101,74 +101,88 @@ ngOnInit() {
 
       for (let e of this.users) {
         if (this.data.uid == e.data.uid) {
-          if (e.data.puntuationStateC2L == true && e.data.puntuationStateC2D == false) {
-            this.stateL = true
-            this.stateD = false
-            this.document = e.id
-            this.data.uid = e.data.uid
-            this.uid.puntuationStateC1L = e.data.puntuationStateC1L
-            this.uid.puntuationStateC1D = e.data.puntuationStateC1D
-            this.uid.puntuationStateC3L = e.data.puntuationStateC3L
-            this.uid.puntuationStateC3D = e.data.puntuationStateC3D
-            break;
-          }
-            if (e.data.puntuationStateC2L == false && e.data.puntuationStateC2D == true) {
-              this.stateL = false
-              this.stateD = true
-              this.document = e.id
-              this.data.uid = e.data.uid
-              this.uid.puntuationStateC1L = e.data.puntuationStateC1L
-              this.uid.puntuationStateC1D = e.data.puntuationStateC1D
-              this.uid.puntuationStateC3L = e.data.puntuationStateC3L
-              this.uid.puntuationStateC3D = e.data.puntuationStateC3D
-              break;
+          if (e.data.puntuationStateC2 == true) {
+            this.state=true;
+            if (e.data.puntuationStateC2LD == true){
+                this.stateLD=true;
             }
-          if (e.data.puntuationStateC2L == false && e.data.puntuationStateC2D == false) {
-            this.stateL = false
-            this.stateD = false
-            this.document = e.id
-            this.data.uid = e.data.uid
-            this.uid.puntuationStateC1L = e.data.puntuationStateC1L
-            this.uid.puntuationStateC1D = e.data.puntuationStateC1D
-            this.uid.puntuationStateC3L = e.data.puntuationStateC3L
-            this.uid.puntuationStateC3D = e.data.puntuationStateC3D
+            else{
+              this.stateLD=false;
+            }
 
-
-            break;
           }
+          if (e.data.puntuationStateC2 == false) {
+            this.state=false
+
+          }
+          this.document = e.id
+          this.data.uid = e.data.uid
+          this.uid.puntuationStateC1 = e.data.puntuationStateC1
+          this.uid.puntuationStateC1LD = e.data.puntuationStateC1LD
+          this.uid.puntuationStateC3 = e.data.puntuationStateC3
+          this.uid.puntuationStateC3LD = e.data.puntuationStateC3LD
         }
       }
 
     }
   });
 
+console.log(this.state, this.stateLD);
 
 }
 
 
 likesCount() {
-  this.stateL = true
-  this.stateD = false
-  this.candidatos[2].likes = this.candidatos[2].likes + 1
-  this.stats.likes = this.candidatos[2].likes
-  this.stats.dislikes = this.candidatos[2].dislikes
-  this.uid.puntuationStateC2L = true
-  this.uid.puntuationStateC2D = false
-  this.uid.uid = this.data.uid
-  this.firestoreService.updateUser(this.document, this.uid);
-  this.firestoreService.updateCandidate('wGpPnGo5R9Es7edAQYSB', this.stats);
+  if(this.state==false){
+    this.state=true;
+    this.stateLD=true;
+    this.candidatos[2].likes = this.candidatos[2].likes + 1
+    this.stats.likes = this.candidatos[2].likes
+    this.stats.dislikes = this.candidatos[2].dislikes
+    this.uid.puntuationStateC2 = true
+    this.uid.puntuationStateC2LD = true
+    this.uid.uid = this.data.uid
+    this.firestoreService.updateUser(this.document, this.uid);
+    this.firestoreService.updateCandidate('wGpPnGo5R9Es7edAQYSB', this.stats);
+  }
+  if(this.state==true && this.stateLD==false){
+    this.stateLD=true;
+    this.candidatos[2].likes = this.candidatos[2].likes + 1
+    this.candidatos[2].dislikes = this.candidatos[2].dislikes - 1
+    this.stats.likes = this.candidatos[2].likes
+    this.stats.dislikes = this.candidatos[2].dislikes
+    this.uid.puntuationStateC2 = true
+    this.uid.puntuationStateC2LD = true
+    this.uid.uid = this.data.uid
+    this.firestoreService.updateUser(this.document, this.uid);
+    this.firestoreService.updateCandidate('wGpPnGo5R9Es7edAQYSB', this.stats);
+  }
 }
 dislikesCount() {
-  this.stateL = false
-  this.stateD = true
-  this.candidatos[2].dislikes = this.candidatos[2].dislikes + 1
-  this.stats.dislikes = this.candidatos[2].dislikes
-  this.stats.likes = this.candidatos[2].likes
-  this.uid.puntuationStateC2L = false
-  this.uid.puntuationStateC2D = true
-  this.uid.uid = this.data.uid
-  this.firestoreService.updateUser(this.document, this.uid);
-  this.firestoreService.updateCandidate('wGpPnGo5R9Es7edAQYSB', this.stats);
+  if(this.state==false){
+    this.state=true;
+    this.stateLD=false;
+    this.candidatos[2].dislikes = this.candidatos[2].dislikes + 1
+    this.stats.dislikes = this.candidatos[2].dislikes
+    this.stats.likes = this.candidatos[2].likes
+    this.uid.puntuationStateC2 = true
+    this.uid.puntuationStateC2LD = false
+    this.uid.uid = this.data.uid
+    this.firestoreService.updateUser(this.document, this.uid);
+    this.firestoreService.updateCandidate('wGpPnGo5R9Es7edAQYSB', this.stats);
+  }
+  if(this.state==true && this.stateLD==true){
+    this.stateLD=false;
+    this.candidatos[2].dislikes = this.candidatos[2].dislikes + 1
+    this.candidatos[2].likes = this.candidatos[2].likes - 1
+    this.stats.dislikes = this.candidatos[2].dislikes
+    this.stats.likes = this.candidatos[2].likes
+    this.uid.puntuationStateC2 = true
+    this.uid.puntuationStateC2LD = false
+    this.uid.uid = this.data.uid
+    this.firestoreService.updateUser(this.document, this.uid);
+    this.firestoreService.updateCandidate('wGpPnGo5R9Es7edAQYSB', this.stats);
+  }
 }
 
 saveComment(){

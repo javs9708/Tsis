@@ -1,7 +1,10 @@
 export interface Uid {
   puntuationStateC1:boolean;
+  puntuationStateC1LD:boolean;
   puntuationStateC2:boolean;
+  puntuationStateC2LD:boolean;
   puntuationStateC3:boolean;
+  puntuationStateC3LD:boolean;
 
   uid:string;
 }
