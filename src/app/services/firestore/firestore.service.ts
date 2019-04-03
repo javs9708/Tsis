@@ -11,7 +11,7 @@ export class FirestoreService {
     private firestore: AngularFirestore
   ) {}
 
-  public createUser(data: {uid: string, puntuationStateC1L:boolean, puntuationStateC1D:boolean, puntuationStateC2L:boolean, puntuationStateC2D:boolean, puntuationStateC3L: boolean, puntuationStateC3D:boolean}) {
+  public createUser(data: {uid: string, puntuationStateC1:boolean, puntuationStateC2:boolean, puntuationStateC3:boolean}) {
     return this.firestore.collection('usuarios').add(data);
   }
 
