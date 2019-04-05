@@ -14,23 +14,23 @@ input.color {
   color: red;
 }
 
-.img-m{
-  display: flex;
-  margin-left: 0;
-  align-content: left;
-}
+
 .mtop{
   margin-top: 120px;
 }
 .mtopc{
   margin-top: 15px;
 }
+.mtopc2{
+  margin-top: 30px;
+}
 .button{
   border-radius: 30px;
 }
 
-.pright{
-  text-align: right;
+.pcenter{
+  display: flex;
+  justify-content: center;
 }
 
 .textc{

@@ -9,42 +9,40 @@
 <body>
   <div class="container section">
     <br><br><br><br>
-      <div class="row">
-          <div class="col s8 center ">
-            <img class="z-depth-5 img-m" src="../../../assets/files/uribe.jpg">
-          </div>
-          <div class="col s4">
-            <div class="col pright">
-              <input type="text" [(ngModel)]="comment" class="color">
-              <button class="btn button light-blue darken-2 button" (click)="saveComment()" (click)="cleanInput()">Comentar</button>
+    <div class="row">
+      <div class="col s12 m12 l12 xl8 center">
+        <img class="z-depth-5" src="../../../assets/files/uribe.jpg">
+        <div class="row pcenter">
+          <div class="col mtopc2">
+            <a class="btn-floating btn-large waves-effect waves-light green" [ngClass]="{disabled: state==true && stateLD==true }"><i (click)="likesCount()"class="material-icons">thumb_up</i></a>
+            <a class="btn-floating btn-large waves-effect waves-light red" [ngClass]="{disabled: state==true && stateLD==false}"><i (click)="dislikesCount()"   class="material-icons">thumb_down</i></a>
+            <div *ngFor="let item of items|async">
+              <div *ngIf="item.nombre=='Alvaro Uribe'">
+                <br>
+                A <b>{{item.likes}}</b> personas <span class="meGusta"><b>les gusta</b></span> este candidato
+                <br><br>
+                A <b>{{item.dislikes}}</b> personas <span class="noMeGusta"><b>no les gusta</b></span> este candidato
+              </div>
             </div>
-            <div class="mtop">
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m12 l12 xl4">
+        <div class="row pcenter">
+          <div class="col">
+            <input   type="text" [(ngModel)]="comment" class="color">
+            <button class="btn button light-blue darken-2 button" (click)="saveComment()" (click)="cleanInput()">Comentar</button>
+            <div >
               <div *ngFor="let item of commentsO|async" class="mtopc">
                 <div *ngIf="item.candidate=='Alvaro Uribe'">
-                  <b class="textc mtopc">{{item.nombre}} - {{item.date | date:'short'}}</b> {{item.comment}}
+                  <b class="textc mtopc">{{item.nombre}}</b> - {{item.date | date:'short'}} {{item.comment}}
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="row">
-            <div class="col s4">
-
-              <a class="btn-floating btn-large waves-effect waves-light green" [ngClass]="{disabled: state==true && stateLD==true }"><i (click)="likesCount()"class="material-icons">thumb_up</i></a>
-              <a class="btn-floating btn-large waves-effect waves-light red" [ngClass]="{disabled: state==true && stateLD==false}"><i (click)="dislikesCount()"   class="material-icons">thumb_down</i></a>
-
-
-
-              <div *ngFor="let item of items|async" class="mtopc">
-                  <div *ngIf="item.nombre=='Alvaro Uribe'">
-                    A <b>{{item.likes}}</b> personas <span class="meGusta"><b>les gusta</b></span> este candidato
-                    <br><br>
-                    A <b>{{item.dislikes}}</b> personas <span class="noMeGusta"><b>no les gusta</b></span> este candidato
-                  </div>
-                </div>
-
-            </div>
-          </div>
-        </div>
+      </div>
+    </div>
+  </div>  
 </body>
 </html>
