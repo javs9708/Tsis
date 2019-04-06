@@ -24,6 +24,15 @@ input.color {
 .mtopc2{
   margin-top: 30px;
 }
+.mright{
+  margin-right: 8px;
+}
+.nmright{
+  margin-right: 8px;
+}
+.mleft{
+  margin-left: 0;
+}
 .button{
   border-radius: 30px;
 }
@@ -32,7 +41,28 @@ input.color {
   display: flex;
   justify-content: center;
 }
-
 .textc{
   color: #0d47a1;
+}
+
+.mb{
+  margin-bottom: 15px;
+}
+
+.backgroundcomment{
+  display: flex;
+  background: #e4f2ff;
+  height: 100%;
+  width: 110%;
+  border-radius: 30px;
+  align-content: flex-start;
+  margin-top: 15px;
+  text-align: left;
+}
+
+.mbackground{
+  margin-top: 15px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  margin-left: 15px;
 }
