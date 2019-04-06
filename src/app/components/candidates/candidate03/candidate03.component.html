@@ -18,6 +18,10 @@
               <input type="text" [(ngModel)]="comment" class="color">
               <button class="btn button light-blue darken-2 button" (click)="saveComment()" (click)="cleanInput()">Comentar</button>
             </div>
+            <br><br><br><br><br>
+            <div *ngIf="stateComments==false">
+              <h5>No hay comentarios por aquí</h5>
+            </div>
             <div class="mtop">
               <div *ngFor="let item of sortData" class="mtopc">
                 <div *ngIf="item.candidate=='Sergio Fajardo'">
@@ -36,6 +40,9 @@
             <div class="col s4">
               <a class="btn-floating btn-large waves-effect waves-light green" [ngClass]="{disabled: state==true && stateLD==true }"><i (click)="likesCount()"class="material-icons">thumb_up</i></a>
               <a class="btn-floating btn-large waves-effect waves-light red" [ngClass]="{disabled: state==true && stateLD==false}"><i (click)="dislikesCount()"   class="material-icons">thumb_down</i></a>
+              <h5 *ngIf="state==true && stateLD==false"> <span class="noMeGusta"><b>No te gusta</b></span> este candidato <i class="material-icons">sentiment_very_dissatisfied</i></h5>
+              <h5 *ngIf="state==true && stateLD==true"> <span class="meGusta"><b>Te gusta</b></span> este candidato <i class="material-icons">sentiment_very_satisfied</i></h5>
+              <h5 *ngIf="state==false"> <b>Califica a este candidato</b></h5>
 
               <div *ngFor="let item of items|async" class="mtopc">
                   <div *ngIf="item.nombre=='Sergio Fajardo'">

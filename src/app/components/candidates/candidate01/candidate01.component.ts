@@ -28,6 +28,7 @@ export class Candidate01Component implements OnInit {
   // }
 
   public users = [];
+  public idComments =[];
   public candidatos = [];
   public commentsA = [];
   public data: any;
@@ -48,11 +49,13 @@ export class Candidate01Component implements OnInit {
     comment: '',
     uid: '',
     nombre: '',
+    photo:'',
     date: null
   }
 
   state = null;
   stateLD = null;
+  stateComments=null;
   document = '';
 
   stats: Stats = {
@@ -74,6 +77,23 @@ export class Candidate01Component implements OnInit {
     this.commentObject.nombre = this.data.displayName;
     this.commentsO = this.db.collection('/comentarios').valueChanges();
 
+    this.firestoreService.getComments().subscribe(data => {
+      if (data) {
+        data.map(test => {
+          this.idComments.push({
+            id: test.payload.doc.id,
+            data: test.payload.doc.data()
+          });
+        });
+
+        console.log(this.idComments);
+
+      }
+    });
+
+
+
+
     this.items.subscribe(data => {
       if (data) {
         this.candidatos = data;
@@ -85,7 +105,15 @@ export class Candidate01Component implements OnInit {
       if (data) {
         this.commentsA = data;
       }
-
+      for(let e of this.commentsA){
+        if(e.candidate=='Alvaro Uribe'){
+          this.stateComments=true;
+          break;
+        }
+        else{
+          this.stateComments=false;
+        }
+      }
     });
 
     this.firestoreService.getUsers().subscribe(data => {
@@ -96,6 +124,8 @@ export class Candidate01Component implements OnInit {
             data: test.payload.doc.data()
           });
         });
+
+
 
         for (let e of this.users) {
           if (this.data.uid == e.data.uid) {
@@ -194,11 +224,18 @@ export class Candidate01Component implements OnInit {
   }
 
   saveComment() {
-    this.commentObject.comment = this.comment;
-    let date: number = Date.now();
-    this.commentObject.date = date;
-    this.firestoreService.createComment(this.commentObject);
-    console.log(this.commentObject);
+    if(this.data.displayName!=null){
+      this.commentObject.photo = this.data.photoURL;
+      this.commentObject.comment = this.comment;
+      let date: number = Date.now();
+      this.commentObject.date = date;
+      this.firestoreService.createComment(this.commentObject);
+    }
+    else{
+      alert("Debe ingresar un nombre para comentar");
+    }
+
+
   }
 
   cleanInput() {

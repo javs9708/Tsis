@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+
 <body>
   <div class="container section">
     <br><br><br><br>
@@ -19,47 +21,54 @@
                 <br>
                 <div class="row">
                   <div class="col mb">
-                    <a class="btn-floating btn-large waves-effect waves-light green mright" [ngClass]="{disabled: state==true && stateLD==true }"><i (click)="likesCount()"class="material-icons">thumb_up</i></a>
+                    <a class="btn-floating btn-large waves-effect waves-light green mright" [ngClass]="{disabled: state==true && stateLD==true }"><i (click)="likesCount()" class="material-icons">thumb_up</i></a>
                     A <b>{{item.likes}}</b> personas <span class="meGusta"><b>les gusta</b></span> este candidato
                   </div>
                   <div class="col">
-                    <a class="btn-floating btn-large waves-effect waves-light red mright mleft" [ngClass]="{disabled: state==true && stateLD==false}"><i (click)="dislikesCount()"   class="material-icons">thumb_down</i></a>
+                    <a class="btn-floating btn-large waves-effect waves-light red mright mleft" [ngClass]="{disabled: state==true && stateLD==false}"><i (click)="dislikesCount()" class="material-icons">thumb_down</i></a>
                     A <b>{{item.dislikes}}</b> personas <span class="noMeGusta"><b>no les gusta</b></span> este candidato
                   </div>
                 </div>
               </div>
             </div>
             <br>
-            <h5 *ngIf="state==true && stateLD==false"> <span class="noMeGusta"><b>No te gusta</b></span> este candidato  <i class="material-icons">sentiment_very_dissatisfied</i></h5>
-            <h5 *ngIf="state==true && stateLD==true"> <span class="meGusta"><b>Te gusta</b></span> este candidato  <i class="material-icons">sentiment_very_satisfied</i></h5>
+            <h5 *ngIf="state==true && stateLD==false"> <span class="noMeGusta"><b>No te gusta</b></span> este candidato <i class="material-icons">sentiment_very_dissatisfied</i></h5>
+            <h5 *ngIf="state==true && stateLD==true"> <span class="meGusta"><b>Te gusta</b></span> este candidato <i class="material-icons">sentiment_very_satisfied</i></h5>
+            <h5 *ngIf="state==false"> <b>Califica a este candidato</b></h5>
           </div>
         </div>
       </div>
       <div class="col s12 m12 l12 xl4">
         <div class="row pcenter">
           <div class="col">
-            <input   type="text" [(ngModel)]="comment" placeholder="Escribe un comentario" class="color">
+            <input type="text" [(ngModel)]="comment" placeholder="Escribe un comentario" class="color">
             <button class="btn button light-blue darken-2 button" (click)="saveComment()" (click)="cleanInput()">Comentar</button>
             <br><br>
-            <div>
-              <div *ngFor="let item of sortData">
-                <div *ngIf="item.candidate=='Alvaro Uribe'" class="backgroundcomment">
-                  <div *ngIf="item.uid==data.uid" class="mbackground">
-                    <a [routerLink]="['home']"><b class="textc">{{item.nombre}}</b></a> {{item.comment}}
-                  </div>
-                  <div *ngIf="item.uid!=data.uid" class="mbackground ">
-                    <a [routerLink]="['/users',item.uid,item.nombre]"><b class="textc">{{item.nombre}}</b></a>  {{item.comment}}
-                  </div>    
+            <div *ngIf="stateComments==false">
+              <h5>No hay comentarios por aquí</h5>
+            </div>
+            <div *ngFor="let item of sortData">
+              <div *ngIf="item.candidate=='Alvaro Uribe'" class="backgroundcomment">
+                <div *ngIf="item.uid==data.uid" class="mbackground">
+                  <ngx-avatar name="Usuario" *ngIf="item.photo==null"></ngx-avatar>
+                  <img src="{{item.photo}}" width="40px" height="40px" alt="" class="circle responsive-img valign profile-image"><a [routerLink]="['home']"><b class="textc">{{item.nombre}}</b></a> {{item.comment}}
                 </div>
+                <div *ngIf="item.uid!=data.uid" class="mbackground ">
+                  <ngx-avatar name="Usuario" *ngIf="item.photo==null"></ngx-avatar>
+                  <img src="{{item.photo}}" width="40px" height="40px" alt="" class="circle responsive-img valign profile-image"><a [routerLink]="['/users',item.uid,item.nombre]"><b class="textc">{{item.nombre}}</b></a> {{item.comment}}
+                </div>
+              </div>
+              <div *ngIf="item.candidate=='Alvaro Uribe'">
                 <div class="row">
                   <div class="col">
-                    <i class="material-icons mtopicon" style="color:#da5656">delete</i>
+                    <i *ngIf="item.uid==data.uid" class="material-icons mtopicon" style="color:#da5656">delete</i>
                   </div>
                   <div class="col">
                     <span class="fontdate mtopdate"> {{item.date | date:'short'}}</span>
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -67,4 +76,5 @@
     </div>
   </div>
 </body>
+
 </html>

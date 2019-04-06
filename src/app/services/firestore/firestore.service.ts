@@ -15,7 +15,7 @@ export class FirestoreService {
     return this.firestore.collection('usuarios').add(data);
   }
 
-  public createComment(data: {nombre:string, uid: string, comment: string, candidate:string, date:number}) {
+  public createComment(data: {nombre:string, uid: string, comment: string, candidate:string, date:number, photo:string}) {
     return this.firestore.collection('comentarios').add(data);
   }
 
@@ -40,6 +40,10 @@ export class FirestoreService {
 
   public getUsers() {
     return this.firestore.collection('usuarios').snapshotChanges();
+  }
+
+  public getComments() {
+    return this.firestore.collection('comentarios').snapshotChanges();
   }
 
   public updateCandidate(documentId: string, data: any) {

@@ -22,4 +22,5 @@ export interface Comentarios{
   uid:string;
   nombre:string;
   date:number;
+  photo:string;
 }

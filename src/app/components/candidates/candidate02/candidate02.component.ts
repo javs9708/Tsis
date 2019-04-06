@@ -48,11 +48,13 @@ commentObject: Comentarios ={
   comment:'',
   uid:'',
   nombre:'',
+  photo:'',
   date:null
 }
 
-state = false;
-stateLD = false;
+state = null;
+stateLD = null;
+stateComments=null;
 document = '';
 
 stats: Stats = {
@@ -86,6 +88,15 @@ ngOnInit() {
     if (data) {
       this.commentsA=data;
       }
+    for(let e of this.commentsA){
+      if(e.candidate=='Gustavo Petro'){
+        this.stateComments=true;
+        break;
+      }
+      else{
+        this.stateComments=false;
+      }
+    }
 
   });
 
@@ -186,11 +197,16 @@ dislikesCount() {
 }
 
 saveComment(){
-  this.commentObject.comment=this.comment;
-  let date: number = Date.now();
-  this.commentObject.date=date;
-  this.firestoreService.createComment(this.commentObject);
-  console.log(this.commentObject);
+  if(this.data.displayName!=null){
+    this.commentObject.photo = this.data.photoURL;
+    this.commentObject.comment = this.comment;
+    let date: number = Date.now();
+    this.commentObject.date = date;
+    this.firestoreService.createComment(this.commentObject);
+  }
+  else{
+    alert("Debe ingresar un nombre para comentar");
+  }
 }
 
 cleanInput(){
