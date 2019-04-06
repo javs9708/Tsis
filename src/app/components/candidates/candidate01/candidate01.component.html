@@ -39,7 +39,12 @@
             <div >
               <div *ngFor="let item of sortData" class="mtopc">
                 <div *ngIf="item.candidate=='Alvaro Uribe'">
-                  <b class="textc mtopc">{{item.nombre}}</b> - {{item.date | date:'short'}} {{item.comment}}
+                  <div *ngIf="item.uid==data.uid">
+                    <a [routerLink]="['home']"><b class="textc mtopc">{{item.nombre}}</b></a> - {{item.date | date:'short'}} {{item.comment}}
+                  </div>
+                  <div *ngIf="item.uid!=data.uid">
+                    <a [routerLink]="['/users',item.uid,item.nombre]"><b class="textc mtopc">{{item.nombre}}</b></a> - {{item.date | date:'short'}} {{item.comment}}
+                  </div>    
                 </div>
               </div>
             </div>
