@@ -52,4 +52,8 @@ export class FirestoreService {
   public updateUser(documentId: string, data: any) {
     return this.firestore.collection('usuarios').doc(documentId).update(data);
   }
+
+  public deleteComment(documentId:string){
+    return this.firestore.collection('comentarios').doc(documentId).delete();
+  }
 }

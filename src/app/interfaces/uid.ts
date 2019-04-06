@@ -23,4 +23,5 @@ export interface Comentarios{
   nombre:string;
   date:number;
   photo:string;
+  id?:string;
 }
