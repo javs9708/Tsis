@@ -85,10 +85,16 @@ export class Candidate01Component implements OnInit {
             data: test.payload.doc.data()
           });
         });
-
-        console.log(this.idComments);
-
       }
+      for(let e of this.idComments){
+          if(e.data.candidate=='Alvaro Uribe'){
+            this.stateComments=true;
+             break;
+           }
+           else{
+             this.stateComments=false;
+           }
+         }
     });
 
 
@@ -101,20 +107,6 @@ export class Candidate01Component implements OnInit {
 
     });
 
-    this.commentsO.subscribe(data => {
-      if (data) {
-        this.commentsA = data;
-      }
-      for(let e of this.commentsA){
-        if(e.candidate=='Alvaro Uribe'){
-          this.stateComments=true;
-          break;
-        }
-        else{
-          this.stateComments=false;
-        }
-      }
-    });
 
     this.firestoreService.getUsers().subscribe(data => {
       if (data) {
@@ -160,7 +152,6 @@ export class Candidate01Component implements OnInit {
 
       }
     });
-
   }
 
 
@@ -218,8 +209,8 @@ export class Candidate01Component implements OnInit {
   }
 
   get sortData() {
-    return this.commentsA.sort((a, b) => {
-      return <any>new Date(b.date) - <any>new Date(a.date);
+    return this.idComments.sort((a, b) => {
+      return <any>new Date(b.data.date) - <any>new Date(a.data.date);
     });
   }
 
@@ -240,6 +231,12 @@ export class Candidate01Component implements OnInit {
 
   cleanInput() {
     this.comment = "";
+    this.idComments=[];
+  }
+
+  deleteComment(id){
+    this.firestoreService.deleteComment(id);
+    this.idComments=[];
   }
 
 
