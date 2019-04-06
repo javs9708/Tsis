@@ -19,10 +19,14 @@
               <button class="btn button light-blue darken-2 button" (click)="saveComment()" (click)="cleanInput()">Comentar</button>
             </div>
             <div class="mtop">
-              <div *ngFor="let item of commentsO|async" class="mtopc">
+              <div *ngFor="let item of sortData" class="mtopc">
                 <div *ngIf="item.candidate=='Sergio Fajardo'">
-                  <b class="textc mtopc">{{item.nombre}}</b>  - {{item.date | date:'short'}}
-                  <br>{{item.comment}}
+                  <div *ngIf="item.uid==data.uid">
+                    <a [routerLink]="['home']"><b class="textc mtopc">{{item.nombre}}</b></a> - {{item.date | date:'short'}} {{item.comment}}
+                  </div>
+                  <div *ngIf="item.uid!=data.uid">
+                    <a [routerLink]="['/users',item.uid,item.nombre]"><b class="textc mtopc">{{item.nombre}}</b></a> - {{item.date | date:'short'}} {{item.comment}}
+                  </div>
                 </div>
               </div>
             </div>

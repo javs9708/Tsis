@@ -83,6 +83,13 @@ ngOnInit() {
 
   });
 
+  this.commentsO.subscribe(data => {
+    if (data) {
+      this.commentsA=data;
+      }
+
+  });
+
 
   this.firestoreService.getUsers().subscribe(data => {
     if (data) {
@@ -178,6 +185,11 @@ dislikesCount() {
   }
 }
 
+get sortData() {
+  return this.commentsA.sort((a, b) => {
+    return <any>new Date(b.date) - <any>new Date(a.date);
+  });
+}
 
 saveComment(){
   this.commentObject.comment=this.comment;
