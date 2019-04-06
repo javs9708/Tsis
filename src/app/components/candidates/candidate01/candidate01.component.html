@@ -50,12 +50,20 @@
             <div *ngFor="let item of sortData">
               <div *ngIf="item.candidate=='Alvaro Uribe'" class="backgroundcomment">
                 <div *ngIf="item.uid==data.uid" class="mbackground">
-                  <ngx-avatar name="Usuario" *ngIf="item.photo==null"></ngx-avatar>
-                  <img src="{{item.photo}}" width="40px" height="40px" alt="" class="circle responsive-img valign profile-image"><a [routerLink]="['home']"><b class="textc">{{item.nombre}}</b></a> {{item.comment}}
+                  <div class="row">
+                    <div class="col">
+                      <ngx-avatar name="Usuario" *ngIf="item.photo==null"></ngx-avatar>
+                      <img src="{{item.photo}}" width="40px" height="40px" alt="" class="circle responsive-img valign profile-image">
+                    </div>
+                    <div class="col mtopcomment">
+                      <a [routerLink]="['home']"><b class="textc">{{item.nombre}}</b></a> {{item.comment}}
+                    </div>
+                  </div>
                 </div>
                 <div *ngIf="item.uid!=data.uid" class="mbackground ">
                   <ngx-avatar name="Usuario" *ngIf="item.photo==null"></ngx-avatar>
-                  <img src="{{item.photo}}" width="40px" height="40px" alt="" class="circle responsive-img valign profile-image"><a [routerLink]="['/users',item.uid,item.nombre]"><b class="textc">{{item.nombre}}</b></a> {{item.comment}}
+                  <img src="{{item.photo}}" width="40px" height="40px" alt="" class="circle responsive-img valign profile-image">
+                  <a [routerLink]="['/users',item.uid,item.nombre]"><b class="textc">{{item.nombre}}</b></a> {{item.comment}}
                 </div>
               </div>
               <div *ngIf="item.candidate=='Alvaro Uribe'">
