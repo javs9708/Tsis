@@ -21,6 +21,18 @@ input.color {
 .mtopc{
   margin-top: 15px;
 }
+.mtopicon{
+  display: flex;
+  margin-top: 5px;
+  justify-content: flex-start;
+  margin-left: 21px;
+}
+.mtopdate{
+  display: flex;
+  margin-top: 10px;
+  justify-content: flex-end;
+  margin-right: 21px;
+}
 .mtopc2{
   margin-top: 30px;
 }
@@ -66,3 +78,9 @@ input.color {
   margin-bottom: 15px;
   margin-left: 15px;
 }
+
+.fontdate{
+  font-size: 10px;
+}
+
+

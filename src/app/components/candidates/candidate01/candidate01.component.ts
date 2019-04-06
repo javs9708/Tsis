@@ -84,7 +84,6 @@ export class Candidate01Component implements OnInit {
     this.commentsO.subscribe(data => {
       if (data) {
         this.commentsA = data;
-        console.log(this.commentsA);
       }
 
     });

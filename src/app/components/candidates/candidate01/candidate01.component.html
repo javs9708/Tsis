@@ -41,10 +41,23 @@
             <input   type="text" [(ngModel)]="comment" placeholder="Escribe un comentario" class="color">
             <button class="btn button light-blue darken-2 button" (click)="saveComment()" (click)="cleanInput()">Comentar</button>
             <br><br>
-            <div >
-              <div *ngFor="let item of sortData" class="backgroundcomment">
-                <div *ngIf="item.candidate=='Alvaro Uribe'" class="mbackground">
-                  <b class="textc mtopc">{{item.nombre}}</b> - {{item.date | date:'short'}} {{item.comment}}
+            <div>
+              <div *ngFor="let item of sortData">
+                <div *ngIf="item.candidate=='Alvaro Uribe'" class="backgroundcomment">
+                  <div *ngIf="item.uid==data.uid" class="mbackground">
+                    <a [routerLink]="['home']"><b class="textc">{{item.nombre}}</b></a> {{item.comment}}
+                  </div>
+                  <div *ngIf="item.uid!=data.uid" class="mbackground ">
+                    <a [routerLink]="['/users',item.uid,item.nombre]"><b class="textc">{{item.nombre}}</b></a>  {{item.comment}}
+                  </div>    
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <i class="material-icons mtopicon" style="color:#da5656">delete</i>
+                  </div>
+                  <div class="col">
+                    <span class="fontdate mtopdate"> {{item.date | date:'short'}}</span>
+                  </div>
                 </div>
               </div>
             </div>

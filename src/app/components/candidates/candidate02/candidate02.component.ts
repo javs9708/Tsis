@@ -197,5 +197,10 @@ cleanInput(){
   this.comment="";
 }
 
+get sortData() {
+  return this.commentsA.sort((a, b) => {
+    return <any>new Date(b.date) - <any>new Date(a.date);
+  });
+}
 
 }
