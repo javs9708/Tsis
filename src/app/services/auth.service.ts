@@ -14,6 +14,7 @@ export class AuthService {
   public users=[];
   uid: Uid = {
     uid: '',
+    name:'',
     puntuationStateC1:false,
     puntuationStateC1LD:false,
     puntuationStateC2:false,
@@ -26,7 +27,6 @@ export class AuthService {
       if (user) {
         this.user = user;
         localStorage.setItem('user', JSON.stringify(this.user));
-
       } else {
         localStorage.setItem('user', null);
       }
@@ -72,6 +72,7 @@ export class AuthService {
   async  loginWithGoogle() {
     await this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
     this.uid.uid = this.user.uid;
+    this.uid.name= this.user.displayName
 
     this.firestoreService.getUsers().subscribe(data => {
       if (data) {

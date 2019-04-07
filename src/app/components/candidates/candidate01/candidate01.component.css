@@ -29,9 +29,14 @@ input.color {
 }
 .mtopdate{
   display: flex;
-  margin-top: 10px;
+  margin-top: 17px;
   justify-content: flex-end;
-  margin-right: 21px;
+  /* margin-right: 21px; */
+  margin-left: 0;
+}
+.mtopcomment{
+  margin-top: 10px;
+  margin-left: 0px;
 }
 .mtopc2{
   margin-top: 30px;
@@ -39,8 +44,9 @@ input.color {
 .mright{
   margin-right: 8px;
 }
-.nmright{
-  margin-right: 8px;
+.mright2{
+  margin-right: 25px;
+  margin-left: 0; 
 }
 .mleft{
   margin-left: 0;
@@ -65,7 +71,7 @@ input.color {
   display: flex;
   background: #e4f2ff;
   height: 100%;
-  width: 110%;
+  width: 100%;
   border-radius: 30px;
   align-content: flex-start;
   margin-top: 15px;
@@ -83,4 +89,16 @@ input.color {
   font-size: 10px;
 }
 
-
+.commentj{
+  display: flex;
+  justify-content: center;
+}
+.din{
+  display: flex;
+}
+.imgr{
+  max-width: 40px;
+  min-width: 39px;
+  max-height: 40px;
+  min-height: 40px;
+}

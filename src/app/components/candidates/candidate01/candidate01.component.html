@@ -42,8 +42,8 @@
         <div class="row pcenter">
           <div class="col">
             <input type="text" [(ngModel)]="comment" placeholder="Escribe un comentario" class="color">
-            <button *ngIf="data.displayName!=null" class="btn button light-blue darken-2 button" (click)="saveComment()" (click)="cleanInput()">Comentar</button>
-            <button *ngIf="data.displayName==null" class="waves-effect waves-light btn modal-trigger" href="#modal1">Comentar asd</button>
+            <button *ngIf="data.displayName!=''" class="btn button light-blue darken-2 button" (click)="saveComment()" (click)="cleanInput()">Comentar</button>
+            <button *ngIf="data.displayName==''" class="btn button light-blue darken-2 button" [routerLink]="['/profile']">Comentar</button>
             <br><br>
             <div id="modal1" class="modal">
               <div class="modal-content">
@@ -59,28 +59,44 @@
               <h5>No hay comentarios por aquí</h5>
             </div>
             <div *ngFor="let item of sortData">
-              <div *ngIf="item.data.candidate=='Alvaro Uribe'" class="backgroundcomment">
-                <div *ngIf="item.data.uid==data.uid" class="mbackground">
-                  <ngx-avatar name="Usuario" *ngIf="item.data.photo==null"></ngx-avatar>
-                  <img src="{{item.data.photo}}" width="40px" height="40px" alt="" class="circle responsive-img valign profile-image"><a [routerLink]="['home']"><b class="textc">{{item.data.nombre}}</b></a> {{item.data.comment}}
+              <div class="row" *ngIf="item.candidate=='Alvaro Uribe'">
+                <div class="col s12 backgroundcomment">
+                  <div>
+                      <div *ngIf="item.uid==data.uid" class="mbackground">
+                        <div class="row din">
+                          <div class="col s2 mright2">
+                            <ngx-avatar src="https://www.researchgate.net/profile/Maria_Monreal2/publication/315108532/figure/fig1/AS:472492935520261@1489662502634/Figura-2-Avatar-que-aparece-por-defecto-en-Facebook.png" size="40" *ngIf="item.photo==null"></ngx-avatar>
+                            <img src="{{item.photo}}" class="circle responsive-img valign profile-image imgr">
+                          </div>
+                            <div class="col s9 mtopcomment pull-s1">
+                            <a [routerLink]="['/home']"><b class="textc">{{item.nombre}}</b></a> {{item.comment}}
+                          </div>
+                        </div>
+                      </div>
+                      <div *ngIf="item.uid!=data.uid" class="mbackground ">
+                        <div class="row din">
+                          <div class="col col s2 mright2">
+                            <ngx-avatar src="https://www.researchgate.net/profile/Maria_Monreal2/publication/315108532/figure/fig1/AS:472492935520261@1489662502634/Figura-2-Avatar-que-aparece-por-defecto-en-Facebook.png" size="40" *ngIf="item.photo==null"></ngx-avatar>
+                            <img src="{{item.photo}}" alt="" class="circle responsive-img valign profile-image imgr">
+                          </div>
+                          <div class="col s9 mtopcomment pull-s1">
+                            <a [routerLink]="['/users',item.uid,item.nombre]"><b class="textc">{{item.nombre}}</b></a> {{item.comment}}
+                          </div>
+                        </div>
+                      </div>
+                  </div>
                 </div>
-                <div *ngIf="item.data.uid!=data.uid" class="mbackground ">
-                  <ngx-avatar name="Usuario" *ngIf="item.data.photo==null"></ngx-avatar>
-                  <img src="{{item.data.photo}}" width="40px" height="40px" alt="" class="circle responsive-img valign profile-image"><a [routerLink]="['/users',item.data.uid,item.data.nombre]"><b class="textc">{{item.data.nombre}}</b></a>
-                  {{item.data.comment}}
+              <div *ngIf="item.candidate=='Alvaro Uribe'">
+                <div class="row ">
+                  <div class="col">
+                    <a class="btn-flat"><i (click)="deleteComment(item.id)" *ngIf="item.uid==data.uid" class="material-icons mtopicon" style="color:#da5656">delete</i></a>
+                  </div>
+                  <div class="col mtopdate">
+                    <span class="fontdate "> {{item.date | date:'short'}}</span>
+                  </div>
                 </div>
               </div>
-              <div *ngIf="item.data.candidate=='Alvaro Uribe'">
-                <div class="row">
-                  <div class="col">
-                    <a class="btn-flat"><i (click)="deleteComment(item.id)" *ngIf="item.data.uid==data.uid" class="material-icons mtopicon" style="color:#da5656">delete</i></a>
-                  </div>
-                  <div class="col">
-                    <span class="fontdate mtopdate"> {{item.data.date | date:'short'}} {{item.id}}</span>
-                  </div>
-                </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -88,5 +104,4 @@
     </div>
   </div>
 </body>
-
 </html>

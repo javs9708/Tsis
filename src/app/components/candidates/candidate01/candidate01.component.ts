@@ -4,8 +4,8 @@ import { AuthService } from '../../../services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { Stats } from '../../../interfaces/stats';
-import { Uid, Candidatos, Comentarios } from '../../../interfaces/uid';
-import { Observable } from 'rxjs';
+import { Uid, Candidatos, Comentarios, ComentariosDelete} from '../../../interfaces/uid';
+import { Observable, of } from 'rxjs';
 import { AngularFirestore } from 'angularfire2/firestore';
 
 
@@ -21,21 +21,17 @@ import { AngularFirestore } from 'angularfire2/firestore';
 
 export class Candidate01Component implements OnInit {
 
-  // public candidatos:Candidatos = {
-  //   id:'',
-  //   data:{},
-  //
-  // }
 
   public users = [];
-  public idComments = [];
   public candidatos = [];
-  public commentsA = [];
-  public data: any;
+  public showNameA=[];
+  public commentsA:ComentariosDelete[];
+  public data:any;
   public comment: string;
   public name:string;
 
   uid: Uid = {
+    name:'',
     puntuationStateC1: false,
     puntuationStateC1LD: false,
     puntuationStateC2: false,
@@ -54,6 +50,7 @@ export class Candidate01Component implements OnInit {
     date: null
   }
 
+
   state = null;
   stateLD = null;
   stateComments = null;
@@ -66,29 +63,39 @@ export class Candidate01Component implements OnInit {
   };
 
   public items: Observable<any[]>;
-  public commentsO: Observable<any[]>;
+  public showName: Observable<any[]>;
 
-  constructor(private firestoreService: FirestoreService, private authService: AuthService, private db: AngularFirestore) { }
+  constructor(private firestoreService: FirestoreService, private authService: AuthService, private db: AngularFirestore) {
+  this.data = JSON.parse((localStorage.getItem('user')));
+  this.showName = this.db.collection('/usuarios').valueChanges();
+  this.showName.subscribe(data => {
+    if (data) {
+      this.showNameA = data;
+    }
+    for(let e of this.showNameA){
+      if(e.uid==this.data.uid){
+        this.data.displayName=e.name;
+        localStorage.setItem('user', JSON.stringify(this.data));
+        break;
+      }
+    }
+
+  });
+ }
 
   ngOnInit() {
 
     this.data = JSON.parse((localStorage.getItem('user')));
+    console.log(this.data);
     this.items = this.db.collection('/candidatos').valueChanges();
     this.commentObject.uid = this.data.uid;
     this.commentObject.nombre = this.data.displayName;
-    this.commentsO = this.db.collection('/comentarios').valueChanges();
 
-    this.firestoreService.getComments().subscribe(data => {
-      if (data) {
-        data.map(test => {
-          this.idComments.push({
-            id: test.payload.doc.id,
-            data: test.payload.doc.data()
-          });
-        });
-      }
-      for (let e of this.idComments) {
-        if (e.data.candidate == 'Alvaro Uribe') {
+
+    this.firestoreService.getItems().subscribe(items =>{
+      this.commentsA=items;
+      for (let e of this.commentsA) {
+        if (e.candidate == 'Alvaro Uribe') {
           this.stateComments = true;
           break;
         }
@@ -144,6 +151,7 @@ export class Candidate01Component implements OnInit {
             }
             this.document = e.id
             this.data.uid = e.data.uid
+            this.uid.name = this.data.displayName
             this.uid.puntuationStateC2 = e.data.puntuationStateC2
             this.uid.puntuationStateC2LD = e.data.puntuationStateC2LD
             this.uid.puntuationStateC3 = e.data.puntuationStateC3
@@ -210,9 +218,12 @@ export class Candidate01Component implements OnInit {
   }
 
   get sortData() {
-    return this.idComments.sort((a, b) => {
-      return <any>new Date(b.data.date) - <any>new Date(a.data.date);
-    });
+    if(this.commentsA!=undefined){
+      return this.commentsA.sort((a, b) => {
+        return <any>new Date(b.date) - <any>new Date(a.date);
+      });
+    }
+
   }
 
   saveComment() {
@@ -220,8 +231,8 @@ export class Candidate01Component implements OnInit {
     this.commentObject.comment = this.comment;
     let date: number = Date.now();
     this.commentObject.date = date;
+    this.commentObject.nombre = this.data.displayName;
     this.firestoreService.createComment(this.commentObject);
-    this.idComments = [];
   }
 
   cleanInput() {
@@ -230,12 +241,10 @@ export class Candidate01Component implements OnInit {
 
   deleteComment(id) {
     this.firestoreService.deleteComment(id);
-    this.idComments = [];
   }
 
   nameUser(){
-    console.log("nombre guardado: ", this.name);
+    this.data.displayName=this.name;
+    localStorage.setItem('user', JSON.stringify(this.data));
   }
-
-
 }

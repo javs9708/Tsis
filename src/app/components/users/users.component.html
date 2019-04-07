@@ -11,36 +11,27 @@
 <div *ngFor="let item of usersA">
   <div *ngIf="item.uid==uid">
     <div *ngIf="item.puntuationStateC1==true && item.puntuationStateC1LD==true">
-      A este usuario le gusta el candidato Uribe
+      A {{name}} le gusta el candidato Uribe
     </div>
     <div *ngIf="item.puntuationStateC1==true && item.puntuationStateC1LD==false">
-      A este usuario no le gusta el candidato Uribe
+      A {{name}} no le gusta el candidato Uribe
     </div>
     <div *ngIf="item.puntuationStateC2==true && item.puntuationStateC2LD==true">
-      A este usuario le gusta el candidato Petro
+      A {{name}} le gusta el candidato Petro
     </div>
     <div *ngIf="item.puntuationStateC2==true && item.puntuationStateC2LD==false">
-      A este usuario no le gusta el candidato petro
+      A {{name}} no le gusta el candidato petro
     </div>
     <div *ngIf="item.puntuationStateC3==true && item.puntuationStateC3LD==true">
-      A este usuario le gusta el candidato fajardo
+      A {{name}} le gusta el candidato fajardo
     </div>
     <div *ngIf="item.puntuationStateC3==true && item.puntuationStateC3LD==false">
-      A este usuario no le gusta el candidato fajardo
+      A {{name}} no le gusta el candidato fajardo
     </div>
 
-    <div *ngIf="item.puntuationStateC1==false">
-      Este usuario no ha votado a Uribe
-    </div>
-    <div *ngIf="item.puntuationStateC2==false">
-      Este usuario no ha votado a petro
-    </div>
-    <div *ngIf="item.puntuationStateC3==false">
-      Este usuario no ha votado a Fajardo
-    </div>
 
-    <div *ngIf="item.puntuationStateC1==false && item.puntuationStateC2==false && item.puntuationStateC3==false">
-      Este usuario no ha votado ningun candidato
+    <div *ngIf="item.puntuationStateC1==false || item.puntuationStateC2==false || item.puntuationStateC3==false">
+      A {{name}} le falta calificar a algunos candidatos
     </div>
   </div>
 </div>

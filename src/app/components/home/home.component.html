@@ -1,1 +1,39 @@
+<h1>
+  {{name}}
+</h1>
 
+<div *ngFor="let item of sortData">
+  <div *ngIf="item.uid==uid">
+    {{item.comment}}{{item.candidate}}{{item.date|date:'short'}}
+  </div>
+</div>
+
+<div *ngFor="let item of usersA">
+  <div *ngIf="item.uid==uid">
+    <div *ngIf="item.puntuationStateC1==true && item.puntuationStateC1LD==true">
+      Te gusta el candidato Uribe
+    </div>
+    <div *ngIf="item.puntuationStateC1==true && item.puntuationStateC1LD==false">
+      No te gusta el candidato Uribe
+    </div>
+    <div *ngIf="item.puntuationStateC2==true && item.puntuationStateC2LD==true">
+      Te gusta  el candidato Petro
+    </div>
+    <div *ngIf="item.puntuationStateC2==true && item.puntuationStateC2LD==false">
+      No te gusta el candidato petro
+    </div>
+    <div *ngIf="item.puntuationStateC3==true && item.puntuationStateC3LD==true">
+      Te gusta el candidato fajardo
+    </div>
+    <div *ngIf="item.puntuationStateC3==true && item.puntuationStateC3LD==false">
+      No Te gusta el candidato fajardo
+    </div>
+
+
+    <div *ngIf="item.puntuationStateC1==false || item.puntuationStateC2==false || item.puntuationStateC3==false">
+      Aun te faltan candidatos por calificar
+    </div>
+
+    <a  [routerLink]="['/candidates']" class="btn-small waves-effect waves-light  light-blue darken-2 button"> <b>Candidatos</b></a>
+  </div>
+</div>

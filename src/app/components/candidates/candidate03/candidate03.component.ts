@@ -34,6 +34,7 @@ export class Candidate03Component implements OnInit {
   public comment:string;
 
 uid: Uid = {
+  name:'',
   puntuationStateC1: false,
   puntuationStateC1LD: false,
   puntuationStateC2: false,
