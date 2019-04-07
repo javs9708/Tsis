@@ -28,11 +28,12 @@ export class Candidate01Component implements OnInit {
   // }
 
   public users = [];
-  public idComments =[];
+  public idComments = [];
   public candidatos = [];
   public commentsA = [];
   public data: any;
   public comment: string;
+  public name:string;
 
   uid: Uid = {
     puntuationStateC1: false,
@@ -49,13 +50,13 @@ export class Candidate01Component implements OnInit {
     comment: '',
     uid: '',
     nombre: '',
-    photo:'',
+    photo: '',
     date: null
   }
 
   state = null;
   stateLD = null;
-  stateComments=null;
+  stateComments = null;
   document = '';
 
   stats: Stats = {
@@ -86,15 +87,15 @@ export class Candidate01Component implements OnInit {
           });
         });
       }
-      for(let e of this.idComments){
-          if(e.data.candidate=='Alvaro Uribe'){
-            this.stateComments=true;
-             break;
-           }
-           else{
-             this.stateComments=false;
-           }
-         }
+      for (let e of this.idComments) {
+        if (e.data.candidate == 'Alvaro Uribe') {
+          this.stateComments = true;
+          break;
+        }
+        else {
+          this.stateComments = false;
+        }
+      }
     });
 
 
@@ -122,14 +123,14 @@ export class Candidate01Component implements OnInit {
         for (let e of this.users) {
           if (this.data.uid == e.data.uid) {
             if (e.data.puntuationStateC1 == true) {
-              this.state=true;
-              if (e.data.puntuationStateC1LD == true){
-                  this.stateLD=true;
+              this.state = true;
+              if (e.data.puntuationStateC1LD == true) {
+                this.stateLD = true;
 
 
               }
-              else{
-                this.stateLD=false;
+              else {
+                this.stateLD = false;
 
 
               }
@@ -138,7 +139,7 @@ export class Candidate01Component implements OnInit {
 
             }
             if (e.data.puntuationStateC1 == false) {
-              this.state=false
+              this.state = false
 
             }
             this.document = e.id
@@ -156,9 +157,9 @@ export class Candidate01Component implements OnInit {
 
 
   likesCount() {
-    if(this.state==false){
-      this.state=true;
-      this.stateLD=true;
+    if (this.state == false) {
+      this.state = true;
+      this.stateLD = true;
       this.candidatos[1].likes = this.candidatos[1].likes + 1
       this.stats.likes = this.candidatos[1].likes
       this.stats.dislikes = this.candidatos[1].dislikes
@@ -168,8 +169,8 @@ export class Candidate01Component implements OnInit {
       this.firestoreService.updateUser(this.document, this.uid);
       this.firestoreService.updateCandidate('lOpUAQ0s2pHclE2poBcT', this.stats);
     }
-    if(this.state==true && this.stateLD==false){
-      this.stateLD=true;
+    if (this.state == true && this.stateLD == false) {
+      this.stateLD = true;
       this.candidatos[1].likes = this.candidatos[1].likes + 1
       this.candidatos[1].dislikes = this.candidatos[1].dislikes - 1
       this.stats.likes = this.candidatos[1].likes
@@ -182,9 +183,9 @@ export class Candidate01Component implements OnInit {
     }
   }
   dislikesCount() {
-    if(this.state==false){
-      this.state=true;
-      this.stateLD=false;
+    if (this.state == false) {
+      this.state = true;
+      this.stateLD = false;
       this.candidatos[1].dislikes = this.candidatos[1].dislikes + 1
       this.stats.dislikes = this.candidatos[1].dislikes
       this.stats.likes = this.candidatos[1].likes
@@ -194,8 +195,8 @@ export class Candidate01Component implements OnInit {
       this.firestoreService.updateUser(this.document, this.uid);
       this.firestoreService.updateCandidate('lOpUAQ0s2pHclE2poBcT', this.stats);
     }
-    if(this.state==true && this.stateLD==true){
-      this.stateLD=false;
+    if (this.state == true && this.stateLD == true) {
+      this.stateLD = false;
       this.candidatos[1].dislikes = this.candidatos[1].dislikes + 1
       this.candidatos[1].likes = this.candidatos[1].likes - 1
       this.stats.dislikes = this.candidatos[1].dislikes
@@ -215,30 +216,26 @@ export class Candidate01Component implements OnInit {
   }
 
   saveComment() {
-    if(this.data.displayName!=null){
-      this.commentObject.photo = this.data.photoURL;
-      this.commentObject.comment = this.comment;
-      let date: number = Date.now();
-      this.commentObject.date = date;
-      this.firestoreService.createComment(this.commentObject);
-    }
-    else{
-      alert("Debe ingresar un nombre para comentar");
-    }
-
-
+    this.commentObject.photo = this.data.photoURL;
+    this.commentObject.comment = this.comment;
+    let date: number = Date.now();
+    this.commentObject.date = date;
+    this.firestoreService.createComment(this.commentObject);
+    this.idComments = [];
   }
 
   cleanInput() {
     this.comment = "";
-    this.idComments=[];
   }
 
-  deleteComment(id){
+  deleteComment(id) {
     this.firestoreService.deleteComment(id);
-    this.idComments=[];
+    this.idComments = [];
   }
 
+  nameUser(){
+    console.log("nombre guardado: ", this.name);
+  }
 
 
 }
