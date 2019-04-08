@@ -103,6 +103,32 @@ export class AuthService {
 
   async  loginWithFacebook() {
     await this.afAuth.auth.signInWithPopup(new auth.FacebookAuthProvider())
+    this.uid.uid = this.user.uid;
+    this.uid.name= this.user.displayName
+
+    this.firestoreService.getUsers().subscribe(data => {
+      if (data) {
+        data.map(test => {
+        this.users.push({
+          data: test.payload.doc.data()
+        });
+
+
+        });
+        let exist=false;
+        for(let e of this.users){
+          if(this.uid.uid==e.data.uid){
+            exist=true;
+            break;
+          }
+        }
+        if (exist==false){
+          console.log(this.uid);
+          this.firestoreService.createUser(this.uid);
+        }
+      }
+    });
+
     this.router.navigate(['profile']);
   }
 

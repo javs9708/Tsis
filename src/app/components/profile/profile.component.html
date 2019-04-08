@@ -21,5 +21,6 @@
 
 
 <div *ngIf="data.photoURL!=null">
-  <img src="{{data.photoURL}}"  alt="Avatar" style="width:20%">
+  <img src="{{data.photoURL}}"  *ngIf="provider.providerId=='facebook.com'" alt="Avatar" width="60px" height="60px">
+  <img src="{{data.photoURL}}"  *ngIf="provider.providerId=='google.com'" alt="Avatar" style="width:20%">
 </div>

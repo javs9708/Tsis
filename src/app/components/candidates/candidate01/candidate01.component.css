@@ -1,4 +1,4 @@
-input.color { 
+input.color {
   border-bottom: 1.5px #0c56ac !important;
   box-shadow: 0 1.2px 0 0 #0c56ac !important;
 }
@@ -45,8 +45,8 @@ input.color {
   margin-right: 8px;
 }
 .mright2{
-  margin-right: 25px;
-  margin-left: 0; 
+  margin-right: 35px;
+  margin-left: 0;
 }
 .mleft{
   margin-left: 0;
@@ -98,7 +98,7 @@ input.color {
 }
 .imgr{
   max-width: 40px;
-  min-width: 39px;
+  min-width: 40px;
   max-height: 40px;
   min-height: 40px;
 }
