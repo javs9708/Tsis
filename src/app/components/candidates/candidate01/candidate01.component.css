@@ -48,6 +48,7 @@ input.color {
   margin-right: 25px;
   margin-left: 0; 
 }
+
 .mleft{
   margin-left: 0;
 }
@@ -101,8 +102,4 @@ input.color {
   min-width: 39px;
   max-height: 40px;
   min-height: 39px;
-}
-
-.imgd{
-  margin: 0;
 }
