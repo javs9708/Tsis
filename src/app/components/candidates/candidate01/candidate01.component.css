@@ -1,4 +1,4 @@
-input.color { 
+input.color {
   border-bottom: 1.5px #0c56ac !important;
   box-shadow: 0 1.2px 0 0 #0c56ac !important;
 }
@@ -13,7 +13,6 @@ input.color {
 .noMeGusta{
   color: red;
 }
-
 
 .mtop{
   margin-top: 120px;
@@ -34,6 +33,11 @@ input.color {
   /* margin-right: 21px; */
   margin-left: 0;
 }
+.img-m{
+  display: flex;
+  margin-left: 0;
+  align-content: left;
+}
 .mtopcomment{
   margin-top: 10px;
   margin-left: 0px;
@@ -45,8 +49,7 @@ input.color {
   margin-right: 8px;
 }
 .mright2{
-  margin-right: 25px;
-  margin-left: 0; 
+  margin-right: 35px;
 }
 
 .mleft{
@@ -73,6 +76,7 @@ input.color {
   background: #e4f2ff;
   height: 100%;
   width: 100%;
+  max-width: 500px;
   border-radius: 30px;
   align-content: flex-start;
   margin-top: 15px;
@@ -99,7 +103,7 @@ input.color {
 }
 .imgr{
   max-width: 40px;
-  min-width: 39px;
+  min-width: 40px;
   max-height: 40px;
   min-height: 39px;
 }

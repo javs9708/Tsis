@@ -28,8 +28,8 @@
               <!-- <input type="password" class="form-control mb-2" placeholder="Contraseña" #userPassword required> -->
             </div>
           </div>
-          
-          
+
+
           <!-- REMEMBER ME -->
           <!-- <div class="row">
             <div class="input-field col s12 m12 l12  login-text">
@@ -42,17 +42,19 @@
               <a class="btn waves-effect waves-light col-auto button light-blue darken-2" (click)="authService.login(userEmail.value, userPassword.value)">Iniciar</a>
             </div>
             <div class="input-field col s12">
-              <a class="btn waves-effect waves-light col-auto button1 white botonimagen" (click)="authService.loginWithGoogle()"></a>
+              <a class="btn waves-effect waves-light col-auto button1 white botonimagenGoogle" (click)="authService.loginWithGoogle()"></a>
+              <a class="btn waves-effect waves-light col-auto button1 white botonimagenFacebook" (click)="authService.loginWithFacebook()"></a>
             </div>
+
           </div>
           <div class="row">
             <div class="col push-s1">
-              <a [routerLink]="['/signup']">Regístrate!</a>
+              <a [routerLink]="['/signup']">Regístrate</a>
             </div>
           </div>
           <div class="row">
             <div class="col push-s1 center">
-              <a [routerLink]="['/email']">¿Olvidaste tu contraseña?</a>
+              <a [routerLink]="['/email']">¿ Olvidaste tu contraseña ?</a>
             </div>
           </div>
           </form>

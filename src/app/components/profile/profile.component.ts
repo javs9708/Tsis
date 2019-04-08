@@ -17,6 +17,7 @@ import {map} from 'rxjs/operators';
 export class ProfileComponent implements OnInit {
 
   data:any;
+  provider={};
   public name:string;
   public usersName:UidNames[];
   public id:string;
@@ -35,6 +36,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(private firestoreService: FirestoreService, private authService: AuthService, private afs: AngularFirestore) {
     this.data = JSON.parse((localStorage.getItem('user')));
+    this.provider=this.data.providerData[0];
     this.showName = this.afs.collection('/usuarios').valueChanges();
     this.showName.subscribe(data => {
       if (data) {
@@ -55,7 +57,6 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-
       this.firestoreService.getNames().subscribe(items =>{
         this.usersName=items;
         for(let e of this.usersName){
