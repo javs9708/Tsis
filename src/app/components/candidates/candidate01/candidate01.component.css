@@ -100,5 +100,9 @@ input.color {
   max-width: 40px;
   min-width: 39px;
   max-height: 40px;
-  min-height: 40px;
+  min-height: 39px;
+}
+
+.imgd{
+  margin: 0;
 }
