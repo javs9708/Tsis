@@ -34,8 +34,11 @@ input.color {
 }
 .img-m{
   display: flex;
-  margin-left: 0;
+  margin-left: 25px;
   align-content: left;
+  width:580px;
+  height:365px;
+  border-radius:40px;
 }
 .mtopcomment{
   margin-top: 10px;

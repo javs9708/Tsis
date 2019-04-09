@@ -12,8 +12,8 @@
       <div *ngIf="data.photoURL!=null">
         <ngx-avatar src="{{data.photoURL}}"  *ngIf="provider.providerId=='facebook.com'" alt="Avatar" size="70"></ngx-avatar>
         <ngx-avatar src="{{data.photoURL}}"  *ngIf="provider.providerId=='google.com'" alt="Avatar" size="150"></ngx-avatar>
-      </div>  
-      <ngx-avatar size="150" name='{{data.displayName}}'*ngIf="data.photoURL==null"></ngx-avatar>
+      </div>
+      <ngx-avatar size="150" name='{{data.displayName}}'*ngIf="data.displayName!=null && data.photoURL==null"></ngx-avatar>
       <ngx-avatar src="../../../assets/files/invitado.jpeg" class="circle mbo" size="150" *ngIf="data.displayName==''"></ngx-avatar>
     </div>
     <div class="col s12 center">
@@ -34,4 +34,3 @@
   </div>
 </body>
 </html>
-
