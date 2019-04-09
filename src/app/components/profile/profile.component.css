@@ -1,0 +1,90 @@
+input.color {
+  border-bottom: 1.5px #0c56ac !important;
+  box-shadow: 0 1.2px 0 0 #0c56ac !important;
+  max-width: 600px;
+}
+
+.button{
+    border-radius: 30px;
+}
+.img-m{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mtop{
+    margin-top: 200px;
+}
+.mbo{
+    margin-bottom: 30px;
+}
+.center{
+    text-align: center;
+}
+.textcolor{
+    color: #0d47a1;
+}
+.text1{
+    font-family: Arial;
+    margin: 0;
+    animation-name: textone;
+    animation-duration: 2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+@keyframes textone{
+    0%{
+        opacity: 0;
+        transform: scale(0.5);
+
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.text2{
+    font-family: Arial;
+    margin: 0;
+    animation-name: textwo;
+    animation-duration: 2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+}
+
+@keyframes textwo{
+    0%{
+        opacity: 0;
+        transform: scale(0.5);
+
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.text3{
+    font-family: Arial;
+    margin: 0;
+    animation-name: texthree;
+    animation-duration: 2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+    animation-delay: 2s;
+}
+
+@keyframes texthree{
+    0%{
+        opacity: 0;
+        transform: scale(0.5);
+
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}

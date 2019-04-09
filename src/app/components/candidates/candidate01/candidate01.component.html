@@ -13,6 +13,7 @@
     <br><br><br><br>
     <div class="row center">
       <div class="col s12 m12 l12 xl8 ">
+        <h3 class="mb mleft2">Alvaro Uribe Velez</h3>
         <img src="../../../assets/files/uribe.jpg" class=" responsive-img z-depth-5 img-m">
         <div class="row">
           <div class="col mtopc2">
@@ -41,20 +42,11 @@
       <div class="col s12 m12 l12 xl4">
         <div class="row pcenter">
           <div class="col">
+            <br><br>
             <input type="text" [(ngModel)]="comment" placeholder="Escribe un comentario" class="color">
             <button *ngIf="data.displayName!=''" class="btn button light-blue darken-2 button" (click)="saveComment()" (click)="cleanInput()">Comentar</button>
             <button *ngIf="data.displayName==''" class="btn button light-blue darken-2 button" [routerLink]="['/profile']">Comentar</button>
             <br><br>
-            <div id="modal1" class="modal">
-              <div class="modal-content">
-                <h4>Modal Header</h4>
-                <p>A bunch of text</p>
-                <input type="text" [(ngModel)]="name" placeholder="Escribe un nombre" class="color">
-              </div>
-              <div class="modal-footer">
-                <a class=" modal-close btn button light-blue darken-2 button" (click)="nameUser()">Agree</a>
-              </div>
-            </div>
             <div *ngIf="stateComments==false">
               <h5>No hay comentarios por aquí</h5>
             </div>
@@ -63,11 +55,10 @@
                 <div *ngIf="item.uid==data.uid" class="mbackground">
                   <div class="row din">
                     <div class="col s2 mright2" *ngIf="item.photo==null">
-                      <ngx-avatar src="https://www.researchgate.net/profile/Maria_Monreal2/publication/315108532/figure/fig1/AS:472492935520261@1489662502634/Figura-2-Avatar-que-aparece-por-defecto-en-Facebook.png" size="40" class="imgr">
-                      </ngx-avatar>
+                      <a [routerLink]="['/home']"><ngx-avatar name='{{data.displayName}}' class="imgr"></ngx-avatar></a>
                     </div>
                     <div class="col s2 mright2" *ngIf="item.photo!=null">
-                      <img src="{{item.photo}}" alt="Avatar" class="circle responsive-img valign profile-image imgr">
+                      <a [routerLink]="['/home']"><img src="{{item.photo}}" alt="Avatar" class="circle responsive-img valign profile-image imgr"></a>
                     </div>
                     <div class="col s9 mtopcomment pull-s1">
                       <a [routerLink]="['/home']"><b class="textc">{{item.nombre}}</b></a> {{item.comment}}
@@ -77,11 +68,10 @@
                 <div *ngIf="item.uid!=data.uid" class="mbackground ">
                   <div class="row din">
                     <div class="col col s2 mright2" *ngIf="item.photo==null">
-                      <ngx-avatar src="https://www.researchgate.net/profile/Maria_Monreal2/publication/315108532/figure/fig1/AS:472492935520261@1489662502634/Figura-2-Avatar-que-aparece-por-defecto-en-Facebook.png" size="40" class="imgr">
-                      </ngx-avatar>
+                      <a [routerLink]="['/users',item.uid,item.nombre]"><ngx-avatar name="{{item.nombre}}" class="imgr"></ngx-avatar></a>
                     </div>
                     <div class="col col s2 mright2" *ngIf="item.photo!=null">
-                      <img src="{{item.photo}}" alt="Avatar" class="circle responsive-img valign profile-image imgr">
+                      <a [routerLink]="['/users',item.uid,item.nombre]"><img src="{{item.photo}}" alt="Avatar" class="circle responsive-img valign profile-image imgr"></a>
                     </div>
                     <div class="col s9 mtopcomment pull-s1">
                       <a [routerLink]="['/users',item.uid,item.nombre]"><b class="textc">{{item.nombre}}</b></a> {{item.comment}}

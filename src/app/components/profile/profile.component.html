@@ -1,26 +1,37 @@
-
-<div class="row">
-  <div class="col l2">
-    <h4>{{data.displayName}}</h4>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="row">
+    <div class="col-auto img-m mtop">
+      <div *ngIf="data.photoURL!=null">
+        <ngx-avatar src="{{data.photoURL}}"  *ngIf="provider.providerId=='facebook.com'" alt="Avatar" size="70"></ngx-avatar>
+        <ngx-avatar src="{{data.photoURL}}"  *ngIf="provider.providerId=='google.com'" alt="Avatar" size="150"></ngx-avatar>
+      </div>  
+      <ngx-avatar size="150" name='{{data.displayName}}'*ngIf="data.photoURL==null"></ngx-avatar>
+      <ngx-avatar src="../../../assets/files/invitado.jpeg" class="circle mbo" size="150" *ngIf="data.displayName==''"></ngx-avatar>
+    </div>
+    <div class="col s12 center">
+      <h5 *ngIf="data.displayName==null || data.displayName==''" class="text1">Hola <span class="textcolor">{{data.email}}</span></h5>
+      <h4>{{data.displayName}}</h4>
+    </div>
   </div>
-
-  <div class="col l2">
-    <h4>{{data.email}}</h4>
+  <div *ngIf="data.displayName==null || data.displayName==''">
+    <div class="row">
+      <div class="col-auto center">
+        <h2 class="text2 mbo">Ingresa un nombre para identificarte</h2>
+        <br>
+        <input type="text" [(ngModel)]="name" placeholder="Escribe un nombre" class="color text3">
+        <br>
+        <a class="btn button light-blue darken-2 button text3" (click)="nameUser()">Aceptar</a>
+      </div>
+    </div>
   </div>
+</body>
+</html>
 
-</div>
-
-
-
-<div *ngIf="data.displayName==null || data.displayName==''">
-  <h2>Debes escribir tu nombre para identificarte</h2>
-  <input type="text" [(ngModel)]="name" placeholder="Escribe un nombre" class="color">
-  <a class="btn button light-blue darken-2 button" (click)="nameUser()">Agregar</a>
-</div>
-
-
-
-<div *ngIf="data.photoURL!=null">
-  <img src="{{data.photoURL}}"  *ngIf="provider.providerId=='facebook.com'" alt="Avatar" width="60px" height="60px">
-  <img src="{{data.photoURL}}"  *ngIf="provider.providerId=='google.com'" alt="Avatar" style="width:20%">
-</div>

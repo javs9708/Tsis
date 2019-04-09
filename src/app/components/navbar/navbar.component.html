@@ -29,7 +29,7 @@
     <li class="sidenav-header blue" *ngIf="authService.isLoggedIn">
       <div class="row">
         <div class="col s4" >
-          <ngx-avatar src="https://www.researchgate.net/profile/Maria_Monreal2/publication/315108532/figure/fig1/AS:472492935520261@1489662502634/Figura-2-Avatar-que-aparece-por-defecto-en-Facebook.png" size="50" *ngIf="data.photoURL==null"></ngx-avatar>
+          <ngx-avatar name="{{data.displayName}}" *ngIf="data.photoURL==null"></ngx-avatar>
           <img src="{{data.photoURL}}" width="60px" height="60px" alt="" class="circle responsive-img valign profile-image">
         </div>
         <div class="col s8 text">
