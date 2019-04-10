@@ -14,8 +14,8 @@
       <h5 class="header col s12 light">Te gustaría saber <a href="#about">¿qué somos?</a> </h5>
     </div>
     <div class="row center">
-      <a class="btn-large waves-effect waves-light  light-blue darken-2 button" *ngIf="!authService.isLoggedIn" [routerLink]="['login']" >Registrate</a>
-      <a class="btn-large waves-effect waves-light  light-blue darken-2 button" *ngIf="authService.isLoggedIn" [routerLink]="['profile']" >Registrate</a>
+      <a class="btn-large waves-effect waves-light  light-blue darken-2 button" *ngIf="!authService.isLoggedIn" [routerLink]="['login']" >Inicia Sesión</a>
+      <a class="btn-large waves-effect waves-light  light-blue darken-2 button" *ngIf="authService.isLoggedIn" [routerLink]="['profile']" >Inicia Sesión</a>
     </div>
     <br><br>
   </div>
@@ -28,12 +28,11 @@
       <div class="row">
         <div class="col-auto s12 item-center mtop1">
           <br>
-          <h5 class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas quisquam ducimus itaque rem obcaecati error doloribus maxime voluptatum repellat sed.</h5>
-          <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, quaerat.</h6>
+          <h4>Candidatec es un prototipo de red social que se enfoca en el contexto político </h4>
         </div>
         <div class="row">
           <div class="col-auto item-center">
-            <a class="btn-large waves-effect waves-light white button textdark mtop1"> ¿Qué ofrecemos?</a>
+            <a href="#services" class="btn-large waves-effect waves-light white button textdark mtop1"> ¿Qué ofrecemos?</a>
           </div>
         </div>
       </div>
@@ -41,35 +40,35 @@
   </div>
 
 
-
+<!-- Services -->
   <div class="container">
-      <div [ngClass]="{'titulo1': !scrolling, 'titulo2': scrolling}" class="section">
+      <div [ngClass]="{'titulo1': !scrolling, 'titulo2': scrolling}" class="section" id="services">
         <!--   Icon Section   -->
         <div class="row">
           <div class="col s12 m12 l4 titulo2">
             <div class="icon-block">
-              <h2 class="center light-blue-text" ><i class="material-icons">flash_on</i></h2>
-              <h5 class="center">Speeds up development</h5>
+              <h2 class="center light-blue-text" ><i class="material-icons">book</i></h2>
+              <h5 class="center">Información</h5>
 
-              <p class="light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, in?</p>
+              <p class="light center">Nos tomamos muy enserio este aspecto, ya que en todo momento ofreceremos información pertinente, imparcial y veraz.</p>
             </div>
           </div>
 
           <div class="col s12 m12 l4 titulo2">
             <div class="icon-block">
                 <h2 class="center light-blue-text" ><i class="material-icons">group</i></h2>
-              <h5 class="center">User Experience Focused</h5>
+              <h5 class="center">Interactividad</h5>
 
-              <p class="light">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus, perferendis.</p>
+              <p class="light center">Con otros usuarios en tiempo real, creando un espacio de debate y diálogo..</p>
             </div>
           </div>
 
           <div class="col s12 m12 l4 titulo2">
             <div class="icon-block">
               <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
-              <h5 class="center">Easy to work with</h5>
+              <h5 class="center">Facilidad de uso</h5>
 
-              <p class="light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, placeat!</p>
+              <p class="light center">Una experiencia amigable e intuitiva en todo momento para la satisfacción del usuario.</p>
             </div>
           </div>
         </div>
