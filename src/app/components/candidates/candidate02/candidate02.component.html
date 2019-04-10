@@ -11,10 +11,11 @@
 <body>
   <div class="container section">
     <br><br><br><br>
-    <div class="row center">
+    <div class="row">
       <div class="col s12 m12 l12 xl8 ">
-        <h3 class="mb mleft2">Gustavo Petro</h3>
-        <img src="../../../assets/files/petro.jpg" class=" responsive-img z-depth-5 img-m">
+        <h4 class="mb center hide-on-small-only" style="font-size:3.5vw;">Gustavo Petro</h4>
+        <h4 class=" center mb hide-on-med-and-up">Gustavo Petro</h4>
+        <img class="centrado responsive-img z-depth-5 img-m" src="../../../assets/files/petro.jpg">
         <div class="row">
           <div class="col mtopc2">
             <div *ngFor="let item of items|async">
@@ -26,16 +27,20 @@
                     A <b>{{item.likes}}</b> personas <span class="meGusta"><b>les gusta</b></span> este candidato
                   </div>
                   <div class="col">
-                    <a class="btn-floating btn-large waves-effect waves-light red mright mleft" [ngClass]="{disabled: state==true && stateLD==false}"><i (click)="dislikesCount()" class="material-icons">thumb_down</i></a>
+                    <a class="btn-floating btn-large waves-effect waves-light red mright" [ngClass]="{disabled: state==true && stateLD==false}"><i (click)="dislikesCount()" class="material-icons">thumb_down</i></a>
                     A <b>{{item.dislikes}}</b> personas <span class="noMeGusta"><b>no les gusta</b></span> este candidato
                   </div>
                 </div>
               </div>
             </div>
             <br>
-            <h5 *ngIf="state==true && stateLD==false"> <span class="noMeGusta"><b>No te gusta</b></span> este candidato <i class="material-icons">sentiment_very_dissatisfied</i></h5>
-            <h5 *ngIf="state==true && stateLD==true"> <span class="meGusta"><b>Te gusta</b></span> este candidato <i class="material-icons">sentiment_very_satisfied</i></h5>
-            <h5 *ngIf="state==false"> <b>Califica a este candidato</b></h5>
+            <div class="row center">
+              <div class="col-auto">
+                <h5 *ngIf="state==true && stateLD==false"> <span class="noMeGusta"><b>No te gusta</b></span> este candidato <i class="material-icons">sentiment_very_dissatisfied</i></h5>
+                <h5 *ngIf="state==true && stateLD==true"> <span class="meGusta"><b>Te gusta</b></span> este candidato <i class="material-icons">sentiment_very_satisfied</i></h5>
+                <h5 *ngIf="state==false"> <b>Califica a este candidato</b></h5>
+              </div>
+            </div>
           </div>
         </div>
       </div>

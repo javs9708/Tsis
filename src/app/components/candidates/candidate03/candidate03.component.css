@@ -109,3 +109,7 @@ input.color {
   max-height: 40px;
   min-height: 39px;
 }
+.centrado{
+  margin:10px auto;
+  display:block;
+}

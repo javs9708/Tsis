@@ -11,7 +11,7 @@ input.color {
 }
 
 .mleft2{
-  margin-right: 180px;
+  margin-left: 80px;
 }
 .mtop{
   margin-top: 120px;
@@ -36,8 +36,6 @@ input.color {
   display: flex;
   margin-left: 25px;
   align-content: left;
-  width:580px;
-  height:365px;
   border-radius:40px;
 }
 .mtopcomment{
@@ -53,12 +51,14 @@ input.color {
 .mright2{
   margin-right: 35px;
 }
-
 .mleft{
   margin-left: 0;
 }
 .button{
   border-radius: 30px;
+}
+.center{
+  text-align: center;
 }
 
 .pcenter{
@@ -68,7 +68,6 @@ input.color {
 .textc{
   color: #0d47a1;
 }
-
 .mb{
   margin-bottom: 30px;
 }
@@ -108,4 +107,9 @@ input.color {
   min-width: 40px;
   max-height: 40px;
   min-height: 39px;
+}
+
+.centrado{
+  margin:10px auto;
+  display:block;
 }
