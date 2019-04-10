@@ -15,6 +15,7 @@ export class NavbarComponent implements DoCheck{
   public showNameA=[];
   public showName: Observable<any[]>;
 
+
   constructor(private  authService:  AuthService, private db: AngularFirestore) {
 
     // this.showName = this.db.collection('/usuarios').valueChanges();
@@ -36,6 +37,7 @@ export class NavbarComponent implements DoCheck{
 
   ngDoCheck() {
     this.data = JSON.parse((localStorage.getItem('user')));
+
     }
 
 

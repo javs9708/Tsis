@@ -1,10 +1,6 @@
-input.color { 
+input.color {
   border-bottom: 1.5px #0c56ac !important;
   box-shadow: 0 1.2px 0 0 #0c56ac !important;
-}
-  
-.red{
-  margin-left: 50px;
 }
 
 .meGusta{
@@ -14,10 +10,8 @@ input.color {
   color: red;
 }
 
-.img-m{
-  display: flex;
-  margin-left: 0;
-  align-content: left;
+.mleft2{
+  margin-right: 180px;
 }
 .mtop{
   margin-top: 120px;
@@ -25,15 +19,93 @@ input.color {
 .mtopc{
   margin-top: 15px;
 }
+.mtopicon{
+  display: flex;
+  margin-top: 5px;
+  justify-content: flex-start;
+  margin-left: 21px;
+}
+.mtopdate{
+  display: flex;
+  margin-top: 17px;
+  justify-content: flex-end;
+  /* margin-right: 21px; */
+  margin-left: 0;
+}
+.img-m{
+  display: flex;
+  margin-left: 25px;
+  align-content: left;
+  width:580px;
+  height:365px;
+  border-radius:40px;
+}
+.mtopcomment{
+  margin-top: 10px;
+  margin-left: 0px;
+}
+.mtopc2{
+  margin-top: 30px;
+}
+.mright{
+  margin-right: 8px;
+}
+.mright2{
+  margin-right: 35px;
+}
+
+.mleft{
+  margin-left: 0;
+}
 .button{
   border-radius: 30px;
 }
 
-.pright{
-  text-align: right;
+.pcenter{
+  display: flex;
+  justify-content: center;
 }
-
 .textc{
   color: #0d47a1;
 }
-  
+
+.mb{
+  margin-bottom: 30px;
+}
+
+.backgroundcomment{
+  display: flex;
+  background: #e4f2ff;
+  height: 100%;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 30px;
+  align-content: flex-start;
+  margin-top: 15px;
+  text-align: left;
+}
+
+.mbackground{
+  margin-top: 15px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  margin-left: 15px;
+}
+
+.fontdate{
+  font-size: 10px;
+}
+
+.commentj{
+  display: flex;
+  justify-content: center;
+}
+.din{
+  display: flex;
+}
+.imgr{
+  max-width: 40px;
+  min-width: 40px;
+  max-height: 40px;
+  min-height: 39px;
+}
