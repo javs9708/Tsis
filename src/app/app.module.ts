@@ -13,6 +13,7 @@ import {AuthGuardService} from './services/auth-guard.service';
 import {FirestoreService} from './services/firestore/firestore.service';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { ScrollEventModule } from 'ngx-scroll-event';
+import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 
 
 import { AppComponent } from './app.component';
@@ -69,6 +70,7 @@ export const firebaseConfig ={
     FormsModule,
     AvatarModule,
     ScrollEventModule,
+    ScrollDispatchModule,
     APP_ROUTING
   ],
   providers: [

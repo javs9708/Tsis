@@ -55,7 +55,8 @@
             <div *ngIf="stateComments==false">
               <h5>No hay comentarios por aquí</h5>
             </div>
-            <div *ngFor="let item of sortData">
+            <cdk-virtual-scroll-viewport itemSize="50" minBufferPx="200" maxBufferPx="400" class="example-viewport">
+            <div *cdkVirtualFor="let item of sortData">
               <div class="row" *ngIf="item.candidate=='Alvaro Uribe'" class="backgroundcomment">
                 <div *ngIf="item.uid==data.uid" class="mbackground">
                   <div class="row din">
@@ -95,6 +96,7 @@
                 </div>
               </div>
             </div>
+            </cdk-virtual-scroll-viewport>
           </div>
         </div>
       </div>

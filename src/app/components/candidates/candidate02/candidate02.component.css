@@ -113,3 +113,8 @@ input.color {
   margin:10px auto;
   display:block;
 }
+
+.example-viewport {
+  height: 800px;
+  width: 100%;
+}
