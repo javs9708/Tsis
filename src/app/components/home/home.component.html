@@ -1,39 +1,141 @@
-<h1>
-  {{name}}
-</h1>
-
-<div *ngFor="let item of sortData">
-  <div *ngIf="item.uid==uid">
-    {{item.comment}}{{item.candidate}}{{item.date|date:'short'}}
-  </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <h5 class="center mt mb">Tu actividad hasta el momento <span class="textblue">{{name}}</span></h5>
+    <div class="row ">
+      <div class="col s4">
+        <div class="row">
+          <div class="col s12 m7">
+            <div class="card sizecard">
+              <div class="card-image">
+                <img class="size1" src="../../../assets/files/uribe.jpg">
+                <span class="card-title">Alvaro Uribe Velez</span>
+              </div>
+              <div class="card-content">
+                <h5 class="center"> <span class="textblue">Comentarios</span></h5>
+                <div *ngFor="let item of sortData">
+                  <div *ngIf="item.uid==uid && item.candidate=='Alvaro Uribe'">
+                    <div class="row">
+                      <div class="col backgroundcomment">
+                        <div class="col mbackground">
+                          <b>{{item.comment}}</b>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-auto ">
+                        <p class="fontdate center"> {{item.date | date:'short'}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-action">
+                <a href="#">This is a link</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col s4">
+        <div class="row">
+            <div class="col s12 m7">
+              <div class="card  sizecard">
+                <div class="card-image">
+                  <img class="size1" src="../../../assets/files/petro.jpg">
+                  <span class="card-title">Gustavo Petro</span>
+                </div>
+                <div class="card-content">
+                  <h5 class="center"> <span class="textblue">Comentarios</span></h5>
+                  <div *ngFor="let item of sortData">
+                    <div *ngIf="item.uid==uid && item.candidate=='Gustavo Petro'">
+                      <div class="row">
+                        <div class="col backgroundcomment">
+                          <div class="col mbackground">
+                            <b>{{item.comment}}</b>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-auto ">
+                          <p class="fontdate center"> {{item.date | date:'short'}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="col s4">
+        <div class="row">
+          <div class="col s12 m7">
+            <div class="card sizecard">
+              <div class="card-image">
+                <img class="size1" src="../../../assets/files/fajardo.jpg">
+                <span class="card-title">Sergio Fajardo</span>
+              </div>
+              <div class="card-content">
+                <h5 class="center"> <span class="textblue">Comentarios</span></h5>
+                <div *ngFor="let item of sortData">
+                  <div *ngIf="item.uid==uid && item.candidate=='Sergio Fajardo'">
+                    <div class="row">
+                      <div class="col backgroundcomment">
+                        <div class="col mbackground">
+                          <b>{{item.comment}}</b>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-auto ">
+                        <p class="fontdate center"> {{item.date | date:'short'}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-action">
+                <a href="#">This is a link</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
-
-<div *ngFor="let item of usersA">
-  <div *ngIf="item.uid==uid">
-    <div *ngIf="item.puntuationStateC1==true && item.puntuationStateC1LD==true">
-      Te gusta el candidato Uribe
+  <div *ngFor="let item of usersA">
+    <div *ngIf="item.uid==uid">
+      <div *ngIf="item.puntuationStateC1==true && item.puntuationStateC1LD==true">
+        Te gusta el candidato Uribe
+      </div>
+      <div *ngIf="item.puntuationStateC1==true && item.puntuationStateC1LD==false">
+        No te gusta el candidato Uribe
+      </div>
+      <div *ngIf="item.puntuationStateC2==true && item.puntuationStateC2LD==true">
+        Te gusta  el candidato Petro
+      </div>
+      <div *ngIf="item.puntuationStateC2==true && item.puntuationStateC2LD==false">
+        No te gusta el candidato petro
+      </div>
+      <div *ngIf="item.puntuationStateC3==true && item.puntuationStateC3LD==true">
+        Te gusta el candidato fajardo
+      </div>
+      <div *ngIf="item.puntuationStateC3==true && item.puntuationStateC3LD==false">
+        No Te gusta el candidato fajardo
+      </div>
+      <div *ngIf="item.puntuationStateC1==false || item.puntuationStateC2==false || item.puntuationStateC3==false">
+        Aun te faltan candidatos por calificar
+      </div>
+      <a  [routerLink]="['/candidates']" class="btn-small waves-effect waves-light  light-blue darken-2 button"> <b>Candidatos</b></a>
     </div>
-    <div *ngIf="item.puntuationStateC1==true && item.puntuationStateC1LD==false">
-      No te gusta el candidato Uribe
-    </div>
-    <div *ngIf="item.puntuationStateC2==true && item.puntuationStateC2LD==true">
-      Te gusta  el candidato Petro
-    </div>
-    <div *ngIf="item.puntuationStateC2==true && item.puntuationStateC2LD==false">
-      No te gusta el candidato petro
-    </div>
-    <div *ngIf="item.puntuationStateC3==true && item.puntuationStateC3LD==true">
-      Te gusta el candidato fajardo
-    </div>
-    <div *ngIf="item.puntuationStateC3==true && item.puntuationStateC3LD==false">
-      No Te gusta el candidato fajardo
-    </div>
-
-
-    <div *ngIf="item.puntuationStateC1==false || item.puntuationStateC2==false || item.puntuationStateC3==false">
-      Aun te faltan candidatos por calificar
-    </div>
-
-    <a  [routerLink]="['/candidates']" class="btn-small waves-effect waves-light  light-blue darken-2 button"> <b>Candidatos</b></a>
-  </div>
-</div>
+  </div>  
+</body>
+</html>
