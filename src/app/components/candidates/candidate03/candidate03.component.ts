@@ -228,12 +228,18 @@ export class Candidate03Component implements OnInit {
   }
 
   saveComment() {
-    this.commentObject.photo = this.data.photoURL;
-    this.commentObject.comment = this.comment;
-    let date: number = Date.now();
-    this.commentObject.date = date;
-    this.commentObject.nombre = this.data.displayName;
-    this.firestoreService.createComment(this.commentObject);
+    if(this.comment==undefined || this.comment ==""){
+      alert("Debe escribir un comentario");
+    }
+    else{
+      this.commentObject.photo = this.data.photoURL;
+      this.commentObject.comment = this.comment;
+      let date: number = Date.now();
+      this.commentObject.date = date;
+      this.commentObject.nombre = this.data.displayName;
+      this.firestoreService.createComment(this.commentObject);
+
+    }
   }
 
   cleanInput() {
@@ -247,6 +253,13 @@ export class Candidate03Component implements OnInit {
   nameUser() {
     this.data.displayName = this.name;
     localStorage.setItem('user', JSON.stringify(this.data));
+  }
+
+  eventHandler(event) {
+    if(event.keyCode==13){
+      this.saveComment()
+      this.cleanInput()
+    }
   }
 
 }

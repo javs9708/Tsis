@@ -48,7 +48,7 @@
         <div class="row pcenter">
           <div class="col">
             <br><br>
-            <input type="text" [(ngModel)]="comment" placeholder="Escribe un comentario" class="color">
+            <input type="text" [(ngModel)]="comment" placeholder="Escribe un comentario" class="color" (keypress)="eventHandler($event)">
             <button *ngIf="data.displayName!=''" class="btn button light-blue darken-2 button" (click)="saveComment()" (click)="cleanInput()">Comentar</button>
             <button *ngIf="data.displayName==''" class="btn button light-blue darken-2 button" [routerLink]="['/profile']">Comentar</button>
             <br><br>

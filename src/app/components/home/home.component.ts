@@ -22,6 +22,10 @@ export class HomeComponent implements OnInit {
   public commentsA = [];
   public usersA = [];
 
+  public commentsASort = [];
+  public commentsPSort = [];
+  public commentsFSort = [];
+
   public commentU = 0;
   public commentUrefresh = 0;
   public commentP = 0;
@@ -46,24 +50,41 @@ export class HomeComponent implements OnInit {
     this.commentsO.subscribe(data => {
      if (data) {
        this.commentsA = data;
+       
        this.commentU=0;
        this.commentP=0;
        this.commentS=0;
+
+       this.commentsASort=[]
+       this.commentsPSort=[]
+       this.commentsFSort=[]
+
+       for(let e of this.commentsA){
+         if(e.uid==this.uid && e.candidate=='Alvaro Uribe'){
+           this.commentsASort.push(e);
+         }
+         if(e.uid==this.uid && e.candidate=='Gustavo Petro'){
+           this.commentsPSort.push(e);
+         }
+         if(e.uid==this.uid && e.candidate=='Sergio Fajardo'){
+           this.commentsFSort.push(e);
+         }
+       }
+
+
        for ( let e of this.commentsA) {
          if (e.candidate=='Alvaro Uribe' && e.nombre!=this.name) {
             this.commentU++;
          }
-       }
-       for ( let e of this.commentsA) {
          if(e.candidate=='Gustavo Petro' && e.nombre!=this.name) {
             this.commentP++;
          }
-       }
-       for(let e of this.commentsA){
          if(e.candidate=='Sergio Fajardo' && e.nombre!=this.name){
             this.commentS++;
          }
        }
+
+
        for (let e of this.commentsA) {
           if (e.candidate == 'Alvaro Uribe' && e.nombre == this.name) {
             this.stateCommentsU = true;
@@ -127,10 +148,25 @@ export class HomeComponent implements OnInit {
 
   }
 
-  get sortData() {
-    return this.commentsA.sort((a, b) => {
+  get sortDataU() {
+    return this.commentsASort.sort((a, b) => {
       return <any>new Date(b.date) - <any>new Date(a.date);
     });
+
+  }
+
+  get sortDataP() {
+    return this.commentsPSort.sort((a, b) => {
+      return <any>new Date(b.date) - <any>new Date(a.date);
+    });
+
+  }
+
+  get sortDataF() {
+    return this.commentsFSort.sort((a, b) => {
+      return <any>new Date(b.date) - <any>new Date(a.date);
+    });
+
   }
 
 }
