@@ -118,3 +118,13 @@ input.color {
   height: 800px;
   width: 100%;
 }
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #9dd4ee;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #0c53a6;
+}

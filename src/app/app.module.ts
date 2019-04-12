@@ -6,6 +6,8 @@ import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import { FormsModule } from '@angular/forms';
 import { AvatarModule } from 'ngx-avatar';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatIconModule} from '@angular/material/icon';
 
 import { APP_ROUTING } from './app-routing.module';
 import {AuthService} from './services/auth.service';
@@ -71,6 +73,8 @@ export const firebaseConfig ={
     AvatarModule,
     ScrollEventModule,
     ScrollDispatchModule,
+    MatBadgeModule,
+    MatIconModule,
     APP_ROUTING
   ],
   providers: [

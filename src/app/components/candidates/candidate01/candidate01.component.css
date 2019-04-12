@@ -120,12 +120,12 @@ input.color {
 }
 
 ::-webkit-scrollbar {
-      width: 7px;
+  width: 7px;
 }
 
 ::-webkit-scrollbar-track {
-      background-color: #9dd4ee;
+  background-color: #9dd4ee;
 }
 ::-webkit-scrollbar-thumb {
-      background-color: #1169d0;
+  background-color: #0c53a6;
 }

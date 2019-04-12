@@ -19,26 +19,55 @@
                 <span class="card-title">Alvaro Uribe Velez</span>
               </div>
               <div class="card-content">
-                <h5 class="center"> <span class="textblue">Comentarios</span></h5>
-                <div *ngFor="let item of sortData">
-                  <div *ngIf="item.uid==uid && item.candidate=='Alvaro Uribe'">
-                    <div class="row">
-                      <div class="col backgroundcomment">
-                        <div class="col mbackground">
-                          <b>{{item.comment}}</b>
+                <div class="row">
+                  <div class="col-auto">
+                    <div *ngFor="let item of usersA">
+                      <div *ngIf="item.uid==uid">
+                        <div *ngIf="item.puntuationStateC1==true && item.puntuationStateC1LD==true">
+                          <h5 class="center">Este candidato <span class="textgreen">te gusta</span></h5>
                         </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-auto ">
-                        <p class="fontdate center"> {{item.date | date:'short'}}</p>
+                        <div *ngIf="item.puntuationStateC1==true && item.puntuationStateC1LD==false">
+                          <h5 class="center">Este candidato <span class="textred">no te gusta</span></h5>
+                        </div>
+                        <div *ngIf="item.puntuationStateC1==false">
+                          <h5 class="center font">Aun no has calificado este candidato</h5>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="card-action">
-                <a href="#">This is a link</a>
+                <div class="row">
+                  <div class="col-auto">
+                    <h5 class="center"> <span class="textblue">Comentarios</span></h5>
+                    <div *ngIf="stateCommentsU==false">
+                      <h5 class="center font"> No has comentado aún este canidato!</h5>
+                    </div>
+                  </div>
+                </div>
+                <cdk-virtual-scroll-viewport itemSize="50" minBufferPx="200" maxBufferPx="400" class="example-viewport">
+                  <div *cdkVirtualFor="let item of sortData">
+                    <div *ngIf="item.uid==uid && item.candidate=='Alvaro Uribe'">
+                      <div class="row centrado">
+                        <div class="col-auto backgroundcomment">
+                          <div class="col-auto mbackground">
+                            <b>{{item.comment}}</b>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-auto ">
+                          <p class="fontdate center"> {{item.date | date:'short'}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </cdk-virtual-scroll-viewport>
+                <div class="row">
+                  <div class="col-auto center">
+                    <h6> <b class="mr">Han comentado mas usuarios</b>
+                    <mat-icon matBadge="{{commentUrefresh}}" matBadgeColor="primary">insert_comment</mat-icon> </h6>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -53,21 +82,53 @@
                   <span class="card-title">Gustavo Petro</span>
                 </div>
                 <div class="card-content">
-                  <h5 class="center"> <span class="textblue">Comentarios</span></h5>
-                  <div *ngFor="let item of sortData">
-                    <div *ngIf="item.uid==uid && item.candidate=='Gustavo Petro'">
-                      <div class="row">
-                        <div class="col backgroundcomment">
-                          <div class="col mbackground">
-                            <b>{{item.comment}}</b>
+                  <div class="row">
+                    <div class="col-auto">
+                      <div *ngFor="let item of usersA">
+                        <div *ngIf="item.uid==uid">
+                          <div *ngIf="item.puntuationStateC2==true && item.puntuationStateC2LD==true">
+                            <h5 class="center">Este candidato <span class="textgreen">te gusta</span></h5>
+                          </div>
+                          <div *ngIf="item.puntuationStateC2==true && item.puntuationStateC2LD==false">
+                            <h5 class="center">Este candidato <span class="textred">no te gusta</span></h5>
+                          </div>
+                          <div *ngIf="item.puntuationStateC2==false">
+                            <h5 class="center font">Aun no has calificado este candidato</h5>
                           </div>
                         </div>
                       </div>
-                      <div class="row">
-                        <div class="col-auto ">
-                          <p class="fontdate center"> {{item.date | date:'short'}}</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-auto">
+                      <h5 class="center"> <span class="textblue">Comentarios</span></h5>
+                      <div *ngIf="stateCommentsP==false">
+                        <h5 class="center font"> No has comentado aún este canidato!</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <cdk-virtual-scroll-viewport itemSize="50" minBufferPx="200" maxBufferPx="400" class="example-viewport">
+                    <div *cdkVirtualFor="let item of sortData">
+                      <div *ngIf="item.uid==uid && item.candidate=='Gustavo Petro'">
+                        <div class="row centrado">
+                          <div class="col-auto backgroundcomment">
+                            <div class="col-auto mbackground">
+                              <b>{{item.comment}}</b>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-auto ">
+                            <p class="fontdate center"> {{item.date | date:'short'}}</p>
+                          </div>
                         </div>
                       </div>
+                    </div>
+                  </cdk-virtual-scroll-viewport>
+                  <div class="row">
+                    <div class="col-auto center">
+                      <h6> <b class="mr">Han comentado mas usuarios</b>
+                      <mat-icon matBadge="{{commentPrefresh}}" matBadgeColor="primary">insert_comment</mat-icon> </h6>
                     </div>
                   </div>
                 </div>
@@ -84,53 +145,64 @@
                 <span class="card-title">Sergio Fajardo</span>
               </div>
               <div class="card-content">
-                <h5 class="center"> <span class="textblue">Comentarios</span></h5>
-                <div *ngFor="let item of sortData">
-                  <div *ngIf="item.uid==uid && item.candidate=='Sergio Fajardo'">
-                    <div class="row">
-                      <div class="col backgroundcomment">
-                        <div class="col mbackground">
-                          <b>{{item.comment}}</b>
+                <div class="row">
+                  <div class="col-auto">
+                    <div *ngFor="let item of usersA">
+                      <div *ngIf="item.uid==uid">
+                        <div *ngIf="item.puntuationStateC3==true && item.puntuationStateC3LD==true">
+                          <h5 class="center">Este candidato <span class="textgreen">te gusta</span></h5>
                         </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-auto ">
-                        <p class="fontdate center"> {{item.date | date:'short'}}</p>
+                        <div *ngIf="item.puntuationStateC3==true && item.puntuationStateC3LD==false">
+                          <h5 class="center">Este candidato <span class="textred">no te gusta</span></h5>
+                        </div>
+                        <div *ngIf="item.puntuationStateC3==false">
+                          <h5 class="center font">Aun no has calificado este candidato</h5>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="card-action">
-                <a href="#">This is a link</a>
+                <div class="row">
+                  <div class="col-auto">
+                    <h5 class="center"> <span class="textblue">Comentarios</span></h5>
+                    <div *ngIf="stateCommentsF==false">
+                      <h5 class="center font"> No has comentado aún este canidato!</h5>
+                    </div>
+                  </div>
+                </div>
+                <cdk-virtual-scroll-viewport itemSize="50" minBufferPx="200" maxBufferPx="400" class="example-viewport">
+                  <div *cdkVirtualFor="let item of sortData">
+                    <div *ngIf="item.uid==uid && item.candidate=='Sergio Fajardo'">
+                      <div class="row centrado">
+                        <div class="col-auto backgroundcomment">
+                          <div class="col-auto mbackground">
+                            <b>{{item.comment}}</b>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-auto ">
+                          <p class="fontdate center"> {{item.date | date:'short'}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </cdk-virtual-scroll-viewport>
+                <div class="row">
+                  <div class="col-auto center">
+                    <h6> <b class="mr">Han comentado mas usuarios</b>
+                    <mat-icon matBadge="{{commentSrefresh}}" matBadgeColor="primary">insert_comment</mat-icon> </h6>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-</div>
+  </div>
   <div *ngFor="let item of usersA">
     <div *ngIf="item.uid==uid">
-      <div *ngIf="item.puntuationStateC1==true && item.puntuationStateC1LD==true">
-        Te gusta el candidato Uribe
-      </div>
-      <div *ngIf="item.puntuationStateC1==true && item.puntuationStateC1LD==false">
-        No te gusta el candidato Uribe
-      </div>
-      <div *ngIf="item.puntuationStateC2==true && item.puntuationStateC2LD==true">
-        Te gusta  el candidato Petro
-      </div>
-      <div *ngIf="item.puntuationStateC2==true && item.puntuationStateC2LD==false">
-        No te gusta el candidato petro
-      </div>
-      <div *ngIf="item.puntuationStateC3==true && item.puntuationStateC3LD==true">
-        Te gusta el candidato fajardo
-      </div>
-      <div *ngIf="item.puntuationStateC3==true && item.puntuationStateC3LD==false">
-        No Te gusta el candidato fajardo
-      </div>
       <div *ngIf="item.puntuationStateC1==false || item.puntuationStateC2==false || item.puntuationStateC3==false">
         Aun te faltan candidatos por calificar
       </div>
