@@ -11,7 +11,7 @@
 <body>
 
   <nav class="navbar">
-    <div class="nav-wrapper  light-blue darken-4" id="inicio">
+    <div class="nav-wrapper  light-blue darken-4">
       <div *ngIf="authService.isLoggedIn">
         <a [routerLink]="['home']" class="brand-logo center">Candidatec</a>
       </div>
@@ -19,7 +19,7 @@
       <a href="#" data-target="menu-side" class="sidenav-trigger show-on-large" *ngIf="authService.isLoggedIn"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile " class="hide-on-med-and-down" *ngIf="!authService.isLoggedIn">
         <li><a href="#"> <b class="item1">Inicio</b> </a></li>
-        <li><a href="#about"> <b class="item">Qué somos</b> </a></li>
+        <li><a (click)="ClickAbout()" href="#!"> <b class="item">Qué somos</b> </a></li>
       </ul>
     </div>
   </nav>

@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  public clickMessage:boolean;
+
+  constructor() { 
+    this.clickMessage = true;
+  }
 
   ngOnInit() {
+  }
+
+  ClickStart() {
+    window.scroll({behavior: 'smooth', top: 0});
   }
 
 }

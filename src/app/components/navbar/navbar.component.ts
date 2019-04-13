@@ -38,7 +38,11 @@ export class NavbarComponent implements DoCheck{
   ngDoCheck() {
     this.data = JSON.parse((localStorage.getItem('user')));
 
-    }
+  }
+
+  ClickAbout() {
+    window.scroll({behavior: 'smooth', top: 555});
+  }
 
 
 

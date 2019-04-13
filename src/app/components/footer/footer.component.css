@@ -1,3 +1,4 @@
-.white-text{
-  margin-left: 30px
+.dinline{
+  display: flex;
+  justify-content: center;
 }

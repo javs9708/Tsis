@@ -24,6 +24,15 @@ export class LandingComponent implements OnInit  {
   ngOnInit(){
   }
 
+  ClickAbout() {
+    window.scroll({behavior: 'smooth', top: 555});
+  }
+
+  ClickService() {
+    window.scroll({behavior: 'smooth', top: 1000});
+  }
+
+
   @HostListener('window:scroll', ['$event'])
       checkScroll() {
         const scrollPosition = window.pageYOffset
@@ -45,6 +54,5 @@ export class LandingComponent implements OnInit  {
         }
 
       }
-
 
 }

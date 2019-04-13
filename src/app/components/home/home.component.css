@@ -63,6 +63,10 @@ img.size1{
     font-style: italic;
 }
 
+.button{
+    border-radius: 30px;
+}
+
 .textred{
     color: red;
 }

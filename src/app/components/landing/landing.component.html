@@ -11,7 +11,7 @@
     <br><br><br><br><br>
     <h1  [ngClass]="{'titulo1': scrollingC}" class="header center blue-text titulo1">Candidatec</h1>
     <div class="row center">
-      <h5 class="header col s12 light">Te gustaría saber <a href="#about">¿qué somos?</a> </h5>
+      <h5 class="header col s12 light">Te gustaría saber <a (click)="ClickAbout()"  href="#!">¿qué somos?</a> </h5>
     </div>
     <div class="row center">
       <a class="btn-large waves-effect waves-light  light-blue darken-2 button" *ngIf="!authService.isLoggedIn" [routerLink]="['login']" >Inicia Sesión</a>
@@ -22,7 +22,7 @@
 
   <!--About-->
 
-  <div class="section light-blue darken-3 sblue" id="about">
+  <div class="section light-blue darken-3 sblue">
   <div class="container">
 
       <div class="row">
@@ -32,7 +32,7 @@
         </div>
         <div class="row">
           <div class="col-auto item-center">
-            <a href="#services" class="btn-large waves-effect waves-light white button textdark mtop1"> ¿Qué ofrecemos?</a>
+            <a (click)="ClickService()" href="#!" class="btn-large waves-effect waves-light white button textdark mtop1"> ¿Qué ofrecemos?</a>
           </div>
         </div>
       </div>
@@ -41,8 +41,9 @@
 
 
 <!-- Services -->
+<div class="section">
   <div class="container">
-      <div [ngClass]="{'titulo1': !scrolling, 'titulo2': scrolling}" class="section" id="services">
+      <div [ngClass]="{'titulo1': !scrolling, 'titulo2': scrolling}" class="section">
         <!--   Icon Section   -->
         <div class="row">
           <div class="col s12 m12 l4 titulo2">
@@ -74,6 +75,7 @@
 
       </div>
       <br><br>
+  </div>
   </div>
 
   <script src="js/scroll.js"></script>
