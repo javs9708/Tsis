@@ -1,11 +1,10 @@
 .sizecard{
-    width: 400px;
+    width: 100%;
     height: 950px;
 }
 
 img.size1{
-    width: 1000px;
-    height: 250px;
+    height: 200px;
 }
 
 .textblue{
@@ -89,4 +88,6 @@ img.size1{
 ::-webkit-scrollbar-thumb {
     background-color: #0c53a6;
 }
+
+
 

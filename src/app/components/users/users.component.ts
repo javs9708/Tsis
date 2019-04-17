@@ -19,6 +19,10 @@ export class UsersComponent implements OnInit {
   public commentsA = [];
   public usersA = [];
 
+  public commentsASort = [];
+  public commentsPSort = [];
+  public commentsFSort = [];
+
   constructor(private _route: ActivatedRoute, private db: AngularFirestore) {
   }
 
@@ -33,8 +37,24 @@ export class UsersComponent implements OnInit {
     this.commentsO.subscribe(data => {
       if (data) {
         this.commentsA = data;
-      }
 
+
+      }
+      for(let e of this.commentsA){
+        if(e.uid==this.uid && e.candidate=='Alvaro Uribe'){
+          this.commentsASort.push(e);
+        }
+        if(e.uid==this.uid && e.candidate=='Gustavo Petro'){
+          this.commentsPSort.push(e);
+        }
+        if(e.uid==this.uid && e.candidate=='Sergio Fajardo'){
+          this.commentsFSort.push(e);
+        }
+      }
+      
+      console.log(this.commentsASort);
+      console.log(this.commentsPSort);
+      console.log(this.commentsFSort);
     });
 
     this.users.subscribe(data => {
@@ -46,10 +66,25 @@ export class UsersComponent implements OnInit {
 
 }
 
-get sortData() {
-  return this.commentsA.sort((a, b) => {
+get sortDataU() {
+  return this.commentsASort.sort((a, b) => {
     return <any>new Date(b.date) - <any>new Date(a.date);
   });
+
+}
+
+get sortDataP() {
+  return this.commentsPSort.sort((a, b) => {
+    return <any>new Date(b.date) - <any>new Date(a.date);
+  });
+
+}
+
+get sortDataF() {
+  return this.commentsFSort.sort((a, b) => {
+    return <any>new Date(b.date) - <any>new Date(a.date);
+  });
+
 }
 
 }

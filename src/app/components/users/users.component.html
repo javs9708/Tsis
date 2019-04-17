@@ -1,37 +1,189 @@
-<h1>
-  {{name}}
-</h1>
+<!DOCTYPE html>
+<html lang="en">
 
-<div *ngFor="let item of sortData">
-  <div *ngIf="item.uid==uid">
-    {{item.comment}}{{item.candidate}}{{item.date|date:'short'}}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <h5 class="center mt mb">La actividad hasta el momento de <span class="textblue">{{name}}</span></h5>
+    <div class="row">
+      <div class="col xl4 m6">
+        <div class="row">
+          <div class="col s12">
+            <div class="card sizecard">
+              <div class="card-image">
+                <img class="size1" src="../../../assets/files/uribe.jpg">
+                <span class="card-title">Alvaro Uribe Velez</span>
+              </div>
+              <div class="card-content">
+                <div class="row">
+                  <div class="col-auto">
+                    <div *ngFor="let item of usersA">
+                      <div *ngIf="item.uid==uid">
+                        <div *ngIf="item.puntuationStateC1==true && item.puntuationStateC1LD==true">
+                          <h5 class="center"><span class="textgreen">Le gusta </span> este candidato</h5>
+                        </div>
+                        <div *ngIf="item.puntuationStateC1==true && item.puntuationStateC1LD==false">
+                          <h5 class="center"><span class="textred">No le gusta</span> este candidato</h5>
+                        </div>
+                        <div *ngIf="item.puntuationStateC1==false">
+                          <h5 class="center font">Aun no has calificado este candidato</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-auto">
+                    <h5 class="center"> <span class="textblue">Comentarios</span></h5>
+                    <div *ngIf="stateCommentsU==false">
+                      <h5 class="center font"> No has comentado aún este canidato!</h5>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div *ngFor="let item of sortDataU">
+                      <div class="row centrado">
+                        <div class="col-auto backgroundcomment">
+                          <div class="col-auto mbackground">
+                            <b>{{item.comment}}</b>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-auto ">
+                          <p class="fontdate center"> {{item.date | date:'short'}}</p>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col xl4 m6">
+        <div class="row">
+          <div class="col s12">
+            <div class="card  sizecard">
+              <div class="card-image">
+                <img class="size1" src="../../../assets/files/petro.jpg">
+                <span class="card-title">Gustavo Petro</span>
+              </div>
+              <div class="card-content">
+                <div class="row">
+                  <div class="col-auto">
+                    <div *ngFor="let item of usersA">
+                      <div *ngIf="item.uid==uid">
+                        <div *ngIf="item.puntuationStateC2==true && item.puntuationStateC2LD==true">
+                          <h5 class="center"><span class="textgreen">Le gusta </span> este candidato</h5>
+                        </div>
+                        <div *ngIf="item.puntuationStateC2==true && item.puntuationStateC2LD==false">
+                          <h5 class="center"><span class="textred">No le gusta</span> este candidato</h5>
+                        </div>
+                        <div *ngIf="item.puntuationStateC2==false">
+                          <h5 class="center font">Aun no has calificado este candidato</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-auto">
+                    <h5 class="center"> <span class="textblue">Comentarios</span></h5>
+                    <div *ngIf="stateCommentsP==false">
+                      <h5 class="center font"> No has comentado aún este canidato!</h5>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div *ngFor="let item of sortDataP">
+                      <div class="row centrado">
+                        <div class="col-auto backgroundcomment">
+                          <div class="col-auto mbackground">
+                            <b>{{item.comment}}</b>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-auto ">
+                          <p class="fontdate center"> {{item.date | date:'short'}}</p>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col xl4 m8 push-m2">
+        <div class="row">
+          <div class="col s12">
+            <div class="card sizecard">
+              <div class="card-image">
+                <img class="size1" src="../../../assets/files/fajardo.jpg">
+                <span class="card-title">Sergio Fajardo</span>
+              </div>
+              <div class="card-content">
+                <div class="row">
+                  <div class="col-auto">
+                    <div *ngFor="let item of usersA">
+                      <div *ngIf="item.uid==uid">
+                        <div *ngIf="item.puntuationStateC3==true && item.puntuationStateC3LD==true">
+                          <h5 class="center"><span class="textgreen">Le gusta </span> este candidato</h5>
+                        </div>
+                        <div *ngIf="item.puntuationStateC3==true && item.puntuationStateC3LD==false">
+                          <h5 class="center"><span class="textred">No le gusta</span> este candidato</h5>
+                        </div>
+                        <div *ngIf="item.puntuationStateC3==false">
+                          <h5 class="center font">Aun no has calificado este candidato</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-auto">
+                    <h5 class="center"> <span class="textblue">Comentarios</span></h5>
+                    <div *ngIf="stateCommentsF==false">
+                      <h5 class="center font"> No has comentado aún este canidato!</h5>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div *ngFor="let item of sortDataF">
+                      <div class="row centrado">
+                        <div class="col-auto backgroundcomment">
+                          <div class="col-auto mbackground">
+                            <b>{{item.comment}}</b>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-auto ">
+                          <p class="fontdate center"> {{item.date | date:'short'}}</p>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-auto center">
+        <a [routerLink]="['/candidates']" class="btn waves-effect waves-light  light-blue darken-2 button mb"> <b>Candidatos</b></a>
+      </div>
+    </div>
   </div>
-</div>
+</body>
 
-<div *ngFor="let item of usersA">
-  <div *ngIf="item.uid==uid">
-    <div *ngIf="item.puntuationStateC1==true && item.puntuationStateC1LD==true">
-      A {{name}} le gusta el candidato Uribe
-    </div>
-    <div *ngIf="item.puntuationStateC1==true && item.puntuationStateC1LD==false">
-      A {{name}} no le gusta el candidato Uribe
-    </div>
-    <div *ngIf="item.puntuationStateC2==true && item.puntuationStateC2LD==true">
-      A {{name}} le gusta el candidato Petro
-    </div>
-    <div *ngIf="item.puntuationStateC2==true && item.puntuationStateC2LD==false">
-      A {{name}} no le gusta el candidato petro
-    </div>
-    <div *ngIf="item.puntuationStateC3==true && item.puntuationStateC3LD==true">
-      A {{name}} le gusta el candidato fajardo
-    </div>
-    <div *ngIf="item.puntuationStateC3==true && item.puntuationStateC3LD==false">
-      A {{name}} no le gusta el candidato fajardo
-    </div>
-
-
-    <div *ngIf="item.puntuationStateC1==false || item.puntuationStateC2==false || item.puntuationStateC3==false">
-      A {{name}} le falta calificar a algunos candidatos
-    </div>
-  </div>
-</div>
+</html>
