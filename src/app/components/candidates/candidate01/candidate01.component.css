@@ -76,8 +76,8 @@ input.color {
   display: flex;
   background: #e4f2ff;
   height: 100%;
-  width: 90%;
-  max-width: 500px;
+  width: 80%;
+  max-width: 400px;
   border-radius: 30px;
   align-content: flex-start;
   margin-top: 15px;

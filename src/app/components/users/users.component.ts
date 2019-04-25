@@ -23,6 +23,10 @@ export class UsersComponent implements OnInit {
   public commentsPSort = [];
   public commentsFSort = [];
 
+  public stateCommentsU: boolean;
+  public stateCommentsP: boolean;
+  public stateCommentsF: boolean;
+
   constructor(private _route: ActivatedRoute, private db: AngularFirestore) {
   }
 
@@ -51,10 +55,30 @@ export class UsersComponent implements OnInit {
           this.commentsFSort.push(e);
         }
       }
-      
-      console.log(this.commentsASort);
-      console.log(this.commentsPSort);
-      console.log(this.commentsFSort);
+      for (let e of this.commentsA) {
+        if (e.candidate == 'Alvaro Uribe' && e.nombre == this.name) {
+          this.stateCommentsU = true;
+          break;
+        } else {
+           this.stateCommentsU = false;
+          }
+      }
+      for (let i of this.commentsA) {
+        if (i.candidate == 'Gustavo Petro' && i.nombre == this.name) {
+          this.stateCommentsP = true;
+          break;
+        } else {
+          this.stateCommentsP = false;
+        }
+      }
+      for (let o of this.commentsA) {
+        if (o.candidate == 'Sergio Fajardo' && o.nombre == this.name) {
+          this.stateCommentsF = true;
+          break;
+        } else {
+          this.stateCommentsF = false;
+        }
+      }
     });
 
     this.users.subscribe(data => {
