@@ -16,6 +16,7 @@ import {FirestoreService} from './services/firestore/firestore.service';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { ScrollEventModule } from 'ngx-scroll-event';
 import {ScrollDispatchModule} from '@angular/cdk/scrolling';
+import { ChartsModule } from 'ng2-charts';
 
 
 import { AppComponent } from './app.component';
@@ -75,6 +76,7 @@ export const firebaseConfig ={
     ScrollDispatchModule,
     MatBadgeModule,
     MatIconModule,
+    ChartsModule,
     APP_ROUTING
   ],
   providers: [
