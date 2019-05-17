@@ -25,6 +25,16 @@
                       <div class="col-auto center">
                         <a  [routerLink]="['candidate01']" class="btn-small waves-effect waves-light  light-blue darken-2 button"> <b>Calificame</b></a>
                       </div>
+                      <div class="col-auto mt">
+                        <div style="display: block">
+                        <canvas baseChart
+                                [data]="pieChartDataUribe"
+                                [labels]="pieChartLabels"
+                                [chartType]="pieChartType"
+                                [colors]="pieChartColors">
+                        </canvas>
+                      </div>
+                      </div>
                     </div>
                 </div>
                 <div class="col s12 m12 l12 xl8">
@@ -33,14 +43,6 @@
                       <b>
                         Biografía
                       </b>
-                    </div>
-                    <div style="display: block">
-                      <canvas baseChart
-                              [data]="pieChartDataUribe"
-                              [labels]="pieChartLabels"
-                              [chartType]="pieChartType"
-                              [colors]="pieChartColors">
-                      </canvas>
                     </div>
                     <div class="col">
                       <p ALIGN="justify">Álvaro Uribe Vélez (Medellín, 4 de julio de 1952) es un abogado y político colombiano, presidente de Colombia en los períodos 2002-2006 y 2006-2010. Uribe es abogado de la Universidad de Antioquia y cursó estudios en administración, gerencia y negociación de conflictos en la Escuela de Extensión de la Universidad de Harvard;​ y es miembro sénior asociado del St Antony's College de la Universidad de Oxford. <br><br>
@@ -79,6 +81,16 @@
                       <div class="col-auto center">
                         <a  [routerLink]="['candidate02']" class="btn-small waves-effect waves-light  light-blue darken-2 button"> <b>Calificame</b></a>
                       </div>
+                      <div class="col-auto mt">
+                        <div style="display: block">
+                          <canvas baseChart
+                                  [data]="pieChartDataPetro"
+                                  [labels]="pieChartLabels"
+                                  [chartType]="pieChartType"
+                                  [colors]="pieChartColors">
+                          </canvas>
+                        </div>
+                      </div>
                     </div>
                 </div>
                 <div class="col s12 m12 xl8">
@@ -87,14 +99,6 @@
                       <b>
                         Biografía
                       </b>
-                    </div>
-                    <div style="display: block">
-                      <canvas baseChart
-                              [data]="pieChartDataPetro"
-                              [labels]="pieChartLabels"
-                              [chartType]="pieChartType"
-                              [colors]="pieChartColors">
-                      </canvas>
                     </div>
                     <div class="col">
                       <p ALIGN="justify">El exalcalde de Bogotá y excandidato presidencial nació en Ciénaga del Oro, Córdoba en 1960, creció en Zipaquirá y se unió al M-19 a los 17 años. Poco a poco fue ganándose un lugar importante en el ala política de esa guerrilla hasta ser el más joven de los cinco miembros de la Dirección de la Región Central. Antes de eso, fue Personero de Zipaquirá en 1980 y llegó a ser concejal independiente de ese municipio entre 1984 y 1986. <br><br>
@@ -134,6 +138,16 @@
                   <div class="col-auto center">
                     <a  [routerLink]="['candidate03']" class="btn-small waves-effect waves-light  light-blue darken-2 button"> <b>Calificame</b></a>
                   </div>
+                  <div class="col-auto mt">
+                    <div style="display: block">
+                      <canvas baseChart
+                              [data]="pieChartDataFajardo"
+                              [labels]="pieChartLabels"
+                              [chartType]="pieChartType"
+                              [colors]="pieChartColors">
+                      </canvas>
+                    </div>
+                  </div>
                 </div>
             </div>
             <div class="col s12 m12 xl8">
@@ -142,14 +156,6 @@
                   <b>
                     Biografía
                   </b>
-                </div>
-                <div style="display: block">
-                  <canvas baseChart
-                          [data]="pieChartDataFajardo"
-                          [labels]="pieChartLabels"
-                          [chartType]="pieChartType"
-                          [colors]="pieChartColors">
-                  </canvas>
                 </div>
                 <div class="col">
                   <p ALIGN="justify"> Sergio Fajardo Valderrama nació en Medellín, Colombia en 1956. Es Matemático de la Universidad de los Andes, Doctor en Matemáticas de la Universidad de Wisconsin-Madison y Doctor Honoris Causa de la Universidad Internacional Menéndez Pelayo, España (2009) y de la Universidad Nacional de Córdoba, Argentina (2015). <br><br>
